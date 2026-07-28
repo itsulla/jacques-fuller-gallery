@@ -1,0 +1,1719 @@
+[
+  {
+    "id": "ship-of-fools",
+    "archiveNumber": "JF-001",
+    "title": "Ship of Fools",
+    "material": null,
+    "dimensions": null,
+    "date": null,
+    "availability": null,
+    "featured": true,
+    "featuredRank": 1,
+    "catalogueNote": null,
+    "prototypeText": "A crowded vessel of figures, mechanisms, animals, and vertical elements, photographed from eleven viewpoints.",
+    "story": null,
+    "imageCount": 11,
+    "images": [
+      {
+        "src": "/artworks/ship-of-fools/view-01.webp",
+        "thumb": "/artworks/ship-of-fools/thumb-01.webp",
+        "width": 498,
+        "height": 960,
+        "alt": "Ship of Fools, view 1"
+      },
+      {
+        "src": "/artworks/ship-of-fools/view-02.webp",
+        "thumb": "/artworks/ship-of-fools/thumb-02.webp",
+        "width": 642,
+        "height": 960,
+        "alt": "Ship of Fools, view 2"
+      },
+      {
+        "src": "/artworks/ship-of-fools/view-03.webp",
+        "thumb": "/artworks/ship-of-fools/thumb-03.webp",
+        "width": 960,
+        "height": 642,
+        "alt": "Ship of Fools, view 3"
+      },
+      {
+        "src": "/artworks/ship-of-fools/view-04.webp",
+        "thumb": "/artworks/ship-of-fools/thumb-04.webp",
+        "width": 960,
+        "height": 643,
+        "alt": "Ship of Fools, view 4"
+      },
+      {
+        "src": "/artworks/ship-of-fools/view-05.webp",
+        "thumb": "/artworks/ship-of-fools/thumb-05.webp",
+        "width": 642,
+        "height": 960,
+        "alt": "Ship of Fools, view 5"
+      },
+      {
+        "src": "/artworks/ship-of-fools/view-06.webp",
+        "thumb": "/artworks/ship-of-fools/thumb-06.webp",
+        "width": 642,
+        "height": 960,
+        "alt": "Ship of Fools, view 6"
+      },
+      {
+        "src": "/artworks/ship-of-fools/view-07.webp",
+        "thumb": "/artworks/ship-of-fools/thumb-07.webp",
+        "width": 571,
+        "height": 960,
+        "alt": "Ship of Fools, view 7"
+      },
+      {
+        "src": "/artworks/ship-of-fools/view-08.webp",
+        "thumb": "/artworks/ship-of-fools/thumb-08.webp",
+        "width": 642,
+        "height": 960,
+        "alt": "Ship of Fools, view 8"
+      },
+      {
+        "src": "/artworks/ship-of-fools/view-09.webp",
+        "thumb": "/artworks/ship-of-fools/thumb-09.webp",
+        "width": 526,
+        "height": 960,
+        "alt": "Ship of Fools, view 9"
+      },
+      {
+        "src": "/artworks/ship-of-fools/view-10.webp",
+        "thumb": "/artworks/ship-of-fools/thumb-10.webp",
+        "width": 642,
+        "height": 960,
+        "alt": "Ship of Fools, view 10"
+      },
+      {
+        "src": "/artworks/ship-of-fools/view-11.webp",
+        "thumb": "/artworks/ship-of-fools/thumb-11.webp",
+        "width": 960,
+        "height": 642,
+        "alt": "Ship of Fools, view 11"
+      }
+    ]
+  },
+  {
+    "id": "blind-butcher",
+    "archiveNumber": "JF-002",
+    "title": "Blind Butcher",
+    "material": "Brass on marble",
+    "dimensions": "80 cm high",
+    "date": null,
+    "availability": null,
+    "featured": true,
+    "featuredRank": 2,
+    "catalogueNote": null,
+    "prototypeText": "A tall figure mounted above a boar-like animal, with tools raised in either hand.",
+    "story": null,
+    "imageCount": 13,
+    "images": [
+      {
+        "src": "/artworks/blind-butcher/view-01.webp",
+        "thumb": "/artworks/blind-butcher/thumb-01.webp",
+        "width": 1373,
+        "height": 2048,
+        "alt": "Blind Butcher, view 1"
+      },
+      {
+        "src": "/artworks/blind-butcher/view-02.webp",
+        "thumb": "/artworks/blind-butcher/thumb-02.webp",
+        "width": 1118,
+        "height": 2048,
+        "alt": "Blind Butcher, view 2"
+      },
+      {
+        "src": "/artworks/blind-butcher/view-03.webp",
+        "thumb": "/artworks/blind-butcher/thumb-03.webp",
+        "width": 1304,
+        "height": 2048,
+        "alt": "Blind Butcher, view 3"
+      },
+      {
+        "src": "/artworks/blind-butcher/view-04.webp",
+        "thumb": "/artworks/blind-butcher/thumb-04.webp",
+        "width": 1077,
+        "height": 2048,
+        "alt": "Blind Butcher, view 4"
+      },
+      {
+        "src": "/artworks/blind-butcher/view-05.webp",
+        "thumb": "/artworks/blind-butcher/thumb-05.webp",
+        "width": 1157,
+        "height": 2048,
+        "alt": "Blind Butcher, view 5"
+      },
+      {
+        "src": "/artworks/blind-butcher/view-06.webp",
+        "thumb": "/artworks/blind-butcher/thumb-06.webp",
+        "width": 922,
+        "height": 2048,
+        "alt": "Blind Butcher, view 6"
+      },
+      {
+        "src": "/artworks/blind-butcher/view-07.webp",
+        "thumb": "/artworks/blind-butcher/thumb-07.webp",
+        "width": 1102,
+        "height": 2048,
+        "alt": "Blind Butcher, view 7"
+      },
+      {
+        "src": "/artworks/blind-butcher/view-08.webp",
+        "thumb": "/artworks/blind-butcher/thumb-08.webp",
+        "width": 1218,
+        "height": 2048,
+        "alt": "Blind Butcher, view 8"
+      },
+      {
+        "src": "/artworks/blind-butcher/view-09.webp",
+        "thumb": "/artworks/blind-butcher/thumb-09.webp",
+        "width": 922,
+        "height": 2048,
+        "alt": "Blind Butcher, view 9"
+      },
+      {
+        "src": "/artworks/blind-butcher/view-10.webp",
+        "thumb": "/artworks/blind-butcher/thumb-10.webp",
+        "width": 1480,
+        "height": 2048,
+        "alt": "Blind Butcher, view 10"
+      },
+      {
+        "src": "/artworks/blind-butcher/view-11.webp",
+        "thumb": "/artworks/blind-butcher/thumb-11.webp",
+        "width": 1202,
+        "height": 2048,
+        "alt": "Blind Butcher, view 11"
+      },
+      {
+        "src": "/artworks/blind-butcher/view-12.webp",
+        "thumb": "/artworks/blind-butcher/thumb-12.webp",
+        "width": 1318,
+        "height": 2048,
+        "alt": "Blind Butcher, view 12"
+      },
+      {
+        "src": "/artworks/blind-butcher/view-13.webp",
+        "thumb": "/artworks/blind-butcher/thumb-13.webp",
+        "width": 1420,
+        "height": 2048,
+        "alt": "Blind Butcher, view 13"
+      }
+    ]
+  },
+  {
+    "id": "mermaid",
+    "archiveNumber": "JF-003",
+    "title": "Mermaid",
+    "material": "Brass on mild steel",
+    "dimensions": "65 cm high × 50 cm wide",
+    "date": null,
+    "availability": null,
+    "featured": true,
+    "featuredRank": 3,
+    "catalogueNote": null,
+    "prototypeText": "A crowned hybrid figure presents a fish, balancing human and marine forms around a central column.",
+    "story": null,
+    "imageCount": 9,
+    "images": [
+      {
+        "src": "/artworks/mermaid/view-01.webp",
+        "thumb": "/artworks/mermaid/thumb-01.webp",
+        "width": 1490,
+        "height": 2048,
+        "alt": "Mermaid, view 1"
+      },
+      {
+        "src": "/artworks/mermaid/view-02.webp",
+        "thumb": "/artworks/mermaid/thumb-02.webp",
+        "width": 1536,
+        "height": 2048,
+        "alt": "Mermaid, view 2"
+      },
+      {
+        "src": "/artworks/mermaid/view-03.webp",
+        "thumb": "/artworks/mermaid/thumb-03.webp",
+        "width": 1403,
+        "height": 2048,
+        "alt": "Mermaid, view 3"
+      },
+      {
+        "src": "/artworks/mermaid/view-04.webp",
+        "thumb": "/artworks/mermaid/thumb-04.webp",
+        "width": 1588,
+        "height": 1673,
+        "alt": "Mermaid, view 4"
+      },
+      {
+        "src": "/artworks/mermaid/view-05.webp",
+        "thumb": "/artworks/mermaid/thumb-05.webp",
+        "width": 1600,
+        "height": 2018,
+        "alt": "Mermaid, view 5"
+      },
+      {
+        "src": "/artworks/mermaid/view-06.webp",
+        "thumb": "/artworks/mermaid/thumb-06.webp",
+        "width": 1445,
+        "height": 2048,
+        "alt": "Mermaid, view 6"
+      },
+      {
+        "src": "/artworks/mermaid/view-07.webp",
+        "thumb": "/artworks/mermaid/thumb-07.webp",
+        "width": 1600,
+        "height": 1595,
+        "alt": "Mermaid, view 7"
+      },
+      {
+        "src": "/artworks/mermaid/view-08.webp",
+        "thumb": "/artworks/mermaid/thumb-08.webp",
+        "width": 1446,
+        "height": 2048,
+        "alt": "Mermaid, view 8"
+      },
+      {
+        "src": "/artworks/mermaid/view-09.webp",
+        "thumb": "/artworks/mermaid/thumb-09.webp",
+        "width": 1338,
+        "height": 2048,
+        "alt": "Mermaid, view 9"
+      }
+    ]
+  },
+  {
+    "id": "safari",
+    "archiveNumber": "JF-004",
+    "title": "Safari",
+    "material": null,
+    "dimensions": null,
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": null,
+    "prototypeText": null,
+    "story": null,
+    "imageCount": 11,
+    "images": [
+      {
+        "src": "/artworks/safari/view-01.webp",
+        "thumb": "/artworks/safari/thumb-01.webp",
+        "width": 1600,
+        "height": 1600,
+        "alt": "Safari, view 1"
+      },
+      {
+        "src": "/artworks/safari/view-02.webp",
+        "thumb": "/artworks/safari/thumb-02.webp",
+        "width": 1600,
+        "height": 1600,
+        "alt": "Safari, view 2"
+      },
+      {
+        "src": "/artworks/safari/view-03.webp",
+        "thumb": "/artworks/safari/thumb-03.webp",
+        "width": 1600,
+        "height": 1600,
+        "alt": "Safari, view 3"
+      },
+      {
+        "src": "/artworks/safari/view-04.webp",
+        "thumb": "/artworks/safari/thumb-04.webp",
+        "width": 1600,
+        "height": 1775,
+        "alt": "Safari, view 4"
+      },
+      {
+        "src": "/artworks/safari/view-05.webp",
+        "thumb": "/artworks/safari/thumb-05.webp",
+        "width": 1600,
+        "height": 911,
+        "alt": "Safari, view 5"
+      },
+      {
+        "src": "/artworks/safari/view-06.webp",
+        "thumb": "/artworks/safari/thumb-06.webp",
+        "width": 1600,
+        "height": 1523,
+        "alt": "Safari, view 6"
+      },
+      {
+        "src": "/artworks/safari/view-07.webp",
+        "thumb": "/artworks/safari/thumb-07.webp",
+        "width": 1600,
+        "height": 1600,
+        "alt": "Safari, view 7"
+      },
+      {
+        "src": "/artworks/safari/view-08.webp",
+        "thumb": "/artworks/safari/thumb-08.webp",
+        "width": 1600,
+        "height": 1736,
+        "alt": "Safari, view 8"
+      },
+      {
+        "src": "/artworks/safari/view-09.webp",
+        "thumb": "/artworks/safari/thumb-09.webp",
+        "width": 1600,
+        "height": 1600,
+        "alt": "Safari, view 9"
+      },
+      {
+        "src": "/artworks/safari/view-10.webp",
+        "thumb": "/artworks/safari/thumb-10.webp",
+        "width": 1600,
+        "height": 1600,
+        "alt": "Safari, view 10"
+      },
+      {
+        "src": "/artworks/safari/view-11.webp",
+        "thumb": "/artworks/safari/thumb-11.webp",
+        "width": 1600,
+        "height": 1126,
+        "alt": "Safari, view 11"
+      }
+    ]
+  },
+  {
+    "id": "owl-tap",
+    "archiveNumber": "JF-005",
+    "title": "Owl (Tap)",
+    "material": null,
+    "dimensions": null,
+    "date": null,
+    "availability": null,
+    "featured": true,
+    "featuredRank": 5,
+    "catalogueNote": null,
+    "prototypeText": "An owl spreads hammered wings around a compact body assembled from mechanical forms.",
+    "story": null,
+    "imageCount": 6,
+    "images": [
+      {
+        "src": "/artworks/owl-tap/view-01.webp",
+        "thumb": "/artworks/owl-tap/thumb-01.webp",
+        "width": 1600,
+        "height": 1550,
+        "alt": "Owl (Tap), view 1"
+      },
+      {
+        "src": "/artworks/owl-tap/view-02.webp",
+        "thumb": "/artworks/owl-tap/thumb-02.webp",
+        "width": 1600,
+        "height": 1600,
+        "alt": "Owl (Tap), view 2"
+      },
+      {
+        "src": "/artworks/owl-tap/view-03.webp",
+        "thumb": "/artworks/owl-tap/thumb-03.webp",
+        "width": 1600,
+        "height": 1600,
+        "alt": "Owl (Tap), view 3"
+      },
+      {
+        "src": "/artworks/owl-tap/view-04.webp",
+        "thumb": "/artworks/owl-tap/thumb-04.webp",
+        "width": 1600,
+        "height": 1479,
+        "alt": "Owl (Tap), view 4"
+      },
+      {
+        "src": "/artworks/owl-tap/view-05.webp",
+        "thumb": "/artworks/owl-tap/thumb-05.webp",
+        "width": 1600,
+        "height": 1550,
+        "alt": "Owl (Tap), view 5"
+      },
+      {
+        "src": "/artworks/owl-tap/view-06.webp",
+        "thumb": "/artworks/owl-tap/thumb-06.webp",
+        "width": 1600,
+        "height": 1505,
+        "alt": "Owl (Tap), view 6"
+      }
+    ]
+  },
+  {
+    "id": "cricket-king",
+    "archiveNumber": "JF-006",
+    "title": "Cricket King",
+    "material": "Welded brass",
+    "dimensions": "22 × 20 × 13 cm",
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": null,
+    "prototypeText": null,
+    "story": null,
+    "imageCount": 6,
+    "images": [
+      {
+        "src": "/artworks/cricket-king/view-01.webp",
+        "thumb": "/artworks/cricket-king/thumb-01.webp",
+        "width": 1600,
+        "height": 1902,
+        "alt": "Cricket King, view 1"
+      },
+      {
+        "src": "/artworks/cricket-king/view-02.webp",
+        "thumb": "/artworks/cricket-king/thumb-02.webp",
+        "width": 1600,
+        "height": 1600,
+        "alt": "Cricket King, view 2"
+      },
+      {
+        "src": "/artworks/cricket-king/view-03.webp",
+        "thumb": "/artworks/cricket-king/thumb-03.webp",
+        "width": 1600,
+        "height": 1600,
+        "alt": "Cricket King, view 3"
+      },
+      {
+        "src": "/artworks/cricket-king/view-04.webp",
+        "thumb": "/artworks/cricket-king/thumb-04.webp",
+        "width": 1600,
+        "height": 1600,
+        "alt": "Cricket King, view 4"
+      },
+      {
+        "src": "/artworks/cricket-king/view-05.webp",
+        "thumb": "/artworks/cricket-king/thumb-05.webp",
+        "width": 1600,
+        "height": 1770,
+        "alt": "Cricket King, view 5"
+      },
+      {
+        "src": "/artworks/cricket-king/view-06.webp",
+        "thumb": "/artworks/cricket-king/thumb-06.webp",
+        "width": 1600,
+        "height": 1653,
+        "alt": "Cricket King, view 6"
+      }
+    ]
+  },
+  {
+    "id": "vulturine",
+    "archiveNumber": "JF-007",
+    "title": "Vulturine",
+    "material": null,
+    "dimensions": null,
+    "date": null,
+    "availability": null,
+    "featured": true,
+    "featuredRank": 6,
+    "catalogueNote": null,
+    "prototypeText": "A long-necked bird in a top hat stands over a compact architectural base.",
+    "story": null,
+    "imageCount": 7,
+    "images": [
+      {
+        "src": "/artworks/vulturine/view-01.webp",
+        "thumb": "/artworks/vulturine/thumb-01.webp",
+        "width": 1536,
+        "height": 2048,
+        "alt": "Vulturine, view 1"
+      },
+      {
+        "src": "/artworks/vulturine/view-02.webp",
+        "thumb": "/artworks/vulturine/thumb-02.webp",
+        "width": 1536,
+        "height": 2048,
+        "alt": "Vulturine, view 2"
+      },
+      {
+        "src": "/artworks/vulturine/view-03.webp",
+        "thumb": "/artworks/vulturine/thumb-03.webp",
+        "width": 1536,
+        "height": 2048,
+        "alt": "Vulturine, view 3"
+      },
+      {
+        "src": "/artworks/vulturine/view-04.webp",
+        "thumb": "/artworks/vulturine/thumb-04.webp",
+        "width": 1536,
+        "height": 2048,
+        "alt": "Vulturine, view 4"
+      },
+      {
+        "src": "/artworks/vulturine/view-05.webp",
+        "thumb": "/artworks/vulturine/thumb-05.webp",
+        "width": 1536,
+        "height": 2048,
+        "alt": "Vulturine, view 5"
+      },
+      {
+        "src": "/artworks/vulturine/view-06.webp",
+        "thumb": "/artworks/vulturine/thumb-06.webp",
+        "width": 1536,
+        "height": 2048,
+        "alt": "Vulturine, view 6"
+      },
+      {
+        "src": "/artworks/vulturine/view-07.webp",
+        "thumb": "/artworks/vulturine/thumb-07.webp",
+        "width": 1536,
+        "height": 2048,
+        "alt": "Vulturine, view 7"
+      }
+    ]
+  },
+  {
+    "id": "born-2b-free",
+    "archiveNumber": "JF-008",
+    "title": "Born 2B Free",
+    "material": null,
+    "dimensions": null,
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": null,
+    "prototypeText": null,
+    "story": null,
+    "imageCount": 5,
+    "images": [
+      {
+        "src": "/artworks/born-2b-free/view-01.webp",
+        "thumb": "/artworks/born-2b-free/thumb-01.webp",
+        "width": 1536,
+        "height": 2048,
+        "alt": "Born 2B Free, view 1"
+      },
+      {
+        "src": "/artworks/born-2b-free/view-02.webp",
+        "thumb": "/artworks/born-2b-free/thumb-02.webp",
+        "width": 1536,
+        "height": 2048,
+        "alt": "Born 2B Free, view 2"
+      },
+      {
+        "src": "/artworks/born-2b-free/view-03.webp",
+        "thumb": "/artworks/born-2b-free/thumb-03.webp",
+        "width": 1536,
+        "height": 2048,
+        "alt": "Born 2B Free, view 3"
+      },
+      {
+        "src": "/artworks/born-2b-free/view-04.webp",
+        "thumb": "/artworks/born-2b-free/thumb-04.webp",
+        "width": 1536,
+        "height": 2048,
+        "alt": "Born 2B Free, view 4"
+      },
+      {
+        "src": "/artworks/born-2b-free/view-05.webp",
+        "thumb": "/artworks/born-2b-free/thumb-05.webp",
+        "width": 1536,
+        "height": 2048,
+        "alt": "Born 2B Free, view 5"
+      }
+    ]
+  },
+  {
+    "id": "ram",
+    "archiveNumber": "JF-009",
+    "title": "Ram",
+    "material": "Brass",
+    "dimensions": "42 cm high × 18 cm wide",
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": null,
+    "prototypeText": null,
+    "story": null,
+    "imageCount": 8,
+    "images": [
+      {
+        "src": "/artworks/ram/view-01.webp",
+        "thumb": "/artworks/ram/thumb-01.webp",
+        "width": 1439,
+        "height": 2048,
+        "alt": "Ram, view 1"
+      },
+      {
+        "src": "/artworks/ram/view-02.webp",
+        "thumb": "/artworks/ram/thumb-02.webp",
+        "width": 1600,
+        "height": 719,
+        "alt": "Ram, view 2"
+      },
+      {
+        "src": "/artworks/ram/view-03.webp",
+        "thumb": "/artworks/ram/thumb-03.webp",
+        "width": 1600,
+        "height": 1650,
+        "alt": "Ram, view 3"
+      },
+      {
+        "src": "/artworks/ram/view-04.webp",
+        "thumb": "/artworks/ram/thumb-04.webp",
+        "width": 1567,
+        "height": 2048,
+        "alt": "Ram, view 4"
+      },
+      {
+        "src": "/artworks/ram/view-05.webp",
+        "thumb": "/artworks/ram/thumb-05.webp",
+        "width": 1120,
+        "height": 2048,
+        "alt": "Ram, view 5"
+      },
+      {
+        "src": "/artworks/ram/view-06.webp",
+        "thumb": "/artworks/ram/thumb-06.webp",
+        "width": 1416,
+        "height": 2048,
+        "alt": "Ram, view 6"
+      },
+      {
+        "src": "/artworks/ram/view-07.webp",
+        "thumb": "/artworks/ram/thumb-07.webp",
+        "width": 1262,
+        "height": 2048,
+        "alt": "Ram, view 7"
+      },
+      {
+        "src": "/artworks/ram/view-08.webp",
+        "thumb": "/artworks/ram/thumb-08.webp",
+        "width": 1337,
+        "height": 2048,
+        "alt": "Ram, view 8"
+      }
+    ]
+  },
+  {
+    "id": "falconet",
+    "archiveNumber": "JF-010",
+    "title": "Falconet",
+    "material": "Brass",
+    "dimensions": "33 cm high",
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": null,
+    "prototypeText": null,
+    "story": null,
+    "imageCount": 10,
+    "images": [
+      {
+        "src": "/artworks/falconet/view-01.webp",
+        "thumb": "/artworks/falconet/thumb-01.webp",
+        "width": 1270,
+        "height": 2048,
+        "alt": "Falconet, view 1"
+      },
+      {
+        "src": "/artworks/falconet/view-02.webp",
+        "thumb": "/artworks/falconet/thumb-02.webp",
+        "width": 1536,
+        "height": 2048,
+        "alt": "Falconet, view 2"
+      },
+      {
+        "src": "/artworks/falconet/view-03.webp",
+        "thumb": "/artworks/falconet/thumb-03.webp",
+        "width": 1536,
+        "height": 2048,
+        "alt": "Falconet, view 3"
+      },
+      {
+        "src": "/artworks/falconet/view-04.webp",
+        "thumb": "/artworks/falconet/thumb-04.webp",
+        "width": 1600,
+        "height": 655,
+        "alt": "Falconet, view 4"
+      },
+      {
+        "src": "/artworks/falconet/view-05.webp",
+        "thumb": "/artworks/falconet/thumb-05.webp",
+        "width": 1536,
+        "height": 2048,
+        "alt": "Falconet, view 5"
+      },
+      {
+        "src": "/artworks/falconet/view-06.webp",
+        "thumb": "/artworks/falconet/thumb-06.webp",
+        "width": 1536,
+        "height": 2048,
+        "alt": "Falconet, view 6"
+      },
+      {
+        "src": "/artworks/falconet/view-07.webp",
+        "thumb": "/artworks/falconet/thumb-07.webp",
+        "width": 1536,
+        "height": 2048,
+        "alt": "Falconet, view 7"
+      },
+      {
+        "src": "/artworks/falconet/view-08.webp",
+        "thumb": "/artworks/falconet/thumb-08.webp",
+        "width": 1536,
+        "height": 2048,
+        "alt": "Falconet, view 8"
+      },
+      {
+        "src": "/artworks/falconet/view-09.webp",
+        "thumb": "/artworks/falconet/thumb-09.webp",
+        "width": 1536,
+        "height": 2048,
+        "alt": "Falconet, view 9"
+      },
+      {
+        "src": "/artworks/falconet/view-10.webp",
+        "thumb": "/artworks/falconet/thumb-10.webp",
+        "width": 1536,
+        "height": 2048,
+        "alt": "Falconet, view 10"
+      }
+    ]
+  },
+  {
+    "id": "democrat",
+    "archiveNumber": "JF-011",
+    "title": "Democrat",
+    "material": "Brass",
+    "dimensions": "57 cm high",
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": null,
+    "prototypeText": null,
+    "story": null,
+    "imageCount": 9,
+    "images": [
+      {
+        "src": "/artworks/democrat/view-01.webp",
+        "thumb": "/artworks/democrat/thumb-01.webp",
+        "width": 510,
+        "height": 960,
+        "alt": "Democrat, view 1"
+      },
+      {
+        "src": "/artworks/democrat/view-02.webp",
+        "thumb": "/artworks/democrat/thumb-02.webp",
+        "width": 720,
+        "height": 960,
+        "alt": "Democrat, view 2"
+      },
+      {
+        "src": "/artworks/democrat/view-03.webp",
+        "thumb": "/artworks/democrat/thumb-03.webp",
+        "width": 720,
+        "height": 960,
+        "alt": "Democrat, view 3"
+      },
+      {
+        "src": "/artworks/democrat/view-04.webp",
+        "thumb": "/artworks/democrat/thumb-04.webp",
+        "width": 640,
+        "height": 1287,
+        "alt": "Democrat, view 4"
+      },
+      {
+        "src": "/artworks/democrat/view-05.webp",
+        "thumb": "/artworks/democrat/thumb-05.webp",
+        "width": 720,
+        "height": 960,
+        "alt": "Democrat, view 5"
+      },
+      {
+        "src": "/artworks/democrat/view-06.webp",
+        "thumb": "/artworks/democrat/thumb-06.webp",
+        "width": 720,
+        "height": 960,
+        "alt": "Democrat, view 6"
+      },
+      {
+        "src": "/artworks/democrat/view-07.webp",
+        "thumb": "/artworks/democrat/thumb-07.webp",
+        "width": 634,
+        "height": 1453,
+        "alt": "Democrat, view 7"
+      },
+      {
+        "src": "/artworks/democrat/view-08.webp",
+        "thumb": "/artworks/democrat/thumb-08.webp",
+        "width": 720,
+        "height": 960,
+        "alt": "Democrat, view 8"
+      },
+      {
+        "src": "/artworks/democrat/view-09.webp",
+        "thumb": "/artworks/democrat/thumb-09.webp",
+        "width": 720,
+        "height": 960,
+        "alt": "Democrat, view 9"
+      }
+    ]
+  },
+  {
+    "id": "kiss-a-frog",
+    "archiveNumber": "JF-012",
+    "title": "Kiss a Frog",
+    "material": null,
+    "dimensions": null,
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": null,
+    "prototypeText": null,
+    "story": null,
+    "imageCount": 7,
+    "images": [
+      {
+        "src": "/artworks/kiss-a-frog/view-01.webp",
+        "thumb": "/artworks/kiss-a-frog/thumb-01.webp",
+        "width": 1261,
+        "height": 3325,
+        "alt": "Kiss a Frog, view 1"
+      },
+      {
+        "src": "/artworks/kiss-a-frog/view-02.webp",
+        "thumb": "/artworks/kiss-a-frog/thumb-02.webp",
+        "width": 1328,
+        "height": 3154,
+        "alt": "Kiss a Frog, view 2"
+      },
+      {
+        "src": "/artworks/kiss-a-frog/view-03.webp",
+        "thumb": "/artworks/kiss-a-frog/thumb-03.webp",
+        "width": 1577,
+        "height": 1187,
+        "alt": "Kiss a Frog, view 3"
+      },
+      {
+        "src": "/artworks/kiss-a-frog/view-04.webp",
+        "thumb": "/artworks/kiss-a-frog/thumb-04.webp",
+        "width": 1269,
+        "height": 2048,
+        "alt": "Kiss a Frog, view 4"
+      },
+      {
+        "src": "/artworks/kiss-a-frog/view-05.webp",
+        "thumb": "/artworks/kiss-a-frog/thumb-05.webp",
+        "width": 1261,
+        "height": 3325,
+        "alt": "Kiss a Frog, view 5"
+      },
+      {
+        "src": "/artworks/kiss-a-frog/view-06.webp",
+        "thumb": "/artworks/kiss-a-frog/thumb-06.webp",
+        "width": 1425,
+        "height": 2048,
+        "alt": "Kiss a Frog, view 6"
+      },
+      {
+        "src": "/artworks/kiss-a-frog/view-07.webp",
+        "thumb": "/artworks/kiss-a-frog/thumb-07.webp",
+        "width": 1387,
+        "height": 3020,
+        "alt": "Kiss a Frog, view 7"
+      }
+    ]
+  },
+  {
+    "id": "pigs-on-the-wing",
+    "archiveNumber": "JF-013",
+    "title": "Pigs on the Wing",
+    "material": "Brass",
+    "dimensions": "24 cm high",
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": null,
+    "prototypeText": null,
+    "story": null,
+    "imageCount": 6,
+    "images": [
+      {
+        "src": "/artworks/pigs-on-the-wing/view-01.webp",
+        "thumb": "/artworks/pigs-on-the-wing/thumb-01.webp",
+        "width": 1600,
+        "height": 1600,
+        "alt": "Pigs on the Wing, view 1"
+      },
+      {
+        "src": "/artworks/pigs-on-the-wing/view-02.webp",
+        "thumb": "/artworks/pigs-on-the-wing/thumb-02.webp",
+        "width": 1600,
+        "height": 1600,
+        "alt": "Pigs on the Wing, view 2"
+      },
+      {
+        "src": "/artworks/pigs-on-the-wing/view-03.webp",
+        "thumb": "/artworks/pigs-on-the-wing/thumb-03.webp",
+        "width": 1600,
+        "height": 1600,
+        "alt": "Pigs on the Wing, view 3"
+      },
+      {
+        "src": "/artworks/pigs-on-the-wing/view-04.webp",
+        "thumb": "/artworks/pigs-on-the-wing/thumb-04.webp",
+        "width": 1600,
+        "height": 1600,
+        "alt": "Pigs on the Wing, view 4"
+      },
+      {
+        "src": "/artworks/pigs-on-the-wing/view-05.webp",
+        "thumb": "/artworks/pigs-on-the-wing/thumb-05.webp",
+        "width": 1600,
+        "height": 1600,
+        "alt": "Pigs on the Wing, view 5"
+      },
+      {
+        "src": "/artworks/pigs-on-the-wing/view-06.webp",
+        "thumb": "/artworks/pigs-on-the-wing/thumb-06.webp",
+        "width": 1600,
+        "height": 1284,
+        "alt": "Pigs on the Wing, view 6"
+      }
+    ]
+  },
+  {
+    "id": "teacher",
+    "archiveNumber": "JF-014",
+    "title": "Teacher",
+    "material": null,
+    "dimensions": null,
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": null,
+    "prototypeText": null,
+    "story": null,
+    "imageCount": 6,
+    "images": [
+      {
+        "src": "/artworks/teacher/view-01.webp",
+        "thumb": "/artworks/teacher/thumb-01.webp",
+        "width": 1167,
+        "height": 2048,
+        "alt": "Teacher, view 1"
+      },
+      {
+        "src": "/artworks/teacher/view-02.webp",
+        "thumb": "/artworks/teacher/thumb-02.webp",
+        "width": 1186,
+        "height": 2048,
+        "alt": "Teacher, view 2"
+      },
+      {
+        "src": "/artworks/teacher/view-03.webp",
+        "thumb": "/artworks/teacher/thumb-03.webp",
+        "width": 1600,
+        "height": 1569,
+        "alt": "Teacher, view 3"
+      },
+      {
+        "src": "/artworks/teacher/view-04.webp",
+        "thumb": "/artworks/teacher/thumb-04.webp",
+        "width": 1123,
+        "height": 2048,
+        "alt": "Teacher, view 4"
+      },
+      {
+        "src": "/artworks/teacher/view-05.webp",
+        "thumb": "/artworks/teacher/thumb-05.webp",
+        "width": 1162,
+        "height": 2048,
+        "alt": "Teacher, view 5"
+      },
+      {
+        "src": "/artworks/teacher/view-06.webp",
+        "thumb": "/artworks/teacher/thumb-06.webp",
+        "width": 1296,
+        "height": 2048,
+        "alt": "Teacher, view 6"
+      }
+    ]
+  },
+  {
+    "id": "safari-34cm",
+    "archiveNumber": "JF-015",
+    "title": "Safari",
+    "material": "Brass",
+    "dimensions": "34 cm high",
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": "A second work currently sharing the title Safari. Confirmation pending.",
+    "prototypeText": null,
+    "story": null,
+    "imageCount": 9,
+    "images": [
+      {
+        "src": "/artworks/safari-34cm/view-01.webp",
+        "thumb": "/artworks/safari-34cm/thumb-01.webp",
+        "width": 1446,
+        "height": 2048,
+        "alt": "Safari, view 1"
+      },
+      {
+        "src": "/artworks/safari-34cm/view-02.webp",
+        "thumb": "/artworks/safari-34cm/thumb-02.webp",
+        "width": 1600,
+        "height": 1600,
+        "alt": "Safari, view 2"
+      },
+      {
+        "src": "/artworks/safari-34cm/view-03.webp",
+        "thumb": "/artworks/safari-34cm/thumb-03.webp",
+        "width": 1600,
+        "height": 1600,
+        "alt": "Safari, view 3"
+      },
+      {
+        "src": "/artworks/safari-34cm/view-04.webp",
+        "thumb": "/artworks/safari-34cm/thumb-04.webp",
+        "width": 1600,
+        "height": 1600,
+        "alt": "Safari, view 4"
+      },
+      {
+        "src": "/artworks/safari-34cm/view-05.webp",
+        "thumb": "/artworks/safari-34cm/thumb-05.webp",
+        "width": 1600,
+        "height": 1600,
+        "alt": "Safari, view 5"
+      },
+      {
+        "src": "/artworks/safari-34cm/view-06.webp",
+        "thumb": "/artworks/safari-34cm/thumb-06.webp",
+        "width": 1600,
+        "height": 2029,
+        "alt": "Safari, view 6"
+      },
+      {
+        "src": "/artworks/safari-34cm/view-07.webp",
+        "thumb": "/artworks/safari-34cm/thumb-07.webp",
+        "width": 1546,
+        "height": 2048,
+        "alt": "Safari, view 7"
+      },
+      {
+        "src": "/artworks/safari-34cm/view-08.webp",
+        "thumb": "/artworks/safari-34cm/thumb-08.webp",
+        "width": 1456,
+        "height": 2048,
+        "alt": "Safari, view 8"
+      },
+      {
+        "src": "/artworks/safari-34cm/view-09.webp",
+        "thumb": "/artworks/safari-34cm/thumb-09.webp",
+        "width": 1491,
+        "height": 2048,
+        "alt": "Safari, view 9"
+      }
+    ]
+  },
+  {
+    "id": "pleased-to-meet",
+    "archiveNumber": "JF-016",
+    "title": "Pleased To Meet",
+    "material": null,
+    "dimensions": null,
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": null,
+    "prototypeText": null,
+    "story": null,
+    "imageCount": 8,
+    "images": [
+      {
+        "src": "/artworks/pleased-to-meet/view-01.webp",
+        "thumb": "/artworks/pleased-to-meet/thumb-01.webp",
+        "width": 1271,
+        "height": 3295,
+        "alt": "Pleased To Meet, view 1"
+      },
+      {
+        "src": "/artworks/pleased-to-meet/view-02.webp",
+        "thumb": "/artworks/pleased-to-meet/thumb-02.webp",
+        "width": 746,
+        "height": 669,
+        "alt": "Pleased To Meet, view 2"
+      },
+      {
+        "src": "/artworks/pleased-to-meet/view-03.webp",
+        "thumb": "/artworks/pleased-to-meet/thumb-03.webp",
+        "width": 1600,
+        "height": 1984,
+        "alt": "Pleased To Meet, view 3"
+      },
+      {
+        "src": "/artworks/pleased-to-meet/view-04.webp",
+        "thumb": "/artworks/pleased-to-meet/thumb-04.webp",
+        "width": 1600,
+        "height": 1934,
+        "alt": "Pleased To Meet, view 4"
+      },
+      {
+        "src": "/artworks/pleased-to-meet/view-05.webp",
+        "thumb": "/artworks/pleased-to-meet/thumb-05.webp",
+        "width": 1390,
+        "height": 3014,
+        "alt": "Pleased To Meet, view 5"
+      },
+      {
+        "src": "/artworks/pleased-to-meet/view-06.webp",
+        "thumb": "/artworks/pleased-to-meet/thumb-06.webp",
+        "width": 1024,
+        "height": 1002,
+        "alt": "Pleased To Meet, view 6"
+      },
+      {
+        "src": "/artworks/pleased-to-meet/view-07.webp",
+        "thumb": "/artworks/pleased-to-meet/thumb-07.webp",
+        "width": 1364,
+        "height": 3072,
+        "alt": "Pleased To Meet, view 7"
+      },
+      {
+        "src": "/artworks/pleased-to-meet/view-08.webp",
+        "thumb": "/artworks/pleased-to-meet/thumb-08.webp",
+        "width": 1395,
+        "height": 3003,
+        "alt": "Pleased To Meet, view 8"
+      }
+    ]
+  },
+  {
+    "id": "owl-water-feature",
+    "archiveNumber": "JF-017",
+    "title": "Owl Water Feature",
+    "material": null,
+    "dimensions": null,
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": null,
+    "prototypeText": null,
+    "story": null,
+    "imageCount": 8,
+    "images": [
+      {
+        "src": "/artworks/owl-water-feature/view-01.webp",
+        "thumb": "/artworks/owl-water-feature/thumb-01.webp",
+        "width": 1258,
+        "height": 3329,
+        "alt": "Owl Water Feature, view 1"
+      },
+      {
+        "src": "/artworks/owl-water-feature/view-02.webp",
+        "thumb": "/artworks/owl-water-feature/thumb-02.webp",
+        "width": 1238,
+        "height": 3385,
+        "alt": "Owl Water Feature, view 2"
+      },
+      {
+        "src": "/artworks/owl-water-feature/view-03.webp",
+        "thumb": "/artworks/owl-water-feature/thumb-03.webp",
+        "width": 1211,
+        "height": 3394,
+        "alt": "Owl Water Feature, view 3"
+      },
+      {
+        "src": "/artworks/owl-water-feature/view-04.webp",
+        "thumb": "/artworks/owl-water-feature/thumb-04.webp",
+        "width": 1281,
+        "height": 3273,
+        "alt": "Owl Water Feature, view 4"
+      },
+      {
+        "src": "/artworks/owl-water-feature/view-05.webp",
+        "thumb": "/artworks/owl-water-feature/thumb-05.webp",
+        "width": 1299,
+        "height": 3225,
+        "alt": "Owl Water Feature, view 5"
+      },
+      {
+        "src": "/artworks/owl-water-feature/view-06.webp",
+        "thumb": "/artworks/owl-water-feature/thumb-06.webp",
+        "width": 1087,
+        "height": 835,
+        "alt": "Owl Water Feature, view 6"
+      },
+      {
+        "src": "/artworks/owl-water-feature/view-07.webp",
+        "thumb": "/artworks/owl-water-feature/thumb-07.webp",
+        "width": 1282,
+        "height": 3268,
+        "alt": "Owl Water Feature, view 7"
+      },
+      {
+        "src": "/artworks/owl-water-feature/view-08.webp",
+        "thumb": "/artworks/owl-water-feature/thumb-08.webp",
+        "width": 1312,
+        "height": 3193,
+        "alt": "Owl Water Feature, view 8"
+      }
+    ]
+  },
+  {
+    "id": "tap-water-feature",
+    "archiveNumber": "JF-018",
+    "title": "Tap Water Feature",
+    "material": null,
+    "dimensions": null,
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": null,
+    "prototypeText": null,
+    "story": null,
+    "imageCount": 6,
+    "images": [
+      {
+        "src": "/artworks/tap-water-feature/view-01.webp",
+        "thumb": "/artworks/tap-water-feature/thumb-01.webp",
+        "width": 1600,
+        "height": 2028,
+        "alt": "Tap Water Feature, view 1"
+      },
+      {
+        "src": "/artworks/tap-water-feature/view-02.webp",
+        "thumb": "/artworks/tap-water-feature/thumb-02.webp",
+        "width": 1284,
+        "height": 2048,
+        "alt": "Tap Water Feature, view 2"
+      },
+      {
+        "src": "/artworks/tap-water-feature/view-03.webp",
+        "thumb": "/artworks/tap-water-feature/thumb-03.webp",
+        "width": 1598,
+        "height": 2048,
+        "alt": "Tap Water Feature, view 3"
+      },
+      {
+        "src": "/artworks/tap-water-feature/view-04.webp",
+        "thumb": "/artworks/tap-water-feature/thumb-04.webp",
+        "width": 1364,
+        "height": 2048,
+        "alt": "Tap Water Feature, view 4"
+      },
+      {
+        "src": "/artworks/tap-water-feature/view-05.webp",
+        "thumb": "/artworks/tap-water-feature/thumb-05.webp",
+        "width": 1488,
+        "height": 2048,
+        "alt": "Tap Water Feature, view 5"
+      },
+      {
+        "src": "/artworks/tap-water-feature/view-06.webp",
+        "thumb": "/artworks/tap-water-feature/thumb-06.webp",
+        "width": 1536,
+        "height": 2048,
+        "alt": "Tap Water Feature, view 6"
+      }
+    ]
+  },
+  {
+    "id": "taps",
+    "archiveNumber": "JF-019",
+    "title": "Taps",
+    "material": null,
+    "dimensions": null,
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": null,
+    "prototypeText": null,
+    "story": null,
+    "imageCount": 7,
+    "images": [
+      {
+        "src": "/artworks/taps/view-01.webp",
+        "thumb": "/artworks/taps/thumb-01.webp",
+        "width": 1600,
+        "height": 1480,
+        "alt": "Taps, view 1"
+      },
+      {
+        "src": "/artworks/taps/view-02.webp",
+        "thumb": "/artworks/taps/thumb-02.webp",
+        "width": 1600,
+        "height": 1571,
+        "alt": "Taps, view 2"
+      },
+      {
+        "src": "/artworks/taps/view-03.webp",
+        "thumb": "/artworks/taps/thumb-03.webp",
+        "width": 1600,
+        "height": 1765,
+        "alt": "Taps, view 3"
+      },
+      {
+        "src": "/artworks/taps/view-04.webp",
+        "thumb": "/artworks/taps/thumb-04.webp",
+        "width": 1600,
+        "height": 2019,
+        "alt": "Taps, view 4"
+      },
+      {
+        "src": "/artworks/taps/view-05.webp",
+        "thumb": "/artworks/taps/thumb-05.webp",
+        "width": 1600,
+        "height": 1875,
+        "alt": "Taps, view 5"
+      },
+      {
+        "src": "/artworks/taps/view-06.webp",
+        "thumb": "/artworks/taps/thumb-06.webp",
+        "width": 1600,
+        "height": 1876,
+        "alt": "Taps, view 6"
+      },
+      {
+        "src": "/artworks/taps/view-07.webp",
+        "thumb": "/artworks/taps/thumb-07.webp",
+        "width": 1600,
+        "height": 1692,
+        "alt": "Taps, view 7"
+      }
+    ]
+  },
+  {
+    "id": "excuse-me-blind",
+    "archiveNumber": "JF-020",
+    "title": "Excuse Me Blind",
+    "material": null,
+    "dimensions": null,
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": null,
+    "prototypeText": null,
+    "story": null,
+    "imageCount": 9,
+    "images": [
+      {
+        "src": "/artworks/excuse-me-blind/view-01.webp",
+        "thumb": "/artworks/excuse-me-blind/thumb-01.webp",
+        "width": 1536,
+        "height": 2048,
+        "alt": "Excuse Me Blind, view 1"
+      },
+      {
+        "src": "/artworks/excuse-me-blind/view-02.webp",
+        "thumb": "/artworks/excuse-me-blind/thumb-02.webp",
+        "width": 1536,
+        "height": 2048,
+        "alt": "Excuse Me Blind, view 2"
+      },
+      {
+        "src": "/artworks/excuse-me-blind/view-03.webp",
+        "thumb": "/artworks/excuse-me-blind/thumb-03.webp",
+        "width": 1536,
+        "height": 2048,
+        "alt": "Excuse Me Blind, view 3"
+      },
+      {
+        "src": "/artworks/excuse-me-blind/view-04.webp",
+        "thumb": "/artworks/excuse-me-blind/thumb-04.webp",
+        "width": 1600,
+        "height": 1863,
+        "alt": "Excuse Me Blind, view 4"
+      },
+      {
+        "src": "/artworks/excuse-me-blind/view-05.webp",
+        "thumb": "/artworks/excuse-me-blind/thumb-05.webp",
+        "width": 1536,
+        "height": 2048,
+        "alt": "Excuse Me Blind, view 5"
+      },
+      {
+        "src": "/artworks/excuse-me-blind/view-06.webp",
+        "thumb": "/artworks/excuse-me-blind/thumb-06.webp",
+        "width": 1600,
+        "height": 1781,
+        "alt": "Excuse Me Blind, view 6"
+      },
+      {
+        "src": "/artworks/excuse-me-blind/view-07.webp",
+        "thumb": "/artworks/excuse-me-blind/thumb-07.webp",
+        "width": 1600,
+        "height": 1598,
+        "alt": "Excuse Me Blind, view 7"
+      },
+      {
+        "src": "/artworks/excuse-me-blind/view-08.webp",
+        "thumb": "/artworks/excuse-me-blind/thumb-08.webp",
+        "width": 1600,
+        "height": 1402,
+        "alt": "Excuse Me Blind, view 8"
+      },
+      {
+        "src": "/artworks/excuse-me-blind/view-09.webp",
+        "thumb": "/artworks/excuse-me-blind/thumb-09.webp",
+        "width": 1536,
+        "height": 2048,
+        "alt": "Excuse Me Blind, view 9"
+      }
+    ]
+  },
+  {
+    "id": "beaurocrat",
+    "archiveNumber": "JF-021",
+    "title": "Beaurocrat",
+    "material": null,
+    "dimensions": null,
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": "The title follows the supplied album name. Spelling and context are to be confirmed.",
+    "prototypeText": null,
+    "story": null,
+    "imageCount": 7,
+    "images": [
+      {
+        "src": "/artworks/beaurocrat/view-01.webp",
+        "thumb": "/artworks/beaurocrat/thumb-01.webp",
+        "width": 527,
+        "height": 960,
+        "alt": "Beaurocrat, view 1"
+      },
+      {
+        "src": "/artworks/beaurocrat/view-02.webp",
+        "thumb": "/artworks/beaurocrat/thumb-02.webp",
+        "width": 960,
+        "height": 643,
+        "alt": "Beaurocrat, view 2"
+      },
+      {
+        "src": "/artworks/beaurocrat/view-03.webp",
+        "thumb": "/artworks/beaurocrat/thumb-03.webp",
+        "width": 757,
+        "height": 960,
+        "alt": "Beaurocrat, view 3"
+      },
+      {
+        "src": "/artworks/beaurocrat/view-04.webp",
+        "thumb": "/artworks/beaurocrat/thumb-04.webp",
+        "width": 960,
+        "height": 642,
+        "alt": "Beaurocrat, view 4"
+      },
+      {
+        "src": "/artworks/beaurocrat/view-05.webp",
+        "thumb": "/artworks/beaurocrat/thumb-05.webp",
+        "width": 960,
+        "height": 643,
+        "alt": "Beaurocrat, view 5"
+      },
+      {
+        "src": "/artworks/beaurocrat/view-06.webp",
+        "thumb": "/artworks/beaurocrat/thumb-06.webp",
+        "width": 643,
+        "height": 960,
+        "alt": "Beaurocrat, view 6"
+      },
+      {
+        "src": "/artworks/beaurocrat/view-07.webp",
+        "thumb": "/artworks/beaurocrat/thumb-07.webp",
+        "width": 643,
+        "height": 960,
+        "alt": "Beaurocrat, view 7"
+      }
+    ]
+  },
+  {
+    "id": "bwana",
+    "archiveNumber": "JF-022",
+    "title": "Bwana",
+    "material": null,
+    "dimensions": null,
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": "Historical and narrative context for the title and subject is to be confirmed before publication.",
+    "prototypeText": null,
+    "story": null,
+    "imageCount": 7,
+    "images": [
+      {
+        "src": "/artworks/bwana/view-01.webp",
+        "thumb": "/artworks/bwana/thumb-01.webp",
+        "width": 669,
+        "height": 1000,
+        "alt": "Bwana, view 1"
+      },
+      {
+        "src": "/artworks/bwana/view-02.webp",
+        "thumb": "/artworks/bwana/thumb-02.webp",
+        "width": 522,
+        "height": 1000,
+        "alt": "Bwana, view 2"
+      },
+      {
+        "src": "/artworks/bwana/view-03.webp",
+        "thumb": "/artworks/bwana/thumb-03.webp",
+        "width": 896,
+        "height": 1768,
+        "alt": "Bwana, view 3"
+      },
+      {
+        "src": "/artworks/bwana/view-04.webp",
+        "thumb": "/artworks/bwana/thumb-04.webp",
+        "width": 1000,
+        "height": 410,
+        "alt": "Bwana, view 4"
+      },
+      {
+        "src": "/artworks/bwana/view-05.webp",
+        "thumb": "/artworks/bwana/thumb-05.webp",
+        "width": 516,
+        "height": 1000,
+        "alt": "Bwana, view 5"
+      },
+      {
+        "src": "/artworks/bwana/view-06.webp",
+        "thumb": "/artworks/bwana/thumb-06.webp",
+        "width": 573,
+        "height": 1000,
+        "alt": "Bwana, view 6"
+      },
+      {
+        "src": "/artworks/bwana/view-07.webp",
+        "thumb": "/artworks/bwana/thumb-07.webp",
+        "width": 514,
+        "height": 1000,
+        "alt": "Bwana, view 7"
+      }
+    ]
+  },
+  {
+    "id": "king-cricket",
+    "archiveNumber": "JF-023",
+    "title": "King Cricket",
+    "material": null,
+    "dimensions": null,
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": "The album may show more than one related object. Confirmation is pending.",
+    "prototypeText": null,
+    "story": null,
+    "imageCount": 4,
+    "images": [
+      {
+        "src": "/artworks/king-cricket/view-01.webp",
+        "thumb": "/artworks/king-cricket/thumb-01.webp",
+        "width": 669,
+        "height": 1000,
+        "alt": "King Cricket, view 1"
+      },
+      {
+        "src": "/artworks/king-cricket/view-02.webp",
+        "thumb": "/artworks/king-cricket/thumb-02.webp",
+        "width": 1000,
+        "height": 897,
+        "alt": "King Cricket, view 2"
+      },
+      {
+        "src": "/artworks/king-cricket/view-03.webp",
+        "thumb": "/artworks/king-cricket/thumb-03.webp",
+        "width": 1000,
+        "height": 580,
+        "alt": "King Cricket, view 3"
+      },
+      {
+        "src": "/artworks/king-cricket/view-04.webp",
+        "thumb": "/artworks/king-cricket/thumb-04.webp",
+        "width": 1000,
+        "height": 874,
+        "alt": "King Cricket, view 4"
+      }
+    ]
+  },
+  {
+    "id": "mallemeule-merry-go-round",
+    "archiveNumber": "JF-024",
+    "title": "Mallemeule Merry-Go-Round",
+    "material": null,
+    "dimensions": null,
+    "date": null,
+    "availability": null,
+    "featured": true,
+    "featuredRank": 4,
+    "catalogueNote": "Title follows the two plaques visible in the supplied photographs; confirmation is pending.",
+    "prototypeText": "A rider and mechanical animal form a compact narrative scene, balanced by wheel and crank-like elements.",
+    "story": null,
+    "imageCount": 8,
+    "images": [
+      {
+        "src": "/artworks/mallemeule-merry-go-round/view-01.webp",
+        "thumb": "/artworks/mallemeule-merry-go-round/thumb-01.webp",
+        "width": 1000,
+        "height": 958,
+        "alt": "Mallemeule Merry-Go-Round, view 1"
+      },
+      {
+        "src": "/artworks/mallemeule-merry-go-round/view-02.webp",
+        "thumb": "/artworks/mallemeule-merry-go-round/thumb-02.webp",
+        "width": 1000,
+        "height": 922,
+        "alt": "Mallemeule Merry-Go-Round, view 2"
+      },
+      {
+        "src": "/artworks/mallemeule-merry-go-round/view-03.webp",
+        "thumb": "/artworks/mallemeule-merry-go-round/thumb-03.webp",
+        "width": 1600,
+        "height": 314,
+        "alt": "Mallemeule Merry-Go-Round, view 3"
+      },
+      {
+        "src": "/artworks/mallemeule-merry-go-round/view-04.webp",
+        "thumb": "/artworks/mallemeule-merry-go-round/thumb-04.webp",
+        "width": 984,
+        "height": 1000,
+        "alt": "Mallemeule Merry-Go-Round, view 4"
+      },
+      {
+        "src": "/artworks/mallemeule-merry-go-round/view-05.webp",
+        "thumb": "/artworks/mallemeule-merry-go-round/thumb-05.webp",
+        "width": 1000,
+        "height": 906,
+        "alt": "Mallemeule Merry-Go-Round, view 5"
+      },
+      {
+        "src": "/artworks/mallemeule-merry-go-round/view-06.webp",
+        "thumb": "/artworks/mallemeule-merry-go-round/thumb-06.webp",
+        "width": 1000,
+        "height": 167,
+        "alt": "Mallemeule Merry-Go-Round, view 6"
+      },
+      {
+        "src": "/artworks/mallemeule-merry-go-round/view-07.webp",
+        "thumb": "/artworks/mallemeule-merry-go-round/thumb-07.webp",
+        "width": 1000,
+        "height": 887,
+        "alt": "Mallemeule Merry-Go-Round, view 7"
+      },
+      {
+        "src": "/artworks/mallemeule-merry-go-round/view-08.webp",
+        "thumb": "/artworks/mallemeule-merry-go-round/thumb-08.webp",
+        "width": 942,
+        "height": 1000,
+        "alt": "Mallemeule Merry-Go-Round, view 8"
+      }
+    ]
+  }
+]

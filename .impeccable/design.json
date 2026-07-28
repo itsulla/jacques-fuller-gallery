@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-28T07:03:59+00:00",
+  "title": "Design System: Jacques Fuller Living Monograph",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Catalogue Cobalt",
+        "canonical": "#315fcb",
+        "tonalRamp": ["#0c1c43", "#142b66", "#1d3b8a", "#274cac", "#315fcb", "#6f8ee0", "#aebded", "#e8edf9"]
+      },
+      "mineral-page": {
+        "role": "neutral",
+        "displayName": "Mineral Page",
+        "canonical": "#e4e7e3",
+        "tonalRamp": ["#202522", "#3b423e", "#59605c", "#79807c", "#9ba29e", "#bcc2be", "#d9ddda", "#f4f5f3"]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Record Paper",
+        "canonical": "#f5f3ed",
+        "tonalRamp": ["#25231f", "#45413a", "#676158", "#8a8378", "#aea79d", "#cec8bf", "#e6e2db", "#f5f3ed"]
+      },
+      "deep-oxide": {
+        "role": "neutral",
+        "displayName": "Deep Oxide",
+        "canonical": "#182126",
+        "tonalRamp": ["#0b1114", "#182126", "#2c383e", "#455159", "#657179", "#909a9f", "#bec5c7", "#edf0ef"]
+      },
+      "viewer-oxide": {
+        "role": "neutral",
+        "displayName": "Viewer Oxide",
+        "canonical": "#101a20",
+        "tonalRamp": ["#081014", "#101a20", "#223038", "#39474f", "#58656c", "#818c91", "#b4bbbd", "#edf1ed"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Monograph Serif",
+        "purpose": "Artist names, artwork titles, and chapter statements."
+      },
+      "body": {
+        "displayName": "Catalogue Body",
+        "purpose": "Biography, metadata values, and explanatory copy."
+      },
+      "label": {
+        "displayName": "Archive Label",
+        "purpose": "Catalogue codes, metadata labels, navigation, and state."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-reveal",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Image readiness and restrained page arrival."
+      },
+      {
+        "name": "duration-fast",
+        "value": "180ms",
+        "purpose": "Hover, focus-adjacent, and image state changes."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "composition-collapse",
+        "value": "900px"
+      },
+      {
+        "name": "mobile",
+        "value": "760px"
+      },
+      {
+        "name": "single-archive-column",
+        "value": "430px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Selected Work",
+      "kind": "card",
+      "refersTo": "selected-work",
+      "description": "A large contained sculpture image paired with a temporary selection number, factual record, and visual observation.",
+      "html": "<article class=\"feature-work\"><button class=\"feature-work__image\"></button><div class=\"feature-work__record\"><h3>Ship of Fools</h3></div></article>",
+      "css": ".feature-work { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 3rem; background: #e4e7e3; color: #182126; } .feature-work__image { grid-column: 1 / 8; background: #c9cfcb; border-radius: 0; } .feature-work h3 { font: 400 64px/.95 Georgia, serif; }"
+    },
+    {
+      "name": "Archive Card",
+      "kind": "card",
+      "description": "A compact complete-archive record subordinate to the six selected works.",
+      "html": "<button class=\"archive-card\"><div class=\"archive-card__image\"></div><span>JF-001</span><strong>Ship of Fools</strong></button>",
+      "css": ".archive-card { border: 0; border-radius: 0; background: #e4e7e3; color: #182126; text-align: left; } .archive-card__image { aspect-ratio: 4 / 5; background: #c9cfcb; } .archive-card:focus-visible { outline: 3px solid #315fcb; outline-offset: 4px; }"
+    },
+    {
+      "name": "Catalogue Action",
+      "kind": "button",
+      "refersTo": "action",
+      "description": "The rare cobalt action used to open a photographic sequence.",
+      "html": "<button class=\"catalogue-action\">View 11 photographs</button>",
+      "css": ".catalogue-action { min-height: 44px; padding: 13px 16px; border: 0; border-radius: 0; background: #315fcb; color: #f4f6f2; font: 700 13px/1.2 Helvetica, Arial, sans-serif; } .catalogue-action:focus-visible { outline: 3px solid #315fcb; outline-offset: 4px; }"
+    },
+    {
+      "name": "Artwork Viewer",
+      "kind": "dialog",
+      "refersTo": "viewer",
+      "description": "A viewport-bounded oxide catalogue record with persistent image controls and a paper narrative chapter.",
+      "html": "<div role=\"dialog\" class=\"viewer\"><section class=\"viewer__opening\"><aside><h2>Ship of Fools</h2></aside><div class=\"viewer__stage\"></div></section></div>",
+      "css": ".viewer { position: fixed; inset: 0; overflow: auto; background: #101a20; color: #edf1ed; border-radius: 0; } .viewer__opening { min-height: calc(100svh - 64px); display: grid; grid-template-columns: 4fr 8fr; } .viewer__stage { min-height: 0; background: #19272e; }"
+    },
+    {
+      "name": "Living Archive Chapter",
+      "kind": "custom",
+      "description": "An oxide chapter that exposes future Voice, Studio, and Record paths without fabricating missing source material.",
+      "html": "<section class=\"living-archive\"><h2>The archive is still alive.</h2><ol><li>Voice</li><li>Studio</li><li>Record</li></ol></section>",
+      "css": ".living-archive { padding: 96px 32px; background: #101a20; color: #edf1ed; } .living-archive h2 { font: 400 88px/.9 Georgia, serif; }"
+    },
+    {
+      "name": "Metadata Record",
+      "kind": "custom",
+      "description": "A two-column fact group with explicit unconfirmed values and fine oxide rules.",
+      "html": "<dl class=\"metadata\"><div><dt>Material</dt><dd>To be confirmed</dd></div></dl>",
+      "css": ".metadata { border-top: 1px solid #36474e; color: #edf1ed; font-family: Helvetica, Arial, sans-serif; } .metadata div { display: grid; grid-template-columns: 1fr 1.5fr; min-height: 44px; border-bottom: 1px solid #36474e; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Living Monograph",
+    "overview": "Six works form a temporary exhibition within an expandable family archive. Monumental serif typography and cool mineral surfaces provide monograph authority; explicit placeholders and deep oxide record chapters preserve the honesty of work still being documented.",
+    "keyCharacteristics": [
+      "Six-work curatorial sequence before the complete archive",
+      "Large contained sculpture photography rather than decorative crops",
+      "Monograph serif paired with narrow catalogue labels",
+      "Cool mineral surfaces and deep oxide record environments",
+      "Visible placeholders where the record remains incomplete"
+    ],
+    "rules": [
+      {
+        "name": "The Natural Brass Rule",
+        "body": "Never use gold as an interface accent. Brass belongs in the artwork photography.",
+        "section": "colors"
+      },
+      {
+        "name": "The Reversible Selection Rule",
+        "body": "The selected six are temporary curation, not a permanent ranking or claim of importance.",
+        "section": "layout"
+      },
+      {
+        "name": "The Honest Archive Rule",
+        "body": "Existing detail photographs may demonstrate the archive, but must not be presented as workshop evidence or artist testimony.",
+        "section": "components"
+      }
+    ],
+    "dos": [
+      "Do preserve complete sculptures with object-fit: contain.",
+      "Do keep catalogue uncertainty explicit until confirmed.",
+      "Do let voice, tools, notes, and old records expand the archive later.",
+      "Do maintain minimum 44px interactive targets."
+    ],
+    "donts": [
+      "Don't introduce black-and-gold luxury styling.",
+      "Don't round cards or turn metadata into pills.",
+      "Don't infer dates, symbolism, provenance, or availability from photographs.",
+      "Don't imply that sculpture details are workshop photographs.",
+      "Don't require a formal portrait or generate a substitute."
+    ]
+  }
+}
