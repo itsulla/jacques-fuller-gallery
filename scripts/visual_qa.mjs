@@ -26,7 +26,10 @@ async function makePage(name, viewport, colorScheme = 'light') {
 }
 
 async function exerciseViewer(page, screenshotName) {
-  await page.locator('.monograph-hero__artwork').click()
+  await page
+    .getByRole('complementary', { name: /Featured record/ })
+    .getByRole('button', { name: 'Open record' })
+    .click()
   await page.locator('[role="dialog"]').waitFor({ state: 'visible' })
   await page.waitForTimeout(550)
   assert.equal(await page.locator('.viewer__position').textContent(), 'Photograph 01 / 11')

@@ -1,46 +1,38 @@
 :root {
-  --page: #e4e7e3;
-  --page-raised: #f0f1ec;
-  --paper: #f5f3ed;
-  --surface: #c9cfcb;
-  --surface-deep: #aeb8b3;
-  --ink: #182126;
-  --ink-muted: #526066;
-  --line: #a9b2ae;
-  --accent: #315fcb;
-  --accent-ink: #f4f6f2;
-  --oxide: #101a20;
-  --oxide-raised: #19272e;
-  --oxide-ink: #edf1ed;
-  --oxide-muted: #aeb9b9;
-  --oxide-line: #34454c;
-  --focus: #315fcb;
-  --focus-on-dark: #8aa8ed;
-  --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-  --font-body: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-condensed: "Arial Narrow", "Aptos Narrow", "Helvetica Neue", Arial, sans-serif;
-  --type-micro: 0.68rem;
-  --type-code: 0.7rem;
-  --type-caption: 0.74rem;
-  --type-descriptor: 0.76rem;
-  --type-label: 0.78rem;
-  --type-nav: 0.82rem;
-  --type-action: 0.86rem;
-  --type-story-body: 0.92rem;
-  --type-intro: clamp(0.82rem, 1vw, 0.95rem);
-  --type-body-small: clamp(0.95rem, 1.2vw, 1.08rem);
-  --type-body-tight: clamp(1rem, 1.3vw, 1.15rem);
-  --type-body-fluid: clamp(1rem, 1.4vw, 1.25rem);
-  --type-lead: clamp(1.2rem, 2vw, 1.7rem);
-  --type-story-heading: clamp(1.35rem, 2vw, 2rem);
-  --type-card-title: clamp(1.7rem, 3vw, 3.3rem);
-  --type-process: clamp(1.1rem, 2vw, 1.8rem);
-  --type-biography: clamp(1.5rem, 3vw, 3rem);
-  --type-section: clamp(3rem, 7vw, 7rem);
-  --type-viewer-title: clamp(3.2rem, 7vw, 7.4rem);
-  --type-hero: clamp(4.2rem, 10vw, 9.5rem);
-  --type-hero-mobile: clamp(3.8rem, 18vw, 6rem);
-  --type-section-mobile: clamp(2.8rem, 13vw, 5rem);
+  --page: oklch(0.9 0.008 165);
+  --page-raised: oklch(0.945 0.006 165);
+  --paper: oklch(0.965 0.006 92);
+  --surface: oklch(0.82 0.012 165);
+  --surface-deep: oklch(0.735 0.017 165);
+  --ink: oklch(0.2 0.02 165);
+  --ink-muted: oklch(0.39 0.018 165);
+  --line: oklch(0.67 0.014 165);
+  --accent: oklch(0.39 0.075 166);
+  --accent-strong: oklch(0.315 0.066 166);
+  --accent-ink: oklch(0.97 0.006 165);
+  --oxide: oklch(0.155 0.018 165);
+  --oxide-raised: oklch(0.205 0.02 165);
+  --oxide-ink: oklch(0.94 0.008 165);
+  --oxide-muted: oklch(0.73 0.018 165);
+  --oxide-line: oklch(0.34 0.024 165);
+  --focus: oklch(0.43 0.085 166);
+  --focus-on-dark: oklch(0.73 0.085 166);
+  --font-display: "Petrona Variable", "Petrona", Georgia, serif;
+  --font-body: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-condensed: "Fira Sans Condensed", "Arial Narrow", sans-serif;
+  --type-micro: 0.7rem;
+  --type-caption: 0.76rem;
+  --type-label: 0.8rem;
+  --type-nav: 0.86rem;
+  --type-action: 0.9rem;
+  --type-body-small: clamp(0.98rem, 1.1vw, 1.08rem);
+  --type-body-fluid: clamp(1rem, 1.35vw, 1.2rem);
+  --type-lead: clamp(1.25rem, 2vw, 1.8rem);
+  --type-card-title: clamp(2.2rem, 4vw, 4.2rem);
+  --type-biography: clamp(1.75rem, 3vw, 3.1rem);
+  --type-section: clamp(3.2rem, 6.6vw, 6rem);
+  --type-viewer-title: clamp(3.2rem, 6vw, 6rem);
+  --type-hero: clamp(4.2rem, 7.2vw, 6rem);
   color: var(--ink);
   background: var(--page);
   font-family: var(--font-body);
@@ -52,17 +44,18 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --page: #131d22;
-    --page-raised: #19262c;
-    --paper: #202d32;
-    --surface: #28383e;
-    --surface-deep: #35474d;
-    --ink: #e7ece8;
-    --ink-muted: #a6b2b1;
-    --line: #405158;
-    --accent: #6f93e8;
-    --accent-ink: #10191e;
-    --focus: #8aa8ed;
+    --page: oklch(0.17 0.016 165);
+    --page-raised: oklch(0.21 0.018 165);
+    --paper: oklch(0.23 0.014 165);
+    --surface: oklch(0.27 0.021 165);
+    --surface-deep: oklch(0.34 0.025 165);
+    --ink: oklch(0.93 0.008 165);
+    --ink-muted: oklch(0.72 0.014 165);
+    --line: oklch(0.37 0.022 165);
+    --accent: oklch(0.7 0.078 166);
+    --accent-strong: oklch(0.79 0.07 166);
+    --accent-ink: oklch(0.15 0.018 165);
+    --focus: oklch(0.72 0.09 166);
   }
 }
 
@@ -72,7 +65,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5rem;
+  scroll-padding-top: 1rem;
 }
 
 body {
@@ -122,19 +115,12 @@ figure {
     scroll-behavior: auto;
   }
 
-  .image-shell img,
-  .feature-work,
-  .monograph-hero__title,
-  .monograph-hero__artwork,
-  .viewer,
-  .viewer__active-image img {
-    animation: none !important;
-    transition: none !important;
-  }
-
-  .feature-work__image-button:hover img,
-  .archive-card button:hover img,
-  .text-link:hover {
-    transform: none !important;
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }

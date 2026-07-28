@@ -29,19 +29,28 @@ function ImageWithState({ src, alt, className = '', ...props }) {
 }
 
 function CatalogueLine({ work }) {
+  const facts = [work.archiveNumber, work.material, work.dimensions].filter(Boolean)
+
   return (
     <span className="catalogue-line">
-      <span>{work.archiveNumber}</span>
-      <span>{work.material || 'Material to be confirmed'}</span>
-      <span>{work.dimensions || 'Dimensions to be confirmed'}</span>
+      {facts.map((fact) => <span key={fact}>{fact}</span>)}
     </span>
   )
 }
 
 function FeaturedWork({ work, index, onOpen }) {
   const rank = index + 1
+  const composition = ['platform', 'offset', 'study'][index % 3]
+  const landscapeDetail = work.images.find((image, imageIndex) => (
+    imageIndex > 0 && image.width / image.height > 1.15
+  ))
+  const fallbackDetailIndex = index === 0
+    ? Math.min(10, work.images.length - 1)
+    : Math.min(2, work.images.length - 1)
+  const detailImage = landscapeDetail || work.images[fallbackDetailIndex]
+
   return (
-    <article className={`feature-work feature-work--${rank}`}>
+    <article className={`feature-work feature-work--${rank} feature-work--${composition}`}>
       <button
         type="button"
         className="feature-work__image-button"
@@ -54,19 +63,31 @@ function FeaturedWork({ work, index, onOpen }) {
           alt={work.images[0].alt}
           width={work.images[0].width}
           height={work.images[0].height}
-          loading={index < 2 ? 'eager' : 'lazy'}
+          loading="lazy"
         />
-        <span className="feature-work__open">View {work.imageCount} photographs</span>
+        <span className="feature-work__open">{work.imageCount} photographs</span>
       </button>
       <div className="feature-work__record">
-        <p className="eyebrow">Selected work · {formatNumber(rank)}</p>
+        <p className="feature-work__sequence">Selected {formatNumber(rank)}</p>
         <h3>{work.title}</h3>
         <CatalogueLine work={work} />
         <p className="feature-work__observation">{work.prototypeText}</p>
         <button type="button" className="text-link" onClick={() => onOpen(work.id)}>
-          Open catalogue record
+          Open record
         </button>
       </div>
+      {detailImage && (
+        <figure className="feature-work__detail">
+          <ImageWithState
+            src={detailImage.src}
+            alt={detailImage.alt}
+            width={detailImage.width}
+            height={detailImage.height}
+            loading="lazy"
+          />
+          <figcaption>Detail from the supplied photographic record</figcaption>
+        </figure>
+      )}
     </article>
   )
 }
@@ -167,25 +188,25 @@ function WorkViewer({ work, onClose, onMoveWork }) {
           <aside className="viewer__identity">
             <p className="eyebrow">Catalogue record</p>
             <h2 id="viewer-title">{work.title}</h2>
-            <p className="viewer__position">
+            <p className="viewer__position" aria-live="polite" aria-atomic="true">
               Photograph {formatNumber(current + 1)} / {formatNumber(work.imageCount)}
             </p>
             <dl className="viewer__facts">
               <div>
                 <dt>Material</dt>
-                <dd>{work.material || 'To be confirmed'}</dd>
+                <dd>{work.material || 'Not recorded'}</dd>
               </div>
               <div>
                 <dt>Dimensions</dt>
-                <dd>{work.dimensions || 'To be confirmed'}</dd>
+                <dd>{work.dimensions || 'Not recorded'}</dd>
               </div>
               <div>
                 <dt>Date</dt>
-                <dd>{work.date || 'To be confirmed'}</dd>
+                <dd>{work.date || 'Not recorded'}</dd>
               </div>
               <div>
                 <dt>Status</dt>
-                <dd>{work.availability || 'To be confirmed'}</dd>
+                <dd>{work.availability || 'Not recorded'}</dd>
               </div>
             </dl>
           </aside>
@@ -202,10 +223,10 @@ function WorkViewer({ work, onClose, onMoveWork }) {
             {work.images.length > 1 && (
               <div className="viewer__image-controls">
                 <button type="button" onClick={previousImage} aria-label="Show previous photograph">
-                  Previous
+                  Previous photograph
                 </button>
                 <button type="button" onClick={nextImage} aria-label="Show next photograph">
-                  Next
+                  Next photograph
                 </button>
               </div>
             )}
@@ -327,44 +348,57 @@ function App() {
   return (
     <>
       <a className="skip-link" href="#selected-works">Skip to selected works</a>
-      <header className="site-header">
-        <a className="site-header__mark" href="#top" aria-label="Jacques Fuller home">JF</a>
-        <nav aria-label="Primary navigation">
-          <a href="#selected-works">Selected</a>
-          <a href="#archive">Archive</a>
-          <a href="#artist">Artist</a>
-        </nav>
-        <p className="site-header__descriptor">Sculpture · Bloemfontein</p>
-      </header>
+      <div
+        className="site-shell"
+        inert={selectedWork ? true : undefined}
+        aria-hidden={selectedWork ? 'true' : undefined}
+      >
+        <header className="site-rail">
+          <a className="site-rail__mark" href="#top" aria-label="Jacques Fuller home">JF</a>
+          <nav aria-label="Primary navigation">
+            <a href="#selected-works">Selected</a>
+            <a href="#archive">Archive</a>
+            <a href="#artist">Artist</a>
+          </nav>
+          <div className="site-rail__index" aria-label="Archive summary">
+            <span><strong>{formatNumber(selectedWorks.length)}</strong> selected works</span>
+            <span><strong>{formatNumber(artworks.length)}</strong> catalogue records</span>
+            <span><strong>{artworks.reduce((total, work) => total + work.imageCount, 0)}</strong> photographs</span>
+          </div>
+          <p className="site-rail__descriptor">Sculpture archive<br />Bloemfontein</p>
+        </header>
 
-      <main id="top">
+        <main id="top">
         <section className="monograph-hero" aria-labelledby="hero-title">
           <div className="monograph-hero__title">
-            <p className="eyebrow">Sculpture archive · Prototype selection</p>
+            <p className="eyebrow">Sculpture archive</p>
             <h1 id="hero-title"><span>Jacques</span> Fuller</h1>
             <p className="monograph-hero__summary">
               Figurative and narrative sculpture assembled through welded brass, mild steel, found objects, and industrial remnants.
             </p>
+            <a className="text-link monograph-hero__browse" href="#archive">Browse all works</a>
           </div>
 
-          <button
-            type="button"
-            className="monograph-hero__artwork"
-            onClick={() => openWork(leadWork.id)}
-            aria-label={`Open ${leadWork.title}`}
-          >
+          <div className="monograph-hero__artwork">
             <ImageWithState
               src={leadWork.images[0].src}
               alt={leadWork.images[0].alt}
               width={leadWork.images[0].width}
               height={leadWork.images[0].height}
               fetchPriority="high"
+              loading="eager"
+              decoding="sync"
             />
-            <span className="monograph-hero__caption">
-              <span>{leadWork.title}</span>
-              <span>{leadWork.archiveNumber} · {leadWork.imageCount} views</span>
-            </span>
-          </button>
+          </div>
+
+          <aside className="monograph-hero__record" aria-label={`Featured record: ${leadWork.title}`}>
+            <p>{leadWork.archiveNumber}</p>
+            <h2>{leadWork.title}</h2>
+            <span>{leadWork.imageCount} photographs</span>
+            <button type="button" className="primary-action" onClick={() => openWork(leadWork.id)}>
+              Open record
+            </button>
+          </aside>
 
           <div className="monograph-hero__index" aria-label="Archive summary">
             <span><strong>{formatNumber(selectedWorks.length)}</strong> selected works</span>
@@ -374,15 +408,14 @@ function App() {
         </section>
 
         <section className="curatorial-note">
-          <p className="eyebrow">A provisional exhibition</p>
+          <p className="curatorial-note__label">A temporary selection, not a ranking.</p>
           <p>
-            Six works have been selected to suggest the breadth of Fuller’s sculptural language. The edit is intentionally temporary: works can be reordered, replaced, and recontextualised as the archive develops.
+            Six works suggest the breadth of Fuller’s sculptural language. The selection can change as the family archive develops.
           </p>
         </section>
 
         <section className="selected-works" id="selected-works" aria-labelledby="selected-title">
           <header className="section-heading">
-            <p className="eyebrow">Selected works · 01—06</p>
             <h2 id="selected-title">Figures, creatures, and improbable machines</h2>
           </header>
           <div className="selected-works__list">
@@ -420,7 +453,7 @@ function App() {
           </div>
 
           <div className="detail-studies" aria-label="Details from the current photographic archive">
-            {detailStudies.map((image, index) => (
+            {detailStudies.map((image) => (
               <figure key={image.src}>
                 <ImageWithState
                   src={image.src}
@@ -429,7 +462,7 @@ function App() {
                   height={image.height}
                   loading="lazy"
                 />
-                <figcaption>Existing detail study · {formatNumber(index + 1)}</figcaption>
+                <figcaption>Existing photographic detail</figcaption>
               </figure>
             ))}
           </div>
@@ -456,7 +489,7 @@ function App() {
           <div className="artist__timeline" aria-label="Working timeline">
             <span>1989</span>
             <span>Bloemfontein</span>
-            <span>Brass · steel · copper</span>
+            <span>Brass / steel / copper</span>
             <span>Archive in progress</span>
           </div>
         </section>
@@ -464,7 +497,7 @@ function App() {
         <section className="archive" id="archive" aria-labelledby="archive-title">
           <header className="section-heading section-heading--archive">
             <div>
-              <p className="eyebrow">Complete working archive</p>
+              <p className="archive__label">Complete working archive</p>
               <h2 id="archive-title">All {artworks.length} records</h2>
             </div>
             <p>
@@ -477,15 +510,16 @@ function App() {
             ))}
           </div>
         </section>
-      </main>
+        </main>
 
-      <footer className="site-footer">
-        <div>
-          <p>Jacques Fuller</p>
-          <p>Bloemfontein, South Africa</p>
-        </div>
-        <p>Working digital archive · Catalogue details and contact information to be confirmed</p>
-      </footer>
+        <footer className="site-footer">
+          <div>
+            <p>Jacques Fuller</p>
+            <p>Bloemfontein, South Africa</p>
+          </div>
+          <p>Catalogue details remain under family review. This preview is not indexed by search engines.</p>
+        </footer>
+      </div>
 
       {selectedWork && (
         <WorkViewer

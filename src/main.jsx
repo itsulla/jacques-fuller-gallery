@@ -1,5 +1,9 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import '@fontsource-variable/petrona/wght.css'
+import '@fontsource/fira-sans-condensed/latin-400.css'
+import '@fontsource/fira-sans-condensed/latin-500.css'
+import '@fontsource/fira-sans-condensed/latin-600.css'
 import './index.css'
 import App from './App.jsx'
 
