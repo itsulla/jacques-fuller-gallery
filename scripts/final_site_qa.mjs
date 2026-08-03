@@ -118,7 +118,7 @@ async function exerciseSingleSiteMosaic() {
   assert.equal(await page.locator('.r5-mosaic .artwork-button').count(), 6, 'The opening mosaic must expose six selected works')
   assert.equal(await page.locator('.r5-stage').count(), 0, 'The former Direction 5 stage should be replaced by the mosaic')
   assert.equal(await page.locator('.direction h1').count(), 1, 'The final site needs exactly one H1')
-  assert.equal(await page.locator('.r5-browser__list > li').count(), 30, 'The complete title index must expose all 30 works')
+  assert.equal(await page.locator('.r5-browser__list > li').count(), 34, 'The complete title index must expose all 34 works')
   assert.equal(await page.getByText('Work in motion', { exact: true }).count(), 0, 'Retired motion copy returned')
   await assertNoOverflow(page, 'Final homepage desktop')
   await page.screenshot({ path: resolve(outputDir, 'final-home-desktop.png') })
@@ -303,6 +303,10 @@ async function exerciseNewSculptures() {
     ['Dunce', 'JF-028', 4],
     ['BE...', 'JF-029', 5],
     ['Hoe Ry Die Boere', 'JF-030', 4],
+    ['Government of National Unity', 'JF-031', 6],
+    ['Vorsprung durch Technik', 'JF-032', 4],
+    ['BELLE', 'JF-033', 5],
+    ['Symbiosis', 'JF-034', 4],
   ]
 
   await page.goto(`${baseUrl}/?qa=new-sculptures-${Date.now()}`, { waitUntil: 'networkidle' })

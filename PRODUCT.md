@@ -14,7 +14,7 @@ Jacques and his family are secondary users. The site must remain straightforward
 
 ## Product Purpose
 
-Create a permanent online gallery for Jacques Fuller, a Bloemfontein-based sculptor active since 1989. The current site presents 30 photographed sculptures in more depth than Facebook can, with multiple views grouped into a coherent record for each work, and a separately sourced historical layer for the 61 works catalogued in 2001.
+Create a permanent online gallery for Jacques Fuller, a Bloemfontein-based sculptor active since 1989. The current site presents 34 photographed sculptures in more depth than Facebook can, with multiple views grouped into a coherent record for each work, and a separately sourced historical layer for the 61 works catalogued in 2001.
 
 Success means the artwork is visually legible, each work can be explored without social-media clutter, and incomplete catalogue details can be added later without redesigning the site.
 
@@ -30,7 +30,7 @@ Artwork descriptions, dates, stories, availability, exhibition history, and full
 
 ## Capabilities and Constraints
 
-- Responsive web gallery with 30 current artwork records and 213 photographs.
+- Responsive web gallery with 34 current artwork records and 232 photographs.
 - A distinct 61-record historical catalogue layer sourced to *Jacques Fuller: Sculptor* (Sanlam Art Collection, 2001).
 - A reversible six-work curatorial selection leads the monograph-style homepage; the complete working archive remains available below it.
 - Multiple-image carousel or gallery for every sculpture.
@@ -55,7 +55,7 @@ Artwork descriptions, dates, stories, availability, exhibition history, and full
 ## Evidence on Hand
 
 - Source image archive: `source-assets/Jacques/`.
-- Public source folder contains 30 sculpture folders with multiple JPEG views.
+- Public source folder contains 34 sculpture folders with multiple JPEG views.
 - The complete supplied 2001 catalogue-entry sequence covers catalogue numbers 1–61 on printed pages 24–27.
 - The 2001 interview and chronology provide dated first-person and biographical evidence; they are not current statements.
 - Biography, process statements, and chronology sourced to the supplied 2001 publication.

@@ -45,14 +45,23 @@ class CatalogueBuildSafetyTests(unittest.TestCase):
             ("DUNCE", "dunce", "Dunce", "FB_IMG_1785420117291.jpg"),
             ("BE...", "be", "BE...", "FB_IMG_1785419608304.jpg"),
             ("HOE RY DIE BOERE", "hoe-ry-die-boere", "Hoe Ry Die Boere", "FB_IMG_1785420075054.jpg"),
+            ("Government of National Unity", "government-of-national-unity", "Government of National Unity", "IMG20260221145149.jpg"),
+            ("Vorsprung durch Technik", "vorsprung-durch-technik", "Vorsprung durch Technik", "FB_IMG_1785760848994.jpg"),
+            ("BELLE", "belle", "BELLE", "FB_IMG_1785767016456.jpg"),
+            ("Symbiosis", "symbiosis", "Symbiosis", "FB_IMG_1785767406763.jpg"),
         ]
 
         actual = [
             (work["source"], work["slug"], work["title"], work["hero"])
-            for work in self.builder.WORKS[-4:]
+            for work in self.builder.WORKS[-8:]
         ]
 
         self.assertEqual(actual, expected)
+
+        for work in self.builder.WORKS[-4:]:
+            self.assertIsNone(work["material"])
+            self.assertIsNone(work["dimensions"])
+            self.assertNotIn("date", work)
 
     def test_missing_source_preserves_existing_outputs(self):
         self.builder.WORKS = [

@@ -2135,5 +2135,222 @@
         "alt": "Hoe Ry Die Boere, view 4"
       }
     ]
+  },
+  {
+    "id": "government-of-national-unity",
+    "archiveNumber": "JF-031",
+    "title": "Government of National Unity",
+    "material": null,
+    "dimensions": null,
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": "Title follows the supplied Drive folder name and the plaque visible on the base.",
+    "prototypeText": "A top-hatted bird figure stands on the back of a four-legged animal above a plaque-bearing rectangular base.",
+    "story": null,
+    "exhibitionHistory": null,
+    "provenance": null,
+    "historicalRecord": null,
+    "relatedHistoricalRecords": null,
+    "imageCount": 6,
+    "images": [
+      {
+        "src": "/artworks/government-of-national-unity/view-01.webp?v=drive-import-20260803-r1",
+        "thumb": "/artworks/government-of-national-unity/thumb-01.webp?v=drive-import-20260803-r1",
+        "width": 1600,
+        "height": 2133,
+        "alt": "Government of National Unity, view 1"
+      },
+      {
+        "src": "/artworks/government-of-national-unity/view-02.webp?v=drive-import-20260803-r1",
+        "thumb": "/artworks/government-of-national-unity/thumb-02.webp?v=drive-import-20260803-r1",
+        "width": 1600,
+        "height": 2133,
+        "alt": "Government of National Unity, view 2"
+      },
+      {
+        "src": "/artworks/government-of-national-unity/view-03.webp?v=drive-import-20260803-r1",
+        "thumb": "/artworks/government-of-national-unity/thumb-03.webp?v=drive-import-20260803-r1",
+        "width": 1600,
+        "height": 2133,
+        "alt": "Government of National Unity, view 3"
+      },
+      {
+        "src": "/artworks/government-of-national-unity/view-04.webp?v=drive-import-20260803-r1",
+        "thumb": "/artworks/government-of-national-unity/thumb-04.webp?v=drive-import-20260803-r1",
+        "width": 1600,
+        "height": 2674,
+        "alt": "Government of National Unity, view 4"
+      },
+      {
+        "src": "/artworks/government-of-national-unity/view-05.webp?v=drive-import-20260803-r1",
+        "thumb": "/artworks/government-of-national-unity/thumb-05.webp?v=drive-import-20260803-r1",
+        "width": 1600,
+        "height": 2267,
+        "alt": "Government of National Unity, view 5"
+      },
+      {
+        "src": "/artworks/government-of-national-unity/view-06.webp?v=drive-import-20260803-r1",
+        "thumb": "/artworks/government-of-national-unity/thumb-06.webp?v=drive-import-20260803-r1",
+        "width": 1600,
+        "height": 2191,
+        "alt": "Government of National Unity, view 6"
+      }
+    ]
+  },
+  {
+    "id": "vorsprung-durch-technik",
+    "archiveNumber": "JF-032",
+    "title": "Vorsprung durch Technik",
+    "material": null,
+    "dimensions": null,
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": "Title follows the supplied Drive folder name and the three-part plaque visible in the photographs.",
+    "prototypeText": "An upright long-eared figure with goggles stands against a curved rod above a spring-shaped support and cylindrical base.",
+    "story": null,
+    "exhibitionHistory": null,
+    "provenance": null,
+    "historicalRecord": null,
+    "relatedHistoricalRecords": null,
+    "imageCount": 4,
+    "images": [
+      {
+        "src": "/artworks/vorsprung-durch-technik/view-01.webp?v=drive-import-20260803-r1",
+        "thumb": "/artworks/vorsprung-durch-technik/thumb-01.webp?v=drive-import-20260803-r1",
+        "width": 500,
+        "height": 1000,
+        "alt": "Vorsprung durch Technik, view 1"
+      },
+      {
+        "src": "/artworks/vorsprung-durch-technik/view-02.webp?v=drive-import-20260803-r1",
+        "thumb": "/artworks/vorsprung-durch-technik/thumb-02.webp?v=drive-import-20260803-r1",
+        "width": 1000,
+        "height": 669,
+        "alt": "Vorsprung durch Technik, view 2"
+      },
+      {
+        "src": "/artworks/vorsprung-durch-technik/view-03.webp?v=drive-import-20260803-r1",
+        "thumb": "/artworks/vorsprung-durch-technik/thumb-03.webp?v=drive-import-20260803-r1",
+        "width": 359,
+        "height": 1000,
+        "alt": "Vorsprung durch Technik, view 3"
+      },
+      {
+        "src": "/artworks/vorsprung-durch-technik/view-04.webp?v=drive-import-20260803-r1",
+        "thumb": "/artworks/vorsprung-durch-technik/thumb-04.webp?v=drive-import-20260803-r1",
+        "width": 1000,
+        "height": 772,
+        "alt": "Vorsprung durch Technik, view 4"
+      }
+    ]
+  },
+  {
+    "id": "belle",
+    "archiveNumber": "JF-033",
+    "title": "BELLE",
+    "material": null,
+    "dimensions": null,
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": "Title and capitalization follow the supplied Drive folder name and the plaque visible on the base.",
+    "prototypeText": "A tall standing figure with a bell-shaped headpiece and long handle-like finial is mounted on a pale rectangular base.",
+    "story": null,
+    "exhibitionHistory": null,
+    "provenance": null,
+    "historicalRecord": null,
+    "relatedHistoricalRecords": null,
+    "imageCount": 5,
+    "images": [
+      {
+        "src": "/artworks/belle/view-01.webp?v=drive-import-20260803-r1",
+        "thumb": "/artworks/belle/thumb-01.webp?v=drive-import-20260803-r1",
+        "width": 395,
+        "height": 1000,
+        "alt": "BELLE, view 1"
+      },
+      {
+        "src": "/artworks/belle/view-02.webp?v=drive-import-20260803-r1",
+        "thumb": "/artworks/belle/thumb-02.webp?v=drive-import-20260803-r1",
+        "width": 1000,
+        "height": 316,
+        "alt": "BELLE, view 2"
+      },
+      {
+        "src": "/artworks/belle/view-03.webp?v=drive-import-20260803-r1",
+        "thumb": "/artworks/belle/thumb-03.webp?v=drive-import-20260803-r1",
+        "width": 350,
+        "height": 1000,
+        "alt": "BELLE, view 3"
+      },
+      {
+        "src": "/artworks/belle/view-04.webp?v=drive-import-20260803-r1",
+        "thumb": "/artworks/belle/thumb-04.webp?v=drive-import-20260803-r1",
+        "width": 442,
+        "height": 1000,
+        "alt": "BELLE, view 4"
+      },
+      {
+        "src": "/artworks/belle/view-05.webp?v=drive-import-20260803-r1",
+        "thumb": "/artworks/belle/thumb-05.webp?v=drive-import-20260803-r1",
+        "width": 406,
+        "height": 1000,
+        "alt": "BELLE, view 5"
+      }
+    ]
+  },
+  {
+    "id": "symbiosis",
+    "archiveNumber": "JF-034",
+    "title": "Symbiosis",
+    "material": null,
+    "dimensions": null,
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": "Title follows the supplied Drive folder name and the plaque visible in the photographs.",
+    "prototypeText": "A standing figure extends one arm toward a smaller four-legged figure on a wheeled body, both mounted on a shared rectangular base.",
+    "story": null,
+    "exhibitionHistory": null,
+    "provenance": null,
+    "historicalRecord": null,
+    "relatedHistoricalRecords": null,
+    "imageCount": 4,
+    "images": [
+      {
+        "src": "/artworks/symbiosis/view-01.webp?v=drive-import-20260803-r1",
+        "thumb": "/artworks/symbiosis/thumb-01.webp?v=drive-import-20260803-r1",
+        "width": 1600,
+        "height": 1865,
+        "alt": "Symbiosis, view 1"
+      },
+      {
+        "src": "/artworks/symbiosis/view-02.webp?v=drive-import-20260803-r1",
+        "thumb": "/artworks/symbiosis/thumb-02.webp?v=drive-import-20260803-r1",
+        "width": 1600,
+        "height": 733,
+        "alt": "Symbiosis, view 2"
+      },
+      {
+        "src": "/artworks/symbiosis/view-03.webp?v=drive-import-20260803-r1",
+        "thumb": "/artworks/symbiosis/thumb-03.webp?v=drive-import-20260803-r1",
+        "width": 1525,
+        "height": 2048,
+        "alt": "Symbiosis, view 3"
+      },
+      {
+        "src": "/artworks/symbiosis/view-04.webp?v=drive-import-20260803-r1",
+        "thumb": "/artworks/symbiosis/thumb-04.webp?v=drive-import-20260803-r1",
+        "width": 1600,
+        "height": 1757,
+        "alt": "Symbiosis, view 4"
+      }
+    ]
   }
 ]

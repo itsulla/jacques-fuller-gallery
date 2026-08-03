@@ -233,7 +233,7 @@ components:
 
 **Mode: Experience. Creative North Star: “The Forged Archive.”**
 
-Forged Archive is a permanent-feeling but explicitly unfinished sculpture archive for Jacques Fuller, a Bloemfontein-based sculptor active since 1989. The object leads: the interface is a narrow archive index, a viewport-bound hero, a temporary six-work selection, and a complete working catalogue of 30 records and 213 photographs. A separately dated 61-record historical layer documents the 2001 exhibition without merging historical and current objects by title. It is not a social feed, ecommerce catalogue, or generic portfolio template.
+Forged Archive is a permanent-feeling but explicitly unfinished sculpture archive for Jacques Fuller, a Bloemfontein-based sculptor active since 1989. The object leads: the interface is a narrow archive index, a viewport-bound hero, a temporary six-work selection, and a complete working catalogue of 34 records and 232 photographs. A separately dated 61-record historical layer documents the 2001 exhibition without merging historical and current objects by title. It is not a social feed, ecommerce catalogue, or generic portfolio template.
 
 The visual world is cold smoke-grey and mineral on the light side, deep green-black oxide in archive and viewer chapters, and one restrained patina-green accent. Brass remains material evidence inside the supplied photography, never a UI color. Square geometry, hairline rules, contained sculpture images, and very little motion create a forged, structural reading experience.
 
@@ -326,7 +326,7 @@ Use semantic headings, landmarks, labelled navigation, descriptive/factual image
 ### Do:
 - Preserve complete sculptures with `object-fit: contain`.
 - Keep the six-work selection reversible and explicitly temporary.
-- Treat the current archive as 30 catalogue records and 213 photographs, distinct from the 61 records documented in 2001.
+- Treat the current archive as 34 catalogue records and 232 photographs, distinct from the 61 records documented in 2001.
 - Date and attribute every historical quotation, collection value, biography statement, and relationship claim.
 - Use **“Not recorded”** for missing facts.
 - Label existing detail photography honestly and wait for Jacques or his family for stories, dates, provenance, availability, exhibition history, and workshop evidence.
