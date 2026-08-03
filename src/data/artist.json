@@ -1,0 +1,134 @@
+{
+  "source": {
+    "title": "Jacques Fuller: Sculptor",
+    "publisher": "Sanlam Art Collection",
+    "year": 2001,
+    "copyright": "© Sanlam Limited",
+    "scope": "Historical publication and exhibition catalogue; not a statement of current biography, studio location, ownership, or institutional affiliation."
+  },
+  "biography": {
+    "asRecorded": 2001,
+    "paragraphs": [
+      "After leaving school in Otjiwarongo in 1979, Jacques Fuller entered the police force in Namibia and completed National Service. He worked as a game ranger in Etosha in 1981–82, then settled in Bloemfontein in 1983 to work as an ornithological assistant at the National Museum.",
+      "He registered for a BA Fine Arts degree at the University of the Free State in 1984 and completed its practical component with distinction in sculpture in 1988. The catalogue records him as a full-time sculptor from 1989, working on a smallholding at Bainsvlei outside Bloemfontein."
+    ],
+    "source": {
+      "publicationYear": 2001,
+      "pages": "14–22",
+      "note": "Career details are drawn from the 2001 catalogue; the present-day full-time status was supplied for this website in August 2026."
+    }
+  },
+  "timeline": [
+    {
+      "date": "1979",
+      "title": "Entered the police force",
+      "detail": "After completing school in Otjiwarongo, Jacques entered the police force in Namibia.",
+      "source": { "year": 2001, "page": 22 }
+    },
+    {
+      "date": "1981–82",
+      "title": "Game ranger in Etosha",
+      "detail": "Served as a game ranger after National Service.",
+      "source": { "year": 2001, "page": 22 }
+    },
+    {
+      "date": "1983",
+      "title": "National Museum",
+      "detail": "Moved to Bloemfontein and worked as an ornithological assistant.",
+      "source": { "year": 2001, "page": 22 }
+    },
+    {
+      "date": "1984",
+      "title": "Fine Arts",
+      "detail": "Began studying in the Department of Fine Arts at the University of the Free State.",
+      "source": { "year": 2001, "page": 22 }
+    },
+    {
+      "date": "1988",
+      "title": "Distinction in sculpture",
+      "detail": "Completed the practical component of the Fine Arts degree with distinction in sculpture.",
+      "source": { "year": 2001, "page": 22 }
+    },
+    {
+      "date": "1989 – present",
+      "title": "Full-time sculptor",
+      "detail": "Working full-time as a sculptor since 1989.",
+      "source": { "year": 2026, "type": "current website update" }
+    }
+  ],
+  "quotes": [
+    {
+      "id": "look-twice",
+      "text": "I would rather have someone look at my work twice, three times than have someone merely walk past without giving it a second glance.",
+      "speaker": "Jacques Fuller",
+      "source": {
+        "interviewer": "Sharon Crampton",
+        "date": "August 2001",
+        "publication": "Jacques Fuller: Sculptor",
+        "page": 19
+      }
+    },
+    {
+      "id": "direct-metal",
+      "text": "I prefer working directly with metal and having control of the entire process.",
+      "speaker": "Jacques Fuller",
+      "source": {
+        "interviewer": "Sharon Crampton",
+        "date": "August 2001",
+        "publication": "Jacques Fuller: Sculptor",
+        "page": 16
+      }
+    },
+    {
+      "id": "working-drawings",
+      "text": "I do make working drawings, which are rather rudimentary. I then transfer them directly onto the sheets of metal; in other words the drawing becomes a template.",
+      "speaker": "Jacques Fuller",
+      "source": {
+        "interviewer": "Sharon Crampton",
+        "date": "August 2001",
+        "publication": "Jacques Fuller: Sculptor",
+        "page": 16
+      }
+    }
+  ],
+  "materialHistory": [
+    {
+      "period": "At university",
+      "material": "Direct metalwork",
+      "detail": "Introduced to numerous sculptural techniques and materials, Jacques was drawn to working directly in metal.",
+      "source": { "year": 2001, "pages": "15–16" }
+    },
+    {
+      "period": "Early practice",
+      "material": "Mild steel",
+      "detail": "Circular and square forms were layer-welded with gears and other found objects gathered from scrapyards.",
+      "source": { "year": 2001, "page": 15 }
+    },
+    {
+      "period": "About 1995",
+      "material": "Red copper",
+      "detail": "A lighter, more pliable metal that introduced colour but required new solutions at welded joins.",
+      "source": { "year": 2001, "page": 15 }
+    },
+    {
+      "period": "By 2001",
+      "material": "Yellow copper / brass",
+      "detail": "A material Jacques described as combining the austerity of mild steel with the flexibility of red copper.",
+      "source": { "year": 2001, "page": 16 }
+    }
+  ],
+  "exhibition2001": {
+    "title": "Jacques Fuller: Sculptor",
+    "year": 2001,
+    "organisedWith": [
+      "Oliewenhuis Art Museum",
+      "Sanlam Art Collection"
+    ],
+    "curators": [
+      "Stefan Hundt, Sanlam Art Collection",
+      "Sharon Crampton, Oliewenhuis Art Museum"
+    ],
+    "scope": "The exhibition assembled work from museum, university, corporate, church, artist, and private collections.",
+    "sourcePage": 48
+  }
+}

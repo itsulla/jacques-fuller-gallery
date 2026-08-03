@@ -1,62 +1,15 @@
 :root {
-  --page: oklch(0.9 0.008 165);
-  --page-raised: oklch(0.945 0.006 165);
-  --paper: oklch(0.965 0.006 92);
-  --surface: oklch(0.82 0.012 165);
-  --surface-deep: oklch(0.735 0.017 165);
-  --ink: oklch(0.2 0.02 165);
-  --ink-muted: oklch(0.39 0.018 165);
-  --line: oklch(0.67 0.014 165);
-  --accent: oklch(0.39 0.075 166);
-  --accent-strong: oklch(0.315 0.066 166);
-  --accent-ink: oklch(0.97 0.006 165);
-  --oxide: oklch(0.155 0.018 165);
-  --oxide-raised: oklch(0.205 0.02 165);
-  --oxide-ink: oklch(0.94 0.008 165);
-  --oxide-muted: oklch(0.73 0.018 165);
-  --oxide-line: oklch(0.34 0.024 165);
-  --focus: oklch(0.43 0.085 166);
-  --focus-on-dark: oklch(0.73 0.085 166);
   --font-display: "Petrona Variable", "Petrona", Georgia, serif;
+  --font-condensed: "Barlow Condensed", "Arial Narrow", sans-serif;
   --font-body: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-condensed: "Fira Sans Condensed", "Arial Narrow", sans-serif;
-  --type-micro: 0.7rem;
-  --type-caption: 0.76rem;
-  --type-label: 0.8rem;
-  --type-nav: 0.86rem;
-  --type-action: 0.9rem;
-  --type-body-small: clamp(0.98rem, 1.1vw, 1.08rem);
-  --type-body-fluid: clamp(1rem, 1.35vw, 1.2rem);
-  --type-lead: clamp(1.25rem, 2vw, 1.8rem);
-  --type-card-title: clamp(2.2rem, 4vw, 4.2rem);
-  --type-biography: clamp(1.75rem, 3vw, 3.1rem);
-  --type-section: clamp(3.2rem, 6.6vw, 6rem);
-  --type-viewer-title: clamp(3.2rem, 6vw, 6rem);
-  --type-hero: clamp(4.2rem, 7.2vw, 6rem);
-  color: var(--ink);
-  background: var(--page);
+  --focus: #b65232;
+  color: #1d1d1b;
+  background: #e9e9e6;
   font-family: var(--font-body);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --page: oklch(0.17 0.016 165);
-    --page-raised: oklch(0.21 0.018 165);
-    --paper: oklch(0.23 0.014 165);
-    --surface: oklch(0.27 0.021 165);
-    --surface-deep: oklch(0.34 0.025 165);
-    --ink: oklch(0.93 0.008 165);
-    --ink-muted: oklch(0.72 0.014 165);
-    --line: oklch(0.37 0.022 165);
-    --accent: oklch(0.7 0.078 166);
-    --accent-strong: oklch(0.79 0.07 166);
-    --accent-ink: oklch(0.15 0.018 165);
-    --focus: oklch(0.72 0.09 166);
-  }
 }
 
 * {
@@ -65,14 +18,13 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 1rem;
 }
 
 body {
-  margin: 0;
   min-width: 320px;
   min-height: 100dvh;
-  background: var(--page);
+  margin: 0;
+  background: #e9e9e6;
 }
 
 button,
@@ -99,6 +51,7 @@ p,
 h1,
 h2,
 h3,
+ol,
 dl,
 dd,
 figure {
@@ -106,8 +59,8 @@ figure {
 }
 
 ::selection {
-  color: var(--accent-ink);
-  background: var(--accent);
+  color: #fff;
+  background: #8f472f;
 }
 
 @media (prefers-reduced-motion: reduce) {

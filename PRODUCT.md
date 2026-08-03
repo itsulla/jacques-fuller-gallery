@@ -14,7 +14,7 @@ Jacques and his family are secondary users. The site must remain straightforward
 
 ## Product Purpose
 
-Create a permanent online gallery for Jacques Fuller, a Bloemfontein-based sculptor active since 1989. The current prototype presents 24 photographed sculptures in more depth than Facebook can, with multiple views grouped into a coherent record for each work.
+Create a permanent online gallery for Jacques Fuller, a Bloemfontein-based sculptor active since 1989. The current site presents 30 photographed sculptures in more depth than Facebook can, with multiple views grouped into a coherent record for each work, and a separately sourced historical layer for the 61 works catalogued in 2001.
 
 Success means the artwork is visually legible, each work can be explored without social-media clutter, and incomplete catalogue details can be added later without redesigning the site.
 
@@ -30,11 +30,13 @@ Artwork descriptions, dates, stories, availability, exhibition history, and full
 
 ## Capabilities and Constraints
 
-- Responsive web gallery with 24 current artwork records and 187 photographs.
+- Responsive web gallery with 30 current artwork records and 213 photographs.
+- A distinct 61-record historical catalogue layer sourced to *Jacques Fuller: Sculptor* (Sanlam Art Collection, 2001).
 - A reversible six-work curatorial selection leads the monograph-style homepage; the complete working archive remains available below it.
 - Multiple-image carousel or gallery for every sculpture.
 - Individual artwork detail view with placeholders for future stories and catalogue fields.
-- Factual metadata is shown only when present in the source folder name.
+- Factual metadata is shown only when present in the source folder name or a cited historical source.
+- Current and historical records use separate IDs; title matches do not establish object identity.
 - Unknown dates, materials, dimensions, availability, and interpretations remain visibly marked as pending rather than invented.
 - Initial images are Facebook-derived JPEGs rather than guaranteed camera originals.
 - The first build is a private preview, not a public production launch.
@@ -53,10 +55,12 @@ Artwork descriptions, dates, stories, availability, exhibition history, and full
 ## Evidence on Hand
 
 - Source image archive: `source-assets/Jacques/`.
-- Public source folder contains 24 sculpture folders with multiple JPEG views.
-- Confirmed biography supplied by the user in the project conversation.
-- Confirmed metadata currently available in folder names for selected works.
-- No confirmed artwork dates, prices, availability, exhibition history, photographer credits, or work-specific stories are available yet.
+- Public source folder contains 30 sculpture folders with multiple JPEG views.
+- The complete supplied 2001 catalogue-entry sequence covers catalogue numbers 1–61 on printed pages 24–27.
+- The 2001 interview and chronology provide dated first-person and biographical evidence; they are not current statements.
+- Biography, process statements, and chronology sourced to the supplied 2001 publication.
+- Confirmed metadata currently available in folder names for selected works and in the linked historical record for `JF-030`.
+- Most current artwork dates, prices, availability, exhibition history, photographer credits, and work-specific stories remain unavailable; `JF-030` is the documented historical exception.
 
 ## Product Principles
 
@@ -65,6 +69,7 @@ Artwork descriptions, dates, stories, availability, exhibition history, and full
 3. Missing facts remain explicit placeholders, never plausible-looking inventions.
 4. Material, scale, process, and surface detail deserve the same attention as silhouette.
 5. The archive should grow without changing its underlying structure.
+6. Historical ownership, biography, and interview material must remain visibly dated and source-attributed.
 
 ## Accessibility & Inclusion
 

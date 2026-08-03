@@ -3,18 +3,23 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "engines": {
+    "node": ">=20.19.0"
+  },
   "scripts": {
     "dev": "vite",
     "catalogue": "python3 scripts/build_catalogue.py",
-    "build": "vite build",
+    "build": "vite build && node scripts/normalize_dist.mjs",
     "lint": "oxlint",
-    "qa": "node scripts/visual_qa.mjs",
-    "check": "npm run lint && npm run build && npm run qa",
+    "test:catalogue": "python3 -B -m unittest tests.test_build_catalogue",
+    "test:content": "python3 -B -m unittest tests.test_archive_content",
+    "qa": "node scripts/final_site_qa.mjs",
+    "check": "npm run lint && npm run test:catalogue && npm run test:content && npm run build && npm run qa",
     "preview": "vite preview"
   },
   "dependencies": {
     "@fontsource-variable/petrona": "^5.3.0",
-    "@fontsource/fira-sans-condensed": "^5.3.0",
+    "@fontsource/barlow-condensed": "^5.3.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7"
   },

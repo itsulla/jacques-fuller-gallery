@@ -233,7 +233,7 @@ components:
 
 **Mode: Experience. Creative North Star: “The Forged Archive.”**
 
-Forged Archive is a permanent-feeling but explicitly unfinished sculpture archive for Jacques Fuller, a Bloemfontein-based sculptor active since 1989. The object leads: the interface is a narrow archive index, a viewport-bound hero, a temporary six-work selection, and a complete working catalogue of 24 records and 187 photographs. It is not a social feed, ecommerce catalogue, or generic portfolio template.
+Forged Archive is a permanent-feeling but explicitly unfinished sculpture archive for Jacques Fuller, a Bloemfontein-based sculptor active since 1989. The object leads: the interface is a narrow archive index, a viewport-bound hero, a temporary six-work selection, and a complete working catalogue of 30 records and 213 photographs. A separately dated 61-record historical layer documents the 2001 exhibition without merging historical and current objects by title. It is not a social feed, ecommerce catalogue, or generic portfolio template.
 
 The visual world is cold smoke-grey and mineral on the light side, deep green-black oxide in archive and viewer chapters, and one restrained patina-green accent. Brass remains material evidence inside the supplied photography, never a UI color. Square geometry, hairline rules, contained sculpture images, and very little motion create a forged, structural reading experience.
 
@@ -266,7 +266,7 @@ Petrona uses negative tracking and tight leading for monograph scale. Technical 
 
 The desktop shell is a fixed, narrow archive rail (`clamp(8.5rem, 10.5vw, 10.5rem)`) beside the main content. The rail is sticky and contains the JF mark, primary links, live counts, and Bloemfontein descriptor. The hero is viewport-bound (`100dvh`, capped at `68rem`) on a twelve-column grid: Jacques Fuller occupies the left, the supplied Ship of Fools photograph sits in a central object stage, and its record/action occupies the right. Sculpture images use `object-fit: contain`; full silhouettes are never decoratively cropped.
 
-The six selected works are reversible curation, not a ranking. They use three composition families, cycling by rank: **platform** (large left image, right record, lower detail), **offset** (right image with offset detail and lower record), and **study** (image/detail pair with a spanning record). They are deliberately not alternating selected rows or equal cards. The living archive is a deep oxide chapter with Voice, Studio, and Record paths and honestly labelled existing photographic detail studies. The artist section presents factual biography and a four-part timeline. The complete archive is a subordinate four-column grid on wide screens, three columns below 1100px.
+The six selected works are reversible curation, not a ranking. They use three composition families, cycling by rank: **platform** (large left image, right record, lower detail), **offset** (right image with offset detail and lower record), and **study** (image/detail pair with a spanning record). They are deliberately not alternating selected rows or equal cards. Archive 2001 is an editorial historical chapter: one paper statement and dated quotation, a typographic theme ledger, and two asymmetric relationship studies that distinguish “same object” from “different work, same title.” No catalogue photography ships without rights clearance. About follows with the 2001 biography and timeline before the complete current index.
 
 The artwork viewer opens as a fixed full-screen dialog. Its opening is a 12-column, **75/25** composition: the identity/facts rail occupies columns 1–3 and the image stage occupies columns 4–12. The stage and previous/next controls remain in the opening viewport; all supplied thumbnails follow in a horizontal strip. A paper record chapter holds the visual catalogue note and future story, followed by details/alternate views and previous/next work navigation.
 
@@ -326,7 +326,8 @@ Use semantic headings, landmarks, labelled navigation, descriptive/factual image
 ### Do:
 - Preserve complete sculptures with `object-fit: contain`.
 - Keep the six-work selection reversible and explicitly temporary.
-- Treat the supplied archive as 24 catalogue records and 187 photographs.
+- Treat the current archive as 30 catalogue records and 213 photographs, distinct from the 61 records documented in 2001.
+- Date and attribute every historical quotation, collection value, biography statement, and relationship claim.
 - Use **“Not recorded”** for missing facts.
 - Label existing detail photography honestly and wait for Jacques or his family for stories, dates, provenance, availability, exhibition history, and workshop evidence.
 - Keep min 44px targets, strong focus states, modal keyboard behavior, and reduced-motion behavior.

@@ -17,6 +17,7 @@ source-assets/
 qa/
 artwork-contact-sheet.jpg
 sheet-*.jpg
+.impeccable/
 
 # Editor directories and files
 .vscode/*

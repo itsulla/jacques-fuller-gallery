@@ -3,8 +3,10 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 import shutil
+import uuid
 from pathlib import Path
 from PIL import Image, ImageOps
 
@@ -206,7 +208,16 @@ WORKS = [
         "material": None,
         "dimensions": None,
         "hero": "43055503_892194474304787_2299902871874830336_n.jpg",
-        "catalogueNote": "Historical and narrative context for the title and subject is to be confirmed before publication.",
+        "catalogueNote": "A different sculpture titled Bwana appears as catalogue no. 58 in the 2001 Sanlam catalogue. The title is shared; the physical works are not.",
+        "relatedHistoricalRecords": [
+            {
+                "id": "JF2001-058",
+                "catalogueNumber": 58,
+                "relationship": "reused-title-different-object",
+                "sourcePage": 27,
+                "sourceYear": 2001,
+            }
+        ],
     },
     {
         "source": "King Cricket",
@@ -229,6 +240,83 @@ WORKS = [
         "prototypeText": "A rider and mechanical animal form a compact narrative scene, balanced by wheel and crank-like elements.",
         "catalogueNote": "Title follows the two plaques visible in the supplied photographs; confirmation is pending.",
     },
+    {
+        "source": "Icecream NO Just Ice - I Scream NO Justice",
+        "slug": "icecream-no-just-ice",
+        "title": "Icecream NO Just Ice — I Scream NO Justice",
+        "material": None,
+        "dimensions": None,
+        "hero": "FB_IMG_1785420248108.jpg",
+        "cacheVersion": "drive-import-20260801-r1",
+        "prototypeText": "A tall top-hatted figure faces a smaller rabbit figure holding a framed sign, both mounted on a shared rectangular base.",
+        "catalogueNote": "Title follows the supplied folder name. Punctuation and capitalization are pending confirmation.",
+    },
+    {
+        "source": "LOAN WOLF",
+        "slug": "loan-wolf",
+        "title": "Loan Wolf",
+        "material": None,
+        "dimensions": None,
+        "hero": "FB_IMG_1785420332894.jpg",
+        "cacheVersion": "drive-import-20260801-r1",
+        "prototypeText": "A long-bodied canine figure with open jaws reaches one articulated foreleg forward above a compact base.",
+        "catalogueNote": "Title spelling follows the supplied folder name and is pending confirmation.",
+    },
+    {
+        "source": "Dragonet",
+        "slug": "dragonet",
+        "title": "Dragonet",
+        "material": None,
+        "dimensions": None,
+        "hero": "FB_IMG_1785419761708.jpg",
+        "cacheVersion": "drive-import-20260801-r2",
+        "prototypeText": "A top-hatted dragon figure with an open toothed jaw, jacket-like torso and segmented tail stands on a cylindrical base.",
+        "catalogueNote": "Title follows the supplied folder name and the DRAGONET plaque visible in the photographs.",
+    },
+    {
+        "source": "DUNCE",
+        "slug": "dunce",
+        "title": "Dunce",
+        "material": None,
+        "dimensions": None,
+        "hero": "FB_IMG_1785420117291.jpg",
+        "cacheVersion": "drive-import-20260801-r2",
+        "prototypeText": "A pointed-cap figure with a box-shaped pack, jacket, short trousers and tall boots stands on a cylindrical base.",
+        "catalogueNote": "Title follows the supplied folder name. Capitalization is pending confirmation.",
+    },
+    {
+        "source": "BE...",
+        "slug": "be",
+        "title": "BE...",
+        "material": None,
+        "dimensions": None,
+        "hero": "FB_IMG_1785419608304.jpg",
+        "cacheVersion": "drive-import-20260801-r2",
+        "prototypeText": "A winged insect figure rests on a tall B-shaped frame above a cylindrical column with plaques reading HAPPY and HEALTHY.",
+        "catalogueNote": "Title and ellipsis follow the supplied folder name; visible plaques read HAPPY and HEALTHY.",
+    },
+    {
+        "source": "HOE RY DIE BOERE",
+        "slug": "hoe-ry-die-boere",
+        "title": "Hoe Ry Die Boere",
+        "material": "Brass",
+        "dimensions": "78 × 93 cm",
+        "date": "2000",
+        "hero": "FB_IMG_1785420075054.jpg",
+        "cacheVersion": "drive-import-20260801-r2",
+        "prototypeText": "A seated figure operates an open mechanical vehicle connected to a tall wheeled compartment, with bird-like figures perched at either end.",
+        "catalogueNote": "The same physical sculpture is documented as catalogue no. 10 in the 2001 Sanlam catalogue; identity was confirmed by comparing its configuration and distinctive components across both photographic sets.",
+        "exhibitionHistory": "Jacques Fuller: Sculptor, 2001 (catalogue no. 10).",
+        "historicalRecord": {
+            "id": "JF2001-010",
+            "catalogueNumber": 10,
+            "relationship": "same-object",
+            "inscription": "JRF 2000",
+            "collectionAsOf2001": "Jacques Fuller, Bloemfontein",
+            "sourcePage": 24,
+            "sourceYear": 2001,
+        },
+    },
 ]
 
 
@@ -243,15 +331,217 @@ def optimize(source: Path, output: Path, max_width: int, quality: int) -> tuple[
         return image.width, image.height
 
 
-def main() -> None:
-    if PUBLIC.exists():
-        shutil.rmtree(PUBLIC)
-    DATA.parent.mkdir(parents=True, exist_ok=True)
+def transaction_path() -> Path:
+    return PUBLIC.parent / ".catalogue-publish.json"
 
-    catalogue = []
+
+def remove_path(path: Path) -> None:
+    if path.is_dir() and not path.is_symlink():
+        shutil.rmtree(path)
+    elif path.exists() or path.is_symlink():
+        path.unlink()
+
+
+def fsync_directory(path: Path) -> None:
+    descriptor = os.open(path, os.O_RDONLY)
+    try:
+        os.fsync(descriptor)
+    finally:
+        os.close(descriptor)
+
+
+def fsync_file(path: Path) -> None:
+    with path.open("rb") as handle:
+        os.fsync(handle.fileno())
+
+
+def fsync_output_parents() -> None:
+    for parent in {PUBLIC.parent, DATA.parent}:
+        fsync_directory(parent)
+
+
+def replace_and_sync(source: Path, destination: Path) -> None:
+    os.replace(source, destination)
+    fsync_directory(destination.parent)
+    if source.parent != destination.parent:
+        fsync_directory(source.parent)
+
+
+def validate_regular_file(path: Path, label: str) -> None:
+    if path.is_symlink():
+        raise RuntimeError(f"{label} must not be a symlink: {path}")
+    if not path.is_file():
+        raise RuntimeError(f"{label} is not a regular file: {path}")
+
+
+def validate_directory_tree(root: Path, label: str) -> list[Path]:
+    if root.is_symlink():
+        raise RuntimeError(f"{label} must not be a symlink: {root}")
+    if not root.is_dir():
+        raise RuntimeError(f"{label} is not a directory: {root}")
+
+    entries = list(root.rglob("*"))
+    for entry in entries:
+        if entry.is_symlink():
+            raise RuntimeError(f"{label} contains a symlink: {entry}")
+        if not entry.is_file() and not entry.is_dir():
+            raise RuntimeError(f"{label} contains a non-regular entry: {entry}")
+    return entries
+
+
+def fsync_staged_outputs(staged_public: Path, staged_data: Path) -> None:
+    entries = validate_directory_tree(staged_public, "Staged artwork tree")
+    validate_regular_file(staged_data, "Staged catalogue data")
+
+    for staged_file in sorted(entry for entry in entries if entry.is_file()):
+        fsync_file(staged_file)
+    fsync_file(staged_data)
+
+    staged_directories = {staged_public}
+    staged_directories.update(entry for entry in entries if entry.is_dir())
+    for staged_directory in sorted(staged_directories, key=lambda path: len(path.parts), reverse=True):
+        fsync_directory(staged_directory)
+    fsync_directory(staged_public.parent)
+    if staged_data.parent != staged_public.parent:
+        fsync_directory(staged_data.parent)
+
+
+def write_transaction(token: str, had_public: bool, had_data: bool) -> None:
+    marker = transaction_path()
+    if marker.is_symlink():
+        raise RuntimeError(f"Catalogue transaction marker must not be a symlink: {marker}")
+    if marker.exists():
+        if not marker.is_file():
+            raise RuntimeError(f"Catalogue transaction marker is not a regular file: {marker}")
+        raise RuntimeError(f"Unrecovered catalogue transaction: {marker}")
+    temporary = marker.with_name(f".{marker.name}.tmp-{token}")
+    payload = {
+        "version": 1,
+        "token": token,
+        "hadPublic": had_public,
+        "hadData": had_data,
+    }
+    with temporary.open("x") as handle:
+        json.dump(payload, handle, separators=(",", ":"))
+        handle.write("\n")
+        handle.flush()
+        os.fsync(handle.fileno())
+    replace_and_sync(temporary, marker)
+
+
+def cleanup_orphaned_artifacts() -> None:
+    patterns = (
+        (PUBLIC.parent, f".{PUBLIC.name}.backup-*"),
+        (PUBLIC.parent, f".{PUBLIC.name}.build-*"),
+        (DATA.parent, f".{DATA.name}.backup-*"),
+        (DATA.parent, f".{DATA.name}.build-*"),
+        (transaction_path().parent, f".{transaction_path().name}.tmp-*"),
+    )
+    for parent, pattern in patterns:
+        for artifact in parent.glob(pattern):
+            remove_path(artifact)
+
+
+def recover_interrupted_publish() -> bool:
+    marker = transaction_path()
+    if marker.is_symlink():
+        raise RuntimeError(f"Catalogue transaction marker must not be a symlink: {marker}")
+    if not marker.exists():
+        cleanup_orphaned_artifacts()
+        return False
+
+    validate_regular_file(marker, "Catalogue transaction marker")
+    state = json.loads(marker.read_text())
+    token = state.get("token")
+    if (
+        state.get("version") != 1
+        or not isinstance(token, str)
+        or re.fullmatch(r"[A-Za-z0-9_-]{1,64}", token) is None
+        or not isinstance(state.get("hadPublic"), bool)
+        or not isinstance(state.get("hadData"), bool)
+    ):
+        raise RuntimeError(f"Invalid catalogue transaction marker: {marker}")
+
+    backup_public = PUBLIC.with_name(f".{PUBLIC.name}.backup-{token}")
+    backup_data = DATA.with_name(f".{DATA.name}.backup-{token}")
+    staged_public = PUBLIC.with_name(f".{PUBLIC.name}.build-{token}")
+    staged_data = DATA.with_name(f".{DATA.name}.build-{token}")
+
+    backup_public_present = backup_public.exists() or backup_public.is_symlink()
+    backup_data_present = backup_data.exists() or backup_data.is_symlink()
+    if backup_public_present:
+        validate_directory_tree(backup_public, "Artwork backup")
+    if backup_data_present:
+        validate_regular_file(backup_data, "Catalogue backup")
+
+    if backup_public_present:
+        remove_path(PUBLIC)
+        replace_and_sync(backup_public, PUBLIC)
+    elif state["hadPublic"] and not PUBLIC.exists():
+        raise RuntimeError(f"Cannot recover prior artwork assets for transaction {token}")
+    elif not state["hadPublic"]:
+        remove_path(PUBLIC)
+
+    if backup_data_present:
+        remove_path(DATA)
+        replace_and_sync(backup_data, DATA)
+    elif state["hadData"] and not DATA.exists():
+        raise RuntimeError(f"Cannot recover prior catalogue data for transaction {token}")
+    elif not state["hadData"]:
+        remove_path(DATA)
+
+    remove_path(staged_public)
+    remove_path(staged_data)
+    fsync_output_parents()
+    marker.unlink()
+    fsync_directory(marker.parent)
+    cleanup_orphaned_artifacts()
+    return True
+
+
+def publish(staged_public: Path, staged_data: Path, token: str) -> None:
+    backup_public = PUBLIC.with_name(f".{PUBLIC.name}.backup-{token}")
+    backup_data = DATA.with_name(f".{DATA.name}.backup-{token}")
+    had_public = PUBLIC.exists() or PUBLIC.is_symlink()
+    had_data = DATA.exists() or DATA.is_symlink()
+
+    if had_public:
+        validate_directory_tree(PUBLIC, "Current artwork tree")
+    if had_data:
+        validate_regular_file(DATA, "Current catalogue data")
+
+    fsync_staged_outputs(staged_public, staged_data)
+    write_transaction(token, had_public, had_data)
+    try:
+        if had_public:
+            replace_and_sync(PUBLIC, backup_public)
+        if had_data:
+            replace_and_sync(DATA, backup_data)
+        replace_and_sync(staged_public, PUBLIC)
+        replace_and_sync(staged_data, DATA)
+    except Exception:
+        recover_interrupted_publish()
+        raise
+    fsync_output_parents()
+    transaction_path().unlink()
+    fsync_directory(transaction_path().parent)
+    remove_path(backup_public)
+    remove_path(backup_data)
+    fsync_output_parents()
+
+
+def main() -> None:
+    recover_interrupted_publish()
+    prepared = []
     missing = []
-    for position, work in enumerate(WORKS, start=1):
+    for work in WORKS:
         folder = SOURCE / work["source"]
+        cache_version = work.get("cacheVersion")
+        if cache_version is not None and (
+            not isinstance(cache_version, str)
+            or re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]{0,63}", cache_version) is None
+        ):
+            raise ValueError(f"Invalid cache version for {work['slug']}: {cache_version!r}")
         if not folder.exists():
             missing.append(str(folder))
             continue
@@ -266,47 +556,71 @@ def main() -> None:
             if hero not in files:
                 raise FileNotFoundError(f"Configured hero not found: {hero}")
             files = [hero] + [item for item in files if item != hero]
-
-        images = []
-        for index, source in enumerate(files, start=1):
-            basename = f"view-{index:02d}.webp"
-            full_out = PUBLIC / work["slug"] / basename
-            thumb_out = PUBLIC / work["slug"] / f"thumb-{index:02d}.webp"
-            width, height = optimize(source, full_out, max_width=1600, quality=86)
-            optimize(source, thumb_out, max_width=520, quality=78)
-            images.append(
-                {
-                    "src": f"/artworks/{work['slug']}/{basename}",
-                    "thumb": f"/artworks/{work['slug']}/thumb-{index:02d}.webp",
-                    "width": width,
-                    "height": height,
-                    "alt": f"{work['title']}, view {index}",
-                }
-            )
-
-        catalogue.append(
-            {
-                "id": work["slug"],
-                "archiveNumber": f"JF-{position:03d}",
-                "title": work["title"],
-                "material": work.get("material"),
-                "dimensions": work.get("dimensions"),
-                "date": None,
-                "availability": None,
-                "featured": bool(work.get("featured")),
-                "featuredRank": work.get("featuredRank"),
-                "catalogueNote": work.get("catalogueNote"),
-                "prototypeText": work.get("prototypeText"),
-                "story": None,
-                "imageCount": len(images),
-                "images": images,
-            }
-        )
+        for source in files:
+            with Image.open(source) as image:
+                image.verify()
+        prepared.append((work, files))
 
     if missing:
         raise RuntimeError("Catalogue source problems:\n" + "\n".join(missing))
 
-    DATA.write_text(json.dumps(catalogue, ensure_ascii=False, indent=2) + "\n")
+    PUBLIC.parent.mkdir(parents=True, exist_ok=True)
+    DATA.parent.mkdir(parents=True, exist_ok=True)
+    token = uuid.uuid4().hex
+    staged_public = PUBLIC.with_name(f".{PUBLIC.name}.build-{token}")
+    staged_data = DATA.with_name(f".{DATA.name}.build-{token}")
+
+    catalogue = []
+    try:
+        for position, (work, files) in enumerate(prepared, start=1):
+
+            images = []
+            cache_suffix = f"?v={work['cacheVersion']}" if work.get("cacheVersion") else ""
+            for index, source in enumerate(files, start=1):
+                basename = f"view-{index:02d}.webp"
+                full_out = staged_public / work["slug"] / basename
+                thumb_out = staged_public / work["slug"] / f"thumb-{index:02d}.webp"
+                width, height = optimize(source, full_out, max_width=1600, quality=86)
+                optimize(source, thumb_out, max_width=520, quality=78)
+                images.append(
+                    {
+                        "src": f"/artworks/{work['slug']}/{basename}{cache_suffix}",
+                        "thumb": f"/artworks/{work['slug']}/thumb-{index:02d}.webp{cache_suffix}",
+                        "width": width,
+                        "height": height,
+                        "alt": f"{work['title']}, view {index}",
+                    }
+                )
+
+            catalogue.append(
+                {
+                    "id": work["slug"],
+                    "archiveNumber": f"JF-{position:03d}",
+                    "title": work["title"],
+                    "material": work.get("material"),
+                    "dimensions": work.get("dimensions"),
+                    "date": work.get("date"),
+                    "availability": None,
+                    "featured": bool(work.get("featured")),
+                    "featuredRank": work.get("featuredRank"),
+                    "catalogueNote": work.get("catalogueNote"),
+                    "prototypeText": work.get("prototypeText"),
+                    "story": work.get("story"),
+                    "exhibitionHistory": work.get("exhibitionHistory"),
+                    "provenance": work.get("provenance"),
+                    "historicalRecord": work.get("historicalRecord"),
+                    "relatedHistoricalRecords": work.get("relatedHistoricalRecords"),
+                    "imageCount": len(images),
+                    "images": images,
+                }
+            )
+        staged_data.write_text(json.dumps(catalogue, ensure_ascii=False, indent=2) + "\n")
+        publish(staged_public, staged_data, token)
+    finally:
+        if staged_public.exists():
+            shutil.rmtree(staged_public)
+        if staged_data.exists():
+            staged_data.unlink()
     print(f"Built {len(catalogue)} artwork records and {sum(x['imageCount'] for x in catalogue)} image sets")
     print(f"Data: {DATA}")
     print(f"Images: {PUBLIC}")
