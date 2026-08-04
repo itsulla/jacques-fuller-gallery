@@ -233,7 +233,7 @@ components:
 
 **Mode: Experience. Creative North Star: “The Forged Archive.”**
 
-Forged Archive is a permanent-feeling but explicitly unfinished sculpture archive for Jacques Fuller, a Bloemfontein-based sculptor active since 1989. The object leads: the interface is a narrow archive index, a viewport-bound hero, a temporary six-work selection, and a complete working catalogue of 34 records and 232 photographs. A separately dated 61-record historical layer documents the 2001 exhibition without merging historical and current objects by title. It is not a social feed, ecommerce catalogue, or generic portfolio template.
+Forged Archive is a permanent-feeling but explicitly unfinished sculpture archive for Jacques Fuller, a Bloemfontein-based sculptor active since 1989. The object leads: the homepage opens as a six-image mosaic, a static four-work gateway opens a searchable full-screen index of 34 records and 232 photographs, and the separate Process route documents one sculpture step by step. A clearly dated 61-record historical layer documents the 2001 exhibition without merging historical and current objects by title. It is not a social feed, ecommerce catalogue, or generic portfolio template.
 
 The visual world is cold smoke-grey and mineral on the light side, deep green-black oxide in archive and viewer chapters, and one restrained patina-green accent. Brass remains material evidence inside the supplied photography, never a UI color. Square geometry, hairline rules, contained sculpture images, and very little motion create a forged, structural reading experience.
 
@@ -264,11 +264,11 @@ Petrona uses negative tracking and tight leading for monograph scale. Technical 
 
 ## Layout
 
-The desktop shell is a fixed, narrow archive rail (`clamp(8.5rem, 10.5vw, 10.5rem)`) beside the main content. The rail is sticky and contains the JF mark, primary links, live counts, and Bloemfontein descriptor. The hero is viewport-bound (`100dvh`, capped at `68rem`) on a twelve-column grid: Jacques Fuller occupies the left, the supplied Ship of Fools photograph sits in a central object stage, and its record/action occupies the right. Sculpture images use `object-fit: contain`; full silhouettes are never decoratively cropped.
+The shell is full-width. A deterministic oxide navigation bar sits above the page; on the homepage it overlays the first mosaic without inheriting image contrast. The hero is viewport-bound and uses a six-column editorial mosaic: six reversible selected works surround an intrinsic-height ivory identity cell containing Jacques Fuller and the primary archive action. Sculpture images use `object-fit: contain`; full silhouettes are never decoratively cropped.
 
-The six selected works are reversible curation, not a ranking. They use three composition families, cycling by rank: **platform** (large left image, right record, lower detail), **offset** (right image with offset detail and lower record), and **study** (image/detail pair with a spanning record). They are deliberately not alternating selected rows or equal cards. Archive 2001 is an editorial historical chapter: one paper statement and dated quotation, a typographic theme ledger, and two asymmetric relationship studies that distinguish “same object” from “different work, same title.” No catalogue photography ships without rights clearance. About follows with the 2001 biography and timeline before the complete current index.
+After the introduction, a static four-work gateway represents the current archive without repeating the complete catalogue. Its action opens a searchable full-screen index with 34 compact image-led rows, an honest empty state, URL/history integration, and Back-to-index behavior from work records. Archive 2001 follows as three explicit chapters—Catalogue context, Recurring forms, and Two identity cases—before About and the deliberate end-of-index action.
 
-The artwork viewer opens as a fixed full-screen dialog. Its opening is a 12-column, **75/25** composition: the identity/facts rail occupies columns 1–3 and the image stage occupies columns 4–12. The stage and previous/next controls remain in the opening viewport; all supplied thumbnails follow in a horizontal strip. A paper record chapter holds the visual catalogue note and future story, followed by details/alternate views and previous/next work navigation.
+The artwork viewer opens as a fixed full-screen dialog. Its opening keeps the complete active image, previous/next controls, live count, and all supplied thumbnails in the desktop viewport. A paper record chapter follows with facts, the archive-state key, catalogue note, artist account, exhibition history, provenance, alternate views, and previous/next work navigation. Image failures keep alternate thumbnails visible and expose a Retry action.
 
 ### Spacing and geometry
 
@@ -276,11 +276,10 @@ Use the shared rhythm: `1px` hairline, `4px` micro gap, `8px` small unit, `16px`
 
 ### Breakpoints
 
-- **1100px:** rail becomes `8rem`; hero columns rebalance; archive becomes three columns.
-- **800px:** rail becomes a 4rem sticky top bar; hero becomes a stacked mobile composition; selected-work families collapse to image, record, detail; living archive, artist, viewer record, and sequence become one-column flows; archive becomes two columns.
-- **430px:** navigation tightens; hero record/action and summary stack; hero counts and archive become one column; archive cards become one column.
+- **720px container:** navigation tightens while retaining a 12px operational floor; the mosaic becomes two columns with an intrinsic-height identity row; the gateway becomes a 2×2 tile grid; archive chapters, relationship studies, biography, and process stages become one-column flows.
+- **720px viewport:** the archive index becomes a single-column row list, the viewer header uses compact auto-width controls, and thumbnails remain horizontally scrollable.
 
-The base document supports a 320px minimum viewport. Mobile hero art is `min(39svh, 29rem)`; selected image stages are `min(68svh, 40rem)`; viewer stage is `min(76svh, 46rem)` so the work remains the primary object at small sizes.
+The base document supports a 320px minimum viewport. Mobile keeps the complete hero title/action inside its ivory cell, uses contained sculpture photography, and avoids horizontal document overflow.
 
 ## Elevation & Depth
 
@@ -292,26 +291,23 @@ Every join is square: image stages, archive cards, buttons, metadata groups, thu
 
 ## Components
 
-### Archive rail and navigation
-A sticky desktop index becomes a 4rem mobile top bar. Navigation uses Fira Sans Condensed and maintains 44px minimum links. The skip link appears on focus and jumps to selected works.
+### Navigation
+The full-width oxide bar uses Fira Sans Condensed, 44px minimum targets, visible `aria-current` underlines, and a stable owned background over the hero. Work opens the archive index; Archive, Process, and About remain direct page targets.
 
-### Viewport-bound hero
-A 12-column hero introduces Jacques Fuller and Ship of Fools at object scale. The lead artwork is high-priority, contained photography; the record exposes only supplied facts and a direct “Open record” action. Mobile reorders title, artwork, record, and counts without losing the object-led sequence.
+### Mosaic hero
+Six reversible selected works surround one ivory identity cell. The lead images are high-priority, contained photography; every image button opens the complete work record. Mobile preserves the 2-column visual sequence and gives the identity row intrinsic height so title and action cannot escape it.
 
-### Selected work
-Each selected item is an `<article>` with a button image stage, selection number, title, known catalogue line, factual visual observation, detail study, and “Open record” text action. Platform, offset, and study are composition families, not data states; all six remain reversible.
+### Current archive gateway and index
+Four recent records form a static, image-led gateway. The full catalogue lives only in the modal archive index: searchable title/archive number, 34 square-edged rows, factual thumbnails/counts, keyboard focus trap, Escape close, inert background, and history-aware work opening.
 
-### Complete archive card
-A borderless, square-edged button contains a 4:5 contained thumbnail, archive number, title, and view count. It is subordinate to the selected sequence and never becomes a rounded card wall.
-
-### Living archive chapter
-The oxide chapter exposes future paths named Voice, Studio, and Record. Existing detail studies are explicitly captioned as existing photographic detail. No absent workshop evidence is implied or substituted.
+### Archive 2001
+The historical chapter is explicitly dated and source-led. A three-link chapter index separates Catalogue context, Recurring forms, and Two identity cases. The two relationship studies distinguish “same physical work” from “different work, same title”; no catalogue photography ships without rights clearance.
 
 ### Artwork viewer
-The viewer is `role="dialog"`, `aria-modal="true"`, fixed, scrollable, and full-screen. It focuses Close record on open, restores the previous focus on close, traps Tab focus, closes on Escape, and maps ArrowLeft/ArrowRight to photograph navigation. Previous/next buttons, labelled thumbnails, live photograph position, explicit `aria-current`, and previous/next work controls make the sequence operable without a pointer.
+The viewer is `role="dialog"`, `aria-modal="true"`, fixed, scrollable, and full-screen. It focuses the compact Close control on open, restores the previous focus on close, traps Tab focus, closes on Escape, and maps ArrowLeft/ArrowRight to photograph navigation. Previous/next buttons, labelled thumbnails, live photograph position, explicit `aria-current`, recoverable image errors, and previous/next work controls make the sequence operable without a pointer.
 
 ### Metadata record
-Facts are rendered as labelled rows. Known material, dimensions, date, and status are shown only when present in the source record; otherwise the exact visible value is **“Not recorded.”** Catalogue notes and future stories are separated from factual fields.
+Facts are rendered as labelled rows. Known material, dimensions, date, and status are shown only when present in the source record. Missing factual evidence is **“Not recorded.”** Unfinished catalogue work is **“Research pending.”** Future testimony is **“Awaiting artist/family account.”**
 
 ## Motion
 

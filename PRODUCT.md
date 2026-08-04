@@ -32,14 +32,14 @@ Artwork descriptions, dates, stories, availability, exhibition history, and full
 
 - Responsive web gallery with 34 current artwork records and 232 photographs.
 - A distinct 61-record historical catalogue layer sourced to *Jacques Fuller: Sculptor* (Sanlam Art Collection, 2001).
-- A reversible six-work curatorial selection leads the monograph-style homepage; the complete working archive remains available below it.
+- A reversible six-work curatorial mosaic leads the monograph-style homepage; a four-work static gateway opens the complete searchable archive in a full-screen index.
 - Multiple-image carousel or gallery for every sculpture.
 - Individual artwork detail view with placeholders for future stories and catalogue fields.
 - Factual metadata is shown only when present in the source folder name or a cited historical source.
 - Current and historical records use separate IDs; title matches do not establish object identity.
-- Unknown dates, materials, dimensions, availability, and interpretations remain visibly marked as pending rather than invented.
+- Missing facts use **“Not recorded.”** Unfinished catalogue tasks use **“Research pending.”** Future testimony uses **“Awaiting artist/family account.”**
 - Initial images are Facebook-derived JPEGs rather than guaranteed camera originals.
-- The first build is a private preview, not a public production launch.
+- Preview and production deployments remain separate; review builds are private over Tailscale and never imply a production release.
 - Sanity Studio is the recommended post-approval editing and upload interface; it is intentionally not connected until editor accounts and a production deployment are chosen.
 - Final collector enquiry and publication-approval workflows remain open decisions.
 
@@ -66,7 +66,7 @@ Artwork descriptions, dates, stories, availability, exhibition history, and full
 
 1. The sculpture leads; interface elements recede.
 2. Multiple views belong to one artwork record, never a disconnected image feed.
-3. Missing facts remain explicit placeholders, never plausible-looking inventions.
+3. Missing facts use the explicit archive-state taxonomy, never plausible-looking inventions.
 4. Material, scale, process, and surface detail deserve the same attention as silhouette.
 5. The archive should grow without changing its underlying structure.
 6. Historical ownership, biography, and interview material must remain visibly dated and source-attributed.

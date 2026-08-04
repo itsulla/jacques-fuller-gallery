@@ -8,6 +8,7 @@ import './archive.css'
 const selectedWorks = artworks
   .filter((work) => work.featured)
   .sort((a, b) => a.featuredRank - b.featuredRank)
+const archiveGatewayWorks = artworks.slice(-4)
 
 const processWork = artworks.find((work) => work.id === 'mermaid')
 const processPhotos = [
@@ -73,15 +74,27 @@ function formatNumber(value) {
   return String(value).padStart(2, '0')
 }
 
-function ImageWithState({ src, alt, className = '', ...props }) {
+function ImageWithState({ src, alt, className = '', loadingLabel = 'Image loading', recoverable = false, ...props }) {
   const [state, setState] = useState('loading')
+  const [retry, setRetry] = useState(0)
+  const imageSrc = retry ? `${src}${src.includes('?') ? '&' : '?'}retry=${retry}` : src
+
+  const retryImage = () => {
+    setState('loading')
+    setRetry((value) => value + 1)
+  }
 
   return (
     <span className={`image-shell image-shell--${state} ${className}`.trim()}>
-      {state === 'loading' && <span className="image-message">Loading image</span>}
-      {state === 'error' && <span className="image-message">Image unavailable</span>}
+      {state === 'loading' && <span className="image-message">{loadingLabel}</span>}
+      {state === 'error' && (
+        <span className="image-message">
+          <span>Image unavailable</span>
+          {recoverable && <button type="button" onClick={retryImage}>Retry image</button>}
+        </span>
+      )}
       <img
-        src={src}
+        src={imageSrc}
         alt={alt}
         onLoad={() => setState('ready')}
         onError={() => setState('error')}
@@ -124,14 +137,14 @@ function ArtworkButton({ work, onOpen, className = '', thumb = false, eager = fa
   )
 }
 
-function SiteNav({ className = '' }) {
+function SiteNav({ className = '', current = 'work', onOpenArchive }) {
   return (
     <header className={`direction-nav ${className}`.trim()}>
       <a className="direction-nav__mark" href="/">Jacques Fuller</a>
       <nav aria-label="Primary navigation">
-        <a href="/#work">Work</a>
+        <button type="button" onClick={onOpenArchive} aria-current={current === 'work' ? 'page' : undefined}>Work</button>
         <a href="/#archive">Archive</a>
-        <a href="/?page=process">Process</a>
+        <a href="/?page=process" aria-current={current === 'process' ? 'page' : undefined}>Process</a>
         <a href="/#about">About</a>
       </nav>
     </header>
@@ -180,7 +193,7 @@ function Archive2001({ onOpen }) {
 
   return (
     <section className="r5-archive" id="archive" aria-labelledby="archive-title">
-      <div className="r5-archive__statement">
+      <div className="r5-archive__statement" id="archive-context">
         <header>
           <p>Historical exhibition catalogue</p>
           <h2 id="archive-title">Archive 2001</h2>
@@ -196,7 +209,13 @@ function Archive2001({ onOpen }) {
         </blockquote>
       </div>
 
-      <div className="r5-archive__themes" aria-labelledby="archive-themes-title">
+      <nav className="r5-archive__chapters" aria-label="Archive 2001 chapters">
+        <a href="#archive-context" aria-label="Catalogue context"><span>01</span><span>Catalogue context</span></a>
+        <a href="#archive-themes" aria-label="Recurring forms"><span>02</span><span>Recurring forms</span></a>
+        <a href="#archive-identities" aria-label="Two identity cases"><span>03</span><span>Two identity cases</span></a>
+      </nav>
+
+      <div className="r5-archive__themes" id="archive-themes" aria-labelledby="archive-themes-title">
         <header>
           <p>Across the catalogue</p>
           <h3 id="archive-themes-title">Recurring forms</h3>
@@ -209,7 +228,12 @@ function Archive2001({ onOpen }) {
         <p>Editorial groupings observed in the 2001 catalogue; they are not categories assigned by Jacques.</p>
       </div>
 
-      <div className="r5-archive__relationships" aria-label="Relationships between the 2001 and current archives">
+      <div className="r5-archive__relationships" id="archive-identities" aria-labelledby="archive-identities-title">
+        <header className="r5-archive__identities-heading">
+          <p>Relationship to the current archive</p>
+          <h3 id="archive-identities-title">Two identity cases</h3>
+          <p>One object survives in both records. One title returns on a different sculpture.</p>
+        </header>
         <article className="r5-archive__relationship r5-archive__relationship--same">
           <ArtworkButton
             work={hoeRyWork}
@@ -252,8 +276,7 @@ function Archive2001({ onOpen }) {
       </div>
 
       <footer className="r5-archive__source">
-        <p>Source: <cite>{historicalCatalogue.source.title}</cite>, {historicalCatalogue.source.publisher}, {historicalCatalogue.source.year}, catalogue pp. 24–27.</p>
-        <p>No catalogue photography is reproduced here pending rights clearance.</p>
+        <p>Source: <cite>{historicalCatalogue.source.title}</cite>, {historicalCatalogue.source.publisher}, {historicalCatalogue.source.year}, catalogue pp. 24–27. Catalogue photography is not reproduced pending rights clearance.</p>
       </footer>
     </section>
   )
@@ -290,122 +313,135 @@ function MaterialHistory() {
   )
 }
 
-function DirectionFooter() {
+function DirectionFooter({ label = 'End of index', onOpenArchive }) {
   return (
     <footer className="direction-footer">
-      <p>Jacques Fuller</p>
+      <div>
+        <p>{label}</p>
+        <p>Jacques Fuller</p>
+      </div>
+      {onOpenArchive && <button type="button" onClick={onOpenArchive}>Open archive index</button>}
       <p>Bloemfontein, South Africa</p>
     </footer>
   )
 }
 
-function ImmersiveWorkIndex({ works, onOpen }) {
-  const [activeId, setActiveId] = useState(works[0].id)
-  const activeWork = works.find((work) => work.id === activeId) || works[0]
-
+function ArchiveGateway({ onOpen, onOpenArchive }) {
   return (
-    <div className="r5-browser">
-      <div className="r5-browser__preview">
-        <ArtworkButton key={activeWork.id} work={activeWork} onOpen={onOpen} />
-        <div aria-live="polite">
-          <div>
-            <p>{activeWork.title}</p>
-            <WorkFacts work={activeWork} />
-          </div>
-          <button type="button" onClick={() => onOpen(activeWork.id)}>Open work</button>
+    <section className="r5-archive-gateway" id="current-archive" aria-labelledby="current-archive-title">
+      <header>
+        <div>
+          <p>Current archive · {artworks.length} works</p>
+          <h2 id="current-archive-title">The complete record</h2>
         </div>
-      </div>
-      <ol className="r5-browser__list">
-        {works.map((work) => (
-          <li key={work.id} className={work.id === activeId ? 'is-active' : ''}>
-            <button
-              type="button"
-              onMouseEnter={() => setActiveId(work.id)}
-              onFocus={() => setActiveId(work.id)}
-              onClick={() => onOpen(work.id)}
-            >
-              <span className="r5-browser__mobile-thumb" aria-hidden="true">
-                <img src={work.images[0].thumb} alt="" loading="lazy" />
-              </span>
-              <span>{work.title}</span>
-              <span>View</span>
-            </button>
-          </li>
+        <div>
+          <p>Search every title, inspect all available photographic views, and open a source-aware work record.</p>
+          <button type="button" onClick={onOpenArchive}>Browse all {artworks.length} works</button>
+        </div>
+      </header>
+      <div className="r5-archive-gateway__works">
+        {archiveGatewayWorks.map((work) => (
+          <article key={work.id}>
+            <ArtworkButton work={work} onOpen={onOpen} thumb />
+            <p>{work.archiveNumber}</p>
+            <h3>{work.title}</h3>
+          </article>
         ))}
-      </ol>
-    </div>
-  )
-}
-
-function RailArtwork({ work, onOpen, duplicate = false }) {
-  const image = work.images[0]
-  const ratio = image.width / image.height
-  const shape = ratio > 1.18 ? 'wide' : ratio < 0.78 ? 'tall' : 'standard'
-  const content = (
-    <>
-      <span className="r5-rail__image">
-        <img src={image.thumb} alt={duplicate ? '' : image.alt} loading="lazy" width={image.width} height={image.height} />
-      </span>
-      <span>{work.title}</span>
-    </>
-  )
-
-  if (duplicate) {
-    return <article className={`r5-rail__item is-${shape}`}>{content}</article>
-  }
-
-  return (
-    <button
-      type="button"
-      className={`r5-rail__item is-${shape}`}
-      onClick={() => onOpen(work.id)}
-      aria-label={`View ${work.title}`}
-    >
-      {content}
-    </button>
-  )
-}
-
-function MovingWorkRail({ works, onOpen }) {
-  const [inView, setInView] = useState(false)
-  const railRef = useRef(null)
-  const duration = Math.max(72, works.length * 4.5)
-
-  useEffect(() => {
-    const rail = railRef.current
-    if (!rail) return undefined
-    const observer = new IntersectionObserver(
-      ([entry]) => setInView(entry.isIntersecting),
-      { rootMargin: '240px 0px' },
-    )
-    observer.observe(rail)
-    return () => observer.disconnect()
-  }, [])
-
-  return (
-    <section
-      ref={railRef}
-      className={`r5-rail ${!inView ? 'is-paused' : ''}`}
-      aria-label="Browse all works"
-    >
-      <div className="r5-rail__viewport">
-        <div className="r5-rail__track" style={{ '--r5-rail-duration': `${duration}s` }}>
-          <div className="r5-rail__group">
-            {works.map((work) => <RailArtwork key={work.id} work={work} onOpen={onOpen} />)}
-          </div>
-          <div className="r5-rail__group" aria-hidden="true">
-            {works.map((work) => <RailArtwork key={`duplicate-${work.id}`} work={work} duplicate />)}
-          </div>
-        </div>
       </div>
     </section>
   )
 }
 
-function ImmersiveIndex({ onOpen }) {
+function ArchiveIndex({ works, onClose, onOpen, returnFocusRef }) {
+  const [query, setQuery] = useState('')
+  const dialogRef = useRef(null)
+  const searchRef = useRef(null)
+  const normalizedQuery = query.trim().toLocaleLowerCase()
+  const filteredWorks = works.filter((work) => (
+    !normalizedQuery
+    || `${work.title} ${work.archiveNumber || ''}`.toLocaleLowerCase().includes(normalizedQuery)
+  ))
+
+  useEffect(() => {
+    const previousOverflow = document.body.style.overflow
+    const previousFocus = returnFocusRef.current || document.activeElement
+    document.body.style.overflow = 'hidden'
+    searchRef.current?.focus()
+
+    const onKeyDown = (event) => {
+      if (event.key === 'Escape') onClose()
+      if (event.key === 'Tab') {
+        const focusable = [...(dialogRef.current?.querySelectorAll('button:not([disabled]), input:not([disabled])') || [])]
+        const first = focusable[0]
+        const last = focusable[focusable.length - 1]
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault()
+          last?.focus()
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault()
+          first?.focus()
+        }
+      }
+    }
+
+    window.addEventListener('keydown', onKeyDown)
+    return () => {
+      window.removeEventListener('keydown', onKeyDown)
+      document.body.style.overflow = previousOverflow
+      if (previousFocus instanceof HTMLElement && previousFocus.isConnected) previousFocus.focus()
+    }
+  }, [onClose, returnFocusRef])
+
+  return (
+    <div ref={dialogRef} className="archive-index" role="dialog" aria-modal="true" aria-labelledby="archive-index-title">
+      <header className="archive-index__bar">
+        <div>
+          <p>Current archive · {works.length} works</p>
+          <h2 id="archive-index-title">Browse the work</h2>
+        </div>
+        <button type="button" onClick={onClose}>Close archive</button>
+      </header>
+      <div className="archive-index__tools">
+        <label htmlFor="archive-search">Search current archive</label>
+        <input
+          ref={searchRef}
+          id="archive-search"
+          type="search"
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+          placeholder="Title or archive number"
+          autoComplete="off"
+        />
+        <p aria-live="polite">{filteredWorks.length} {filteredWorks.length === 1 ? 'work' : 'works'}</p>
+      </div>
+      {filteredWorks.length ? (
+        <ol className="archive-index__list">
+          {filteredWorks.map((work) => (
+            <li key={work.id}>
+              <button type="button" onClick={() => onOpen(work.id)}>
+                <span className="archive-index__thumb" aria-hidden="true">
+                  <img src={work.images[0].thumb} alt="" loading="lazy" />
+                </span>
+                <span>
+                  <strong>{work.title}</strong>
+                  <small>{work.archiveNumber} · {work.images.length} {work.images.length === 1 ? 'view' : 'views'}</small>
+                </span>
+                <span>Open record</span>
+              </button>
+            </li>
+          ))}
+        </ol>
+      ) : (
+        <p className="archive-index__empty">No works match this search.</p>
+      )}
+    </div>
+  )
+}
+
+function ImmersiveIndex({ onOpen, onOpenArchive }) {
   return (
     <article className="direction direction--immersive" id="top">
-      <SiteNav />
+      <SiteNav onOpenArchive={onOpenArchive} />
       <main>
         <section className="r5-mosaic" aria-labelledby="r5-title">
           {selectedWorks.map((work, index) => (
@@ -420,39 +456,30 @@ function ImmersiveIndex({ onOpen }) {
           <div className="r5-mosaic__identity">
             <p>Sculpture · Brass, steel, copper and found material</p>
             <h1 id="r5-title">Jacques<br />Fuller</h1>
-            <a href="#work">Enter the work</a>
+            <button type="button" onClick={onOpenArchive}>Explore the archive</button>
           </div>
         </section>
 
         <section className="r5-intro" aria-label="Introduction">
           <p>Metal, machinery and found material shaped into figures, animals and narrative constructions.</p>
-          <a href="#work">Browse all works</a>
         </section>
 
-        <MovingWorkRail works={artworks} onOpen={onOpen} />
+        <ArchiveGateway onOpen={onOpen} onOpenArchive={onOpenArchive} />
 
         <Archive2001 onOpen={onOpen} />
         <AboutCopy className="r5-about" />
-
-        <section className="r5-index" id="work" aria-labelledby="r5-index-title">
-          <header>
-            <p>Works</p>
-            <h2 id="r5-index-title">Browse by title</h2>
-          </header>
-          <ImmersiveWorkIndex works={artworks} onOpen={onOpen} />
-        </section>
       </main>
-      <DirectionFooter />
+      <DirectionFooter onOpenArchive={onOpenArchive} />
     </article>
   )
 }
 
-function ImmersiveProcess({ onOpen }) {
+function ImmersiveProcess({ onOpen, onOpenArchive }) {
   const finishedImage = processWork.images[0]
 
   return (
     <article className="direction direction--immersive direction--process" id="top">
-      <SiteNav />
+      <SiteNav current="process" onOpenArchive={onOpenArchive} />
       <main className="r5-process">
         <header className="r5-process__heading">
           <h1>Process</h1>
@@ -490,6 +517,8 @@ function ImmersiveProcess({ onOpen }) {
                     <ImageWithState
                       src={photo.src}
                       alt={photo.alt}
+                      loadingLabel={`Photograph ${photo.number} loading`}
+                      recoverable
                       width={photo.width}
                       height={photo.height}
                       loading={stageIndex === 0 && photoIndex === 0 ? 'eager' : 'lazy'}
@@ -523,7 +552,7 @@ function ImmersiveProcess({ onOpen }) {
           </footer>
         </section>
       </main>
-      <DirectionFooter />
+      <DirectionFooter label="End of process" onOpenArchive={onOpenArchive} />
     </article>
   )
 }
@@ -592,6 +621,7 @@ function WorkViewer({ work, onClose, onMoveWork, returnFocusRef }) {
             key={activeImage.src}
             src={activeImage.src}
             alt={activeImage.alt}
+            recoverable
             width={activeImage.width}
             height={activeImage.height}
           />
@@ -627,6 +657,10 @@ function WorkViewer({ work, onClose, onMoveWork, returnFocusRef }) {
             <p>{work.title}</p>
           </header>
 
+          <p className="viewer__record-key">
+            Archive states: <strong>Not recorded</strong> means absent from the current source; <strong>Research pending</strong> marks catalogue work still to complete; <strong>Awaiting artist/family account</strong> marks future testimony.
+          </p>
+
           <dl className="viewer__record-facts">
             {recordFacts.map(([label, value]) => (
               <div key={label}>
@@ -639,15 +673,15 @@ function WorkViewer({ work, onClose, onMoveWork, returnFocusRef }) {
           <div className="viewer__record-notes">
             <section>
               <h3>Working description</h3>
-              <p>{work.prototypeText || 'Pending description.'}</p>
+              <p>{work.prototypeText || 'Research pending.'}</p>
             </section>
             <section>
               <h3>Catalogue note</h3>
-              <p>{work.catalogueNote || 'Pending catalogue research.'}</p>
+              <p>{work.catalogueNote || 'Research pending.'}</p>
             </section>
             <section>
               <h3>Artist&apos;s account</h3>
-              <p>{work.story || 'Not recorded'}</p>
+              <p>{work.story || 'Awaiting artist/family account.'}</p>
             </section>
             <section>
               <h3>Exhibition history</h3>
@@ -704,11 +738,13 @@ function WorkViewer({ work, onClose, onMoveWork, returnFocusRef }) {
 function App() {
   const page = new URLSearchParams(window.location.search).get('page') === 'process' ? 'process' : 'home'
   const workTriggerRef = useRef(null)
+  const archiveTriggerRef = useRef(null)
   const initialWork = useMemo(() => {
     const match = window.location.hash.match(/^#work\/(.+)$/)
     return match && artworks.some((work) => work.id === match[1]) ? match[1] : null
   }, [])
   const [selectedId, setSelectedId] = useState(initialWork)
+  const [archiveOpen, setArchiveOpen] = useState(window.location.hash === '#catalogue')
   const selectedWork = artworks.find((work) => work.id === selectedId)
 
   useEffect(() => {
@@ -720,6 +756,7 @@ function App() {
       const match = window.location.hash.match(/^#work\/(.+)$/)
       const id = match?.[1]
       setSelectedId(id && artworks.some((work) => work.id === id) ? id : null)
+      setArchiveOpen(window.location.hash === '#catalogue')
     }
     window.addEventListener('hashchange', syncWorkFromUrl)
     window.addEventListener('popstate', syncWorkFromUrl)
@@ -733,6 +770,7 @@ function App() {
     const trigger = document.activeElement
     if (trigger instanceof HTMLElement && !trigger.closest('.viewer')) workTriggerRef.current = trigger
     setSelectedId(id)
+    setArchiveOpen(false)
     const url = `${window.location.pathname}${window.location.search}#work/${id}`
     if (selectedId) {
       window.history.replaceState(window.history.state, '', url)
@@ -750,6 +788,27 @@ function App() {
     window.history.replaceState(window.history.state, '', `${window.location.pathname}${window.location.search}`)
   }
 
+  const openArchive = () => {
+    const trigger = document.activeElement
+    if (trigger instanceof HTMLElement && !trigger.closest('.archive-index')) archiveTriggerRef.current = trigger
+    setSelectedId(null)
+    setArchiveOpen(true)
+    window.history.pushState(
+      { galleryCatalogue: true },
+      '',
+      `${window.location.pathname}${window.location.search}#catalogue`,
+    )
+  }
+
+  const closeArchive = () => {
+    if (window.history.state?.galleryCatalogue) {
+      window.history.back()
+      return
+    }
+    setArchiveOpen(false)
+    window.history.replaceState(window.history.state, '', `${window.location.pathname}${window.location.search}`)
+  }
+
   const moveWork = (direction) => {
     const currentIndex = artworks.findIndex((work) => work.id === selectedId)
     const nextIndex = (currentIndex + direction + artworks.length) % artworks.length
@@ -758,13 +817,21 @@ function App() {
 
   return (
     <>
-      <div className="app-surface" inert={selectedWork ? true : undefined} aria-hidden={selectedWork ? 'true' : undefined}>
+      <div className="app-surface" inert={selectedWork || archiveOpen ? true : undefined} aria-hidden={selectedWork || archiveOpen ? 'true' : undefined}>
         <div className="preview-viewport preview-viewport--clean">
           {page === 'process'
-            ? <ImmersiveProcess onOpen={openWork} />
-            : <ImmersiveIndex onOpen={openWork} />}
+            ? <ImmersiveProcess onOpen={openWork} onOpenArchive={openArchive} />
+            : <ImmersiveIndex onOpen={openWork} onOpenArchive={openArchive} />}
         </div>
       </div>
+      {archiveOpen && (
+        <ArchiveIndex
+          works={artworks}
+          onClose={closeArchive}
+          onOpen={openWork}
+          returnFocusRef={archiveTriggerRef}
+        />
+      )}
       {selectedWork && (
         <WorkViewer
           work={selectedWork}

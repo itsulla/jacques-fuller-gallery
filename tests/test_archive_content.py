@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 HISTORICAL_DATA = ROOT / "src" / "data" / "historicalCatalogue.json"
 ARTIST_DATA = ROOT / "src" / "data" / "artist.json"
 ARTWORKS_DATA = ROOT / "src" / "data" / "artworks.json"
+APP_SOURCE = ROOT / "src" / "App.jsx"
 BUILDER = ROOT / "scripts" / "build_catalogue.py"
 
 
@@ -129,6 +130,22 @@ class CurrentCatalogueLinkTests(unittest.TestCase):
         relation = current["relatedHistoricalRecords"][0]
         self.assertEqual(relation["id"], "JF2001-058")
         self.assertEqual(relation["relationship"], "reused-title-different-object")
+
+
+class PresentationLanguageTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.app_source = APP_SOURCE.read_text()
+
+    def test_archive_states_use_one_defined_public_taxonomy(self):
+        self.assertIn("Not recorded", self.app_source)
+        self.assertIn("Research pending.", self.app_source)
+        self.assertIn("Awaiting artist/family account.", self.app_source)
+        self.assertNotIn("Pending description.", self.app_source)
+        self.assertNotIn("Pending catalogue research.", self.app_source)
+
+    def test_process_loading_copy_identifies_the_numbered_photograph(self):
+        self.assertIn("Photograph ${photo.number} loading", self.app_source)
 
 
 if __name__ == "__main__":
