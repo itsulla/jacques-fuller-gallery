@@ -116,17 +116,45 @@ class CurrentCatalogueLinkTests(unittest.TestCase):
             ("servamus-et-servimus", "JF-040", "Servamus et Servimus", 4),
         ]
 
+        expected_ids = {item[0] for item in expected}
+        batch = [work for work in artworks if work["id"] in expected_ids]
         actual = [
             (work["id"], work["archiveNumber"], work["title"], work["imageCount"])
-            for work in artworks[-6:]
+            for work in batch
         ]
 
-        self.assertEqual(len(artworks), 40)
         self.assertEqual(actual, expected)
-        for work in artworks[-6:]:
+        for work in batch:
             self.assertIsNone(work["material"])
             self.assertIsNone(work["dimensions"])
             self.assertIsNone(work["date"])
+
+    def test_20260806_drive_records_are_generated_in_stable_order(self):
+        artworks = load_json(ARTWORKS_DATA)
+        expected = [
+            ("jewellery", "JF-041", "Jewellery", 21),
+            ("connoisseur", "JF-042", "CONNOISSEUR", 4),
+            ("summer-time", "JF-043", "SUMMER TIME", 5),
+            ("tourist", "JF-044", "Tourist", 6),
+            ("uil-spieel", "JF-045", "Uil Spieël", 5),
+        ]
+
+        actual = [
+            (work["id"], work["archiveNumber"], work["title"], work["imageCount"])
+            for work in artworks[-5:]
+        ]
+
+        self.assertEqual(len(artworks), 45)
+        self.assertEqual(sum(work["imageCount"] for work in artworks), 311)
+        self.assertEqual(actual, expected)
+        for work in artworks[-5:]:
+            self.assertIsNone(work["material"])
+            self.assertIsNone(work["dimensions"])
+            self.assertIsNone(work["date"])
+        jewellery = artworks[-5]
+        self.assertEqual(jewellery["photoCredit"], "Marie Girard")
+        self.assertEqual(jewellery["recordType"], "collection")
+        self.assertEqual(jewellery["imageLabel"], "image")
 
     def test_current_and_generator_records_carry_the_same_confirmed_link(self):
         artworks = load_json(ARTWORKS_DATA)
@@ -166,6 +194,10 @@ class PresentationLanguageTests(unittest.TestCase):
         self.assertIn("Awaiting artist/family account.", self.app_source)
         self.assertNotIn("Pending description.", self.app_source)
         self.assertNotIn("Pending catalogue research.", self.app_source)
+
+    def test_optional_photo_credit_is_rendered_as_a_record_fact(self):
+        self.assertIn("Photo credit", self.app_source)
+        self.assertIn("work.photoCredit", self.app_source)
 
     def test_process_loading_copy_identifies_the_numbered_photograph(self):
         self.assertIn("Photograph ${photo.number} loading", self.app_source)

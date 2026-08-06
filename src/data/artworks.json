@@ -2744,5 +2744,400 @@
         "alt": "Servamus et Servimus, view 4"
       }
     ]
+  },
+  {
+    "id": "jewellery",
+    "archiveNumber": "JF-041",
+    "title": "Jewellery",
+    "material": null,
+    "dimensions": null,
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": "The supplied Drive folder groups multiple distinct pieces under the title Jewellery; the archive therefore presents it as one collection record rather than as views of a single object.",
+    "prototypeText": "A photographic group of multiple distinct wearable pieces, shown on the body or held in hand.",
+    "story": null,
+    "exhibitionHistory": null,
+    "provenance": null,
+    "historicalRecord": null,
+    "relatedHistoricalRecords": null,
+    "imageCount": 21,
+    "images": [
+      {
+        "src": "/artworks/jewellery/view-01.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/jewellery/thumb-01.webp?v=drive-import-20260806-r1",
+        "width": 700,
+        "height": 701,
+        "alt": "Jewellery, image 1"
+      },
+      {
+        "src": "/artworks/jewellery/view-02.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/jewellery/thumb-02.webp?v=drive-import-20260806-r1",
+        "width": 700,
+        "height": 467,
+        "alt": "Jewellery, image 2"
+      },
+      {
+        "src": "/artworks/jewellery/view-03.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/jewellery/thumb-03.webp?v=drive-import-20260806-r1",
+        "width": 960,
+        "height": 641,
+        "alt": "Jewellery, image 3"
+      },
+      {
+        "src": "/artworks/jewellery/view-04.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/jewellery/thumb-04.webp?v=drive-import-20260806-r1",
+        "width": 640,
+        "height": 960,
+        "alt": "Jewellery, image 4"
+      },
+      {
+        "src": "/artworks/jewellery/view-05.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/jewellery/thumb-05.webp?v=drive-import-20260806-r1",
+        "width": 700,
+        "height": 467,
+        "alt": "Jewellery, image 5"
+      },
+      {
+        "src": "/artworks/jewellery/view-06.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/jewellery/thumb-06.webp?v=drive-import-20260806-r1",
+        "width": 628,
+        "height": 960,
+        "alt": "Jewellery, image 6"
+      },
+      {
+        "src": "/artworks/jewellery/view-07.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/jewellery/thumb-07.webp?v=drive-import-20260806-r1",
+        "width": 800,
+        "height": 533,
+        "alt": "Jewellery, image 7"
+      },
+      {
+        "src": "/artworks/jewellery/view-08.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/jewellery/thumb-08.webp?v=drive-import-20260806-r1",
+        "width": 800,
+        "height": 533,
+        "alt": "Jewellery, image 8"
+      },
+      {
+        "src": "/artworks/jewellery/view-09.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/jewellery/thumb-09.webp?v=drive-import-20260806-r1",
+        "width": 800,
+        "height": 533,
+        "alt": "Jewellery, image 9"
+      },
+      {
+        "src": "/artworks/jewellery/view-10.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/jewellery/thumb-10.webp?v=drive-import-20260806-r1",
+        "width": 640,
+        "height": 960,
+        "alt": "Jewellery, image 10"
+      },
+      {
+        "src": "/artworks/jewellery/view-11.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/jewellery/thumb-11.webp?v=drive-import-20260806-r1",
+        "width": 640,
+        "height": 960,
+        "alt": "Jewellery, image 11"
+      },
+      {
+        "src": "/artworks/jewellery/view-12.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/jewellery/thumb-12.webp?v=drive-import-20260806-r1",
+        "width": 800,
+        "height": 527,
+        "alt": "Jewellery, image 12"
+      },
+      {
+        "src": "/artworks/jewellery/view-13.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/jewellery/thumb-13.webp?v=drive-import-20260806-r1",
+        "width": 640,
+        "height": 960,
+        "alt": "Jewellery, image 13"
+      },
+      {
+        "src": "/artworks/jewellery/view-14.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/jewellery/thumb-14.webp?v=drive-import-20260806-r1",
+        "width": 640,
+        "height": 960,
+        "alt": "Jewellery, image 14"
+      },
+      {
+        "src": "/artworks/jewellery/view-15.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/jewellery/thumb-15.webp?v=drive-import-20260806-r1",
+        "width": 800,
+        "height": 536,
+        "alt": "Jewellery, image 15"
+      },
+      {
+        "src": "/artworks/jewellery/view-16.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/jewellery/thumb-16.webp?v=drive-import-20260806-r1",
+        "width": 800,
+        "height": 533,
+        "alt": "Jewellery, image 16"
+      },
+      {
+        "src": "/artworks/jewellery/view-17.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/jewellery/thumb-17.webp?v=drive-import-20260806-r1",
+        "width": 639,
+        "height": 960,
+        "alt": "Jewellery, image 17"
+      },
+      {
+        "src": "/artworks/jewellery/view-18.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/jewellery/thumb-18.webp?v=drive-import-20260806-r1",
+        "width": 765,
+        "height": 960,
+        "alt": "Jewellery, image 18"
+      },
+      {
+        "src": "/artworks/jewellery/view-19.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/jewellery/thumb-19.webp?v=drive-import-20260806-r1",
+        "width": 800,
+        "height": 533,
+        "alt": "Jewellery, image 19"
+      },
+      {
+        "src": "/artworks/jewellery/view-20.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/jewellery/thumb-20.webp?v=drive-import-20260806-r1",
+        "width": 608,
+        "height": 960,
+        "alt": "Jewellery, image 20"
+      },
+      {
+        "src": "/artworks/jewellery/view-21.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/jewellery/thumb-21.webp?v=drive-import-20260806-r1",
+        "width": 615,
+        "height": 960,
+        "alt": "Jewellery, image 21"
+      }
+    ],
+    "photoCredit": "Marie Girard",
+    "recordType": "collection",
+    "imageLabel": "image"
+  },
+  {
+    "id": "connoisseur",
+    "archiveNumber": "JF-042",
+    "title": "CONNOISSEUR",
+    "material": null,
+    "dimensions": null,
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": "Title and capitalization follow the supplied Drive folder name and the CONNOISSEUR plaque visible in the photographs.",
+    "prototypeText": "A seated, long-tailed figure wearing a small hat holds a narrow object above a perforated support and cylindrical base.",
+    "story": null,
+    "exhibitionHistory": null,
+    "provenance": null,
+    "historicalRecord": null,
+    "relatedHistoricalRecords": null,
+    "imageCount": 4,
+    "images": [
+      {
+        "src": "/artworks/connoisseur/view-01.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/connoisseur/thumb-01.webp?v=drive-import-20260806-r1",
+        "width": 642,
+        "height": 960,
+        "alt": "CONNOISSEUR, view 1"
+      },
+      {
+        "src": "/artworks/connoisseur/view-02.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/connoisseur/thumb-02.webp?v=drive-import-20260806-r1",
+        "width": 619,
+        "height": 960,
+        "alt": "CONNOISSEUR, view 2"
+      },
+      {
+        "src": "/artworks/connoisseur/view-03.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/connoisseur/thumb-03.webp?v=drive-import-20260806-r1",
+        "width": 960,
+        "height": 642,
+        "alt": "CONNOISSEUR, view 3"
+      },
+      {
+        "src": "/artworks/connoisseur/view-04.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/connoisseur/thumb-04.webp?v=drive-import-20260806-r1",
+        "width": 642,
+        "height": 960,
+        "alt": "CONNOISSEUR, view 4"
+      }
+    ]
+  },
+  {
+    "id": "summer-time",
+    "archiveNumber": "JF-043",
+    "title": "SUMMER TIME",
+    "material": null,
+    "dimensions": null,
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": "Title and capitalization follow the supplied Drive folder name and the SUMMER TIME plaque visible in the photographs.",
+    "prototypeText": "A seated figure in a broad hat holds a cone-shaped object while one foot extends beyond the chair-like structure.",
+    "story": null,
+    "exhibitionHistory": null,
+    "provenance": null,
+    "historicalRecord": null,
+    "relatedHistoricalRecords": null,
+    "imageCount": 5,
+    "images": [
+      {
+        "src": "/artworks/summer-time/view-01.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/summer-time/thumb-01.webp?v=drive-import-20260806-r1",
+        "width": 870,
+        "height": 960,
+        "alt": "SUMMER TIME, view 1"
+      },
+      {
+        "src": "/artworks/summer-time/view-02.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/summer-time/thumb-02.webp?v=drive-import-20260806-r1",
+        "width": 1363,
+        "height": 640,
+        "alt": "SUMMER TIME, view 2"
+      },
+      {
+        "src": "/artworks/summer-time/view-03.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/summer-time/thumb-03.webp?v=drive-import-20260806-r1",
+        "width": 715,
+        "height": 960,
+        "alt": "SUMMER TIME, view 3"
+      },
+      {
+        "src": "/artworks/summer-time/view-04.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/summer-time/thumb-04.webp?v=drive-import-20260806-r1",
+        "width": 815,
+        "height": 960,
+        "alt": "SUMMER TIME, view 4"
+      },
+      {
+        "src": "/artworks/summer-time/view-05.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/summer-time/thumb-05.webp?v=drive-import-20260806-r1",
+        "width": 717,
+        "height": 960,
+        "alt": "SUMMER TIME, view 5"
+      }
+    ]
+  },
+  {
+    "id": "tourist",
+    "archiveNumber": "JF-044",
+    "title": "Tourist",
+    "material": null,
+    "dimensions": null,
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": "Title follows the supplied Drive folder name and the TOURIST plaque visible on the base. One byte-identical source duplicate is preserved outside the generated view set.",
+    "prototypeText": "Two figures travel together beneath a small canopy, with one seated in a wheeled structure and the other walking ahead.",
+    "story": null,
+    "exhibitionHistory": null,
+    "provenance": null,
+    "historicalRecord": null,
+    "relatedHistoricalRecords": null,
+    "imageCount": 6,
+    "images": [
+      {
+        "src": "/artworks/tourist/view-01.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/tourist/thumb-01.webp?v=drive-import-20260806-r1",
+        "width": 858,
+        "height": 1000,
+        "alt": "Tourist, view 1"
+      },
+      {
+        "src": "/artworks/tourist/view-02.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/tourist/thumb-02.webp?v=drive-import-20260806-r1",
+        "width": 669,
+        "height": 1000,
+        "alt": "Tourist, view 2"
+      },
+      {
+        "src": "/artworks/tourist/view-03.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/tourist/thumb-03.webp?v=drive-import-20260806-r1",
+        "width": 514,
+        "height": 1000,
+        "alt": "Tourist, view 3"
+      },
+      {
+        "src": "/artworks/tourist/view-04.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/tourist/thumb-04.webp?v=drive-import-20260806-r1",
+        "width": 805,
+        "height": 1000,
+        "alt": "Tourist, view 4"
+      },
+      {
+        "src": "/artworks/tourist/view-05.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/tourist/thumb-05.webp?v=drive-import-20260806-r1",
+        "width": 1000,
+        "height": 363,
+        "alt": "Tourist, view 5"
+      },
+      {
+        "src": "/artworks/tourist/view-06.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/tourist/thumb-06.webp?v=drive-import-20260806-r1",
+        "width": 574,
+        "height": 1000,
+        "alt": "Tourist, view 6"
+      }
+    ]
+  },
+  {
+    "id": "uil-spieel",
+    "archiveNumber": "JF-045",
+    "title": "Uil Spieël",
+    "material": null,
+    "dimensions": null,
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": "Title follows the supplied Drive folder name and the UIL SPIEËL plaque visible in the photographs.",
+    "prototypeText": "A bird figure perched on one raised block faces a smaller animal figure positioned on a second block.",
+    "story": null,
+    "exhibitionHistory": null,
+    "provenance": null,
+    "historicalRecord": null,
+    "relatedHistoricalRecords": null,
+    "imageCount": 5,
+    "images": [
+      {
+        "src": "/artworks/uil-spieel/view-01.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/uil-spieel/thumb-01.webp?v=drive-import-20260806-r1",
+        "width": 669,
+        "height": 1000,
+        "alt": "Uil Spieël, view 1"
+      },
+      {
+        "src": "/artworks/uil-spieel/view-02.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/uil-spieel/thumb-02.webp?v=drive-import-20260806-r1",
+        "width": 669,
+        "height": 1000,
+        "alt": "Uil Spieël, view 2"
+      },
+      {
+        "src": "/artworks/uil-spieel/view-03.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/uil-spieel/thumb-03.webp?v=drive-import-20260806-r1",
+        "width": 1000,
+        "height": 669,
+        "alt": "Uil Spieël, view 3"
+      },
+      {
+        "src": "/artworks/uil-spieel/view-04.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/uil-spieel/thumb-04.webp?v=drive-import-20260806-r1",
+        "width": 1000,
+        "height": 669,
+        "alt": "Uil Spieël, view 4"
+      },
+      {
+        "src": "/artworks/uil-spieel/view-05.webp?v=drive-import-20260806-r1",
+        "thumb": "/artworks/uil-spieel/thumb-05.webp?v=drive-import-20260806-r1",
+        "width": 669,
+        "height": 1000,
+        "alt": "Uil Spieël, view 5"
+      }
+    ]
   }
 ]

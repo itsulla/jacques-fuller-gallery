@@ -74,6 +74,11 @@ function formatNumber(value) {
   return String(value).padStart(2, '0')
 }
 
+function formatImageCount(work) {
+  const singular = work.imageLabel || 'view'
+  return `${work.images.length} ${work.images.length === 1 ? singular : `${singular}s`}`
+}
+
 function ImageWithState({ src, alt, className = '', loadingLabel = 'Image loading', recoverable = false, ...props }) {
   const [state, setState] = useState('loading')
   const [retry, setRetry] = useState(0)
@@ -424,7 +429,7 @@ function ArchiveIndex({ works, onClose, onOpen, returnFocusRef }) {
                 </span>
                 <span>
                   <strong>{work.title}</strong>
-                  <small>{work.archiveNumber} · {work.images.length} {work.images.length === 1 ? 'view' : 'views'}</small>
+                  <small>{work.archiveNumber} · {formatImageCount(work)}</small>
                 </span>
                 <span>Open record</span>
               </button>
@@ -568,7 +573,8 @@ function WorkViewer({ work, onClose, onMoveWork, returnFocusRef }) {
     ['Material', work.material || 'Not recorded'],
     ['Dimensions', work.dimensions || 'Not recorded'],
     ['Availability', work.availability || 'Not recorded'],
-    ['Photographic views', `${work.images.length}`],
+    ...(work.photoCredit ? [['Photo credit', work.photoCredit]] : []),
+    [work.imageLabel === 'image' ? 'Photographic images' : 'Photographic views', `${work.images.length}`],
   ]
 
   useEffect(() => {
@@ -651,7 +657,7 @@ function WorkViewer({ work, onClose, onMoveWork, returnFocusRef }) {
         <section className="viewer__record" aria-labelledby="viewer-record-title">
           <header className="viewer__record-heading">
             <div>
-              <h2 id="viewer-record-title">Work record</h2>
+              <h2 id="viewer-record-title">{work.recordType === 'collection' ? 'Collection record' : 'Work record'}</h2>
               <p>{work.archiveNumber}</p>
             </div>
             <p>{work.title}</p>

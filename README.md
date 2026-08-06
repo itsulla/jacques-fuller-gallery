@@ -1,6 +1,6 @@
 # Jacques Fuller · Sculpture Archive
 
-A two-page, image-led archive for South African sculptor Jacques Fuller. The site combines a 40-work current gallery with a source-attributed record of the 2001 *Jacques Fuller: Sculptor* exhibition catalogue.
+A two-page, image-led archive for South African sculptor Jacques Fuller. The site combines a 45-record current gallery with a source-attributed record of the 2001 *Jacques Fuller: Sculptor* exhibition catalogue.
 
 ## Structure
 

@@ -378,6 +378,11 @@ async function exerciseNewSculptures() {
     ['RSM', 'JF-038', 9],
     ['Tutu', 'JF-039', 5],
     ['Servamus et Servimus', 'JF-040', 4],
+    ['Jewellery', 'JF-041', 21],
+    ['CONNOISSEUR', 'JF-042', 4],
+    ['SUMMER TIME', 'JF-043', 5],
+    ['Tourist', 'JF-044', 6],
+    ['Uil Spieël', 'JF-045', 5],
   ]
 
   await page.goto(`${baseUrl}/?qa=new-sculptures-${Date.now()}`, { waitUntil: 'networkidle' })
@@ -417,6 +422,14 @@ async function exerciseNewSculptures() {
       : { Date: 'Not recorded', Material: 'Not recorded', Dimensions: 'Not recorded', Availability: 'Not recorded' }
     for (const [label, expected] of Object.entries(expectedFacts)) {
       assert.equal(facts[label], expected, `${title} has the wrong ${label.toLowerCase()} value`)
+    }
+    if (archiveNumber === 'JF-041') {
+      assert.equal(await viewer.getByRole('heading', { name: 'Collection record', exact: true }).count(), 1, 'Jewellery must be identified as a collection record')
+      assert.equal(facts['Photo credit'], 'Marie Girard', 'Jewellery lost the supplied Marie Girard photo credit')
+      assert.equal(facts['Photographic images'], '21', 'Jewellery must label its collection photographs as images')
+    } else {
+      assert.equal(await viewer.getByRole('heading', { name: 'Work record', exact: true }).count(), 1, `${title} must remain a work record`)
+      assert.equal(facts['Photographic views'], `${viewCount}`, `${title} must label its photographs as views`)
     }
     const notes = await viewer.locator('.viewer__record-notes > section').evaluateAll((sections) => Object.fromEntries(sections.map((section) => [section.querySelector('h3')?.textContent, section.querySelector('p')?.textContent])))
     assert.equal(notes["Artist's account"], 'Awaiting artist/family account.', `${title} invents an artist account`)

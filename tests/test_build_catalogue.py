@@ -51,14 +51,18 @@ class CatalogueBuildSafetyTests(unittest.TestCase):
             ("Symbiosis", "symbiosis", "Symbiosis", "FB_IMG_1785767406763.jpg"),
         ]
 
+        expected_sources = {item[0] for item in expected}
         actual = [
             (work["source"], work["slug"], work["title"], work["hero"])
-            for work in self.builder.WORKS[-14:-6]
+            for work in self.builder.WORKS
+            if work["source"] in expected_sources
         ]
 
         self.assertEqual(actual, expected)
 
-        for work in self.builder.WORKS[-10:-6]:
+        for work in self.builder.WORKS:
+            if work["source"] not in {"Government of National Unity", "Vorsprung durch Technik", "BELLE", "Symbiosis"}:
+                continue
             self.assertIsNone(work["material"])
             self.assertIsNone(work["dimensions"])
             self.assertNotIn("date", work)
@@ -85,17 +89,71 @@ class CatalogueBuildSafetyTests(unittest.TestCase):
             ),
         ]
 
+        expected_sources = {item[0] for item in expected}
+        batch = [work for work in self.builder.WORKS if work["source"] in expected_sources]
         actual = [
             (work["source"], work["slug"], work["title"], work["hero"], work["expectedImageCount"])
-            for work in self.builder.WORKS[-6:]
+            for work in batch
         ]
 
         self.assertEqual(actual, expected)
-        for work in self.builder.WORKS[-6:]:
+        for work in batch:
             self.assertIsNone(work["material"])
             self.assertIsNone(work["dimensions"])
             self.assertNotIn("date", work)
             self.assertEqual(work["cacheVersion"], "drive-import-20260804-r1")
+
+    def test_20260806_drive_records_are_defined_in_supplied_order(self):
+        expected = [
+            ("Jewellery", "jewellery", "Jewellery", "FB_IMG_1786003278410.jpg", 21),
+            ("CONNOISSEUR", "connoisseur", "CONNOISSEUR", "FB_IMG_1786002575705.jpg", 4),
+            ("SUMMER TIME", "summer-time", "SUMMER TIME", "FB_IMG_1786001992102.jpg", 5),
+            ("Tourist", "tourist", "Tourist", "FB_IMG_1786002381746.jpg", 6),
+            ("Uil Spieël", "uil-spieel", "Uil Spieël", "FB_IMG_1786002337263.jpg", 5),
+        ]
+
+        expected_sources = {item[0] for item in expected}
+        batch = [work for work in self.builder.WORKS if work["source"] in expected_sources]
+        actual = [
+            (work["source"], work["slug"], work["title"], work["hero"], work["expectedImageCount"])
+            for work in batch
+        ]
+
+        self.assertEqual(actual, expected)
+        for work in batch:
+            self.assertIsNone(work["material"])
+            self.assertIsNone(work["dimensions"])
+            self.assertNotIn("date", work)
+            self.assertEqual(work["cacheVersion"], "drive-import-20260806-r1")
+        jewellery = batch[0]
+        self.assertEqual(jewellery["photoCredit"], "Marie Girard")
+        self.assertEqual(jewellery["recordType"], "collection")
+        self.assertEqual(jewellery["imageLabel"], "image")
+
+    def test_optional_record_metadata_is_emitted(self):
+        folder = self.builder.SOURCE / "Collection"
+        folder.mkdir(parents=True)
+        Image.new("RGB", (8, 8), "white").save(folder / "view.jpg")
+        self.builder.WORKS = [
+            {
+                "source": "Collection",
+                "slug": "collection",
+                "title": "Collection",
+                "material": None,
+                "dimensions": None,
+                "photoCredit": "Marie Girard",
+                "recordType": "collection",
+                "imageLabel": "image",
+            }
+        ]
+
+        self.builder.main()
+
+        record = json.loads(self.builder.DATA.read_text())[0]
+        self.assertEqual(record["photoCredit"], "Marie Girard")
+        self.assertEqual(record["recordType"], "collection")
+        self.assertEqual(record["imageLabel"], "image")
+        self.assertEqual(record["images"][0]["alt"], "Collection, image 1")
 
     def test_missing_source_preserves_existing_outputs(self):
         self.builder.WORKS = [

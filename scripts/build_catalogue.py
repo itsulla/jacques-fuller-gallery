@@ -439,6 +439,74 @@ WORKS = [
         "prototypeText": "A uniformed, moustached figure gestures with raised arms while standing on a cylindrical base and holding a plaque.",
         "catalogueNote": "Title and capitalization follow the supplied Drive folder name and the SERVAMUS ET SERVIMUS plaque visible in the photographs.",
     },
+    {
+        "source": "Jewellery",
+        "sourceUrl": "https://drive.google.com/drive/folders/1UjGKX1_ibtEmDCqDogIhY-AoOXe_6Te_",
+        "slug": "jewellery",
+        "title": "Jewellery",
+        "material": None,
+        "dimensions": None,
+        "hero": "FB_IMG_1786003278410.jpg",
+        "expectedImageCount": 21,
+        "cacheVersion": "drive-import-20260806-r1",
+        "recordType": "collection",
+        "imageLabel": "image",
+        "photoCredit": "Marie Girard",
+        "prototypeText": "A photographic group of multiple distinct wearable pieces, shown on the body or held in hand.",
+        "catalogueNote": "The supplied Drive folder groups multiple distinct pieces under the title Jewellery; the archive therefore presents it as one collection record rather than as views of a single object.",
+    },
+    {
+        "source": "CONNOISSEUR",
+        "sourceUrl": "https://drive.google.com/drive/folders/10YbPNbLhfRLu7xFU2oJnmLLMsEAHNeYh",
+        "slug": "connoisseur",
+        "title": "CONNOISSEUR",
+        "material": None,
+        "dimensions": None,
+        "hero": "FB_IMG_1786002575705.jpg",
+        "expectedImageCount": 4,
+        "cacheVersion": "drive-import-20260806-r1",
+        "prototypeText": "A seated, long-tailed figure wearing a small hat holds a narrow object above a perforated support and cylindrical base.",
+        "catalogueNote": "Title and capitalization follow the supplied Drive folder name and the CONNOISSEUR plaque visible in the photographs.",
+    },
+    {
+        "source": "SUMMER TIME",
+        "sourceUrl": "https://drive.google.com/drive/folders/1dJLO9cKKp1YjDxk8GkEU-2-2y9G59Z9A",
+        "slug": "summer-time",
+        "title": "SUMMER TIME",
+        "material": None,
+        "dimensions": None,
+        "hero": "FB_IMG_1786001992102.jpg",
+        "expectedImageCount": 5,
+        "cacheVersion": "drive-import-20260806-r1",
+        "prototypeText": "A seated figure in a broad hat holds a cone-shaped object while one foot extends beyond the chair-like structure.",
+        "catalogueNote": "Title and capitalization follow the supplied Drive folder name and the SUMMER TIME plaque visible in the photographs.",
+    },
+    {
+        "source": "Tourist",
+        "sourceUrl": "https://drive.google.com/drive/folders/1AQ0gTP29sdHQ_fnXWKoYV1dtRQ1-l3ea",
+        "slug": "tourist",
+        "title": "Tourist",
+        "material": None,
+        "dimensions": None,
+        "hero": "FB_IMG_1786002381746.jpg",
+        "expectedImageCount": 6,
+        "cacheVersion": "drive-import-20260806-r1",
+        "prototypeText": "Two figures travel together beneath a small canopy, with one seated in a wheeled structure and the other walking ahead.",
+        "catalogueNote": "Title follows the supplied Drive folder name and the TOURIST plaque visible on the base. One byte-identical source duplicate is preserved outside the generated view set.",
+    },
+    {
+        "source": "Uil Spieël",
+        "sourceUrl": "https://drive.google.com/drive/folders/1oXgxMweWiEsmRI_ZZOKGUPryRLG45SB-",
+        "slug": "uil-spieel",
+        "title": "Uil Spieël",
+        "material": None,
+        "dimensions": None,
+        "hero": "FB_IMG_1786002337263.jpg",
+        "expectedImageCount": 5,
+        "cacheVersion": "drive-import-20260806-r1",
+        "prototypeText": "A bird figure perched on one raised block faces a smaller animal figure positioned on a second block.",
+        "catalogueNote": "Title follows the supplied Drive folder name and the UIL SPIEËL plaque visible in the photographs.",
+    },
 ]
 
 
@@ -710,6 +778,7 @@ def main() -> None:
 
             images = []
             cache_suffix = f"?v={work['cacheVersion']}" if work.get("cacheVersion") else ""
+            image_label = work.get("imageLabel", "view")
             for index, source in enumerate(files, start=1):
                 basename = f"view-{index:02d}.webp"
                 full_out = staged_public / work["slug"] / basename
@@ -722,12 +791,11 @@ def main() -> None:
                         "thumb": f"/artworks/{work['slug']}/thumb-{index:02d}.webp{cache_suffix}",
                         "width": width,
                         "height": height,
-                        "alt": f"{work['title']}, view {index}",
+                        "alt": f"{work['title']}, {image_label} {index}",
                     }
                 )
 
-            catalogue.append(
-                {
+            record = {
                     "id": work["slug"],
                     "archiveNumber": f"JF-{position:03d}",
                     "title": work["title"],
@@ -747,7 +815,10 @@ def main() -> None:
                     "imageCount": len(images),
                     "images": images,
                 }
-            )
+            for field in ("photoCredit", "recordType", "imageLabel"):
+                if work.get(field) is not None:
+                    record[field] = work[field]
+            catalogue.append(record)
         staged_data.write_text(json.dumps(catalogue, ensure_ascii=False, indent=2) + "\n")
         publish(staged_public, staged_data, token)
     finally:

@@ -14,7 +14,7 @@ Jacques and his family are secondary users. The site must remain straightforward
 
 ## Product Purpose
 
-Create a permanent online gallery for Jacques Fuller, a Bloemfontein-based sculptor active since 1989. The current site presents 40 photographed sculptures in more depth than Facebook can, with multiple views grouped into a coherent record for each work, and a separately sourced historical layer for the 61 works catalogued in 2001.
+Create a permanent online gallery for Jacques Fuller, a Bloemfontein-based sculptor active since 1989. The current site presents 44 photographed sculptures plus one explicitly labelled Jewellery collection record in more depth than Facebook can, with related images grouped into coherent records, and a separately sourced historical layer for the 61 works catalogued in 2001.
 
 Success means the artwork is visually legible, each work can be explored without social-media clutter, and incomplete catalogue details can be added later without redesigning the site.
 
@@ -24,16 +24,16 @@ The site is a focused, single-artist sculpture archive built around multiple vie
 
 ## Operating Context
 
-The initial collection was manually downloaded from Jacques's public Facebook albums and organised as one Google Drive folder per sculpture. Folder names contain confirmed titles and, for some works, materials and dimensions. Each folder contains several JPEG views of the same sculpture.
+The initial collection was manually downloaded from Jacques's public Facebook albums and organised as one Google Drive folder per sculpture. Folder names contain confirmed titles and, for some works, materials and dimensions. Sculpture folders contain several JPEG views of the same object; the Jewellery folder is the documented exception and groups multiple distinct pieces in one collection record.
 
 Artwork descriptions, dates, stories, availability, exhibition history, and fuller catalogue records will be supplied later by Jacques or his family.
 
 ## Capabilities and Constraints
 
-- Responsive web gallery with 40 current artwork records and 270 photographs.
+- Responsive web gallery with 45 current records and 311 photographs.
 - A distinct 61-record historical catalogue layer sourced to *Jacques Fuller: Sculptor* (Sanlam Art Collection, 2001).
 - A reversible six-work curatorial mosaic leads the monograph-style homepage; a four-work static gateway opens the complete searchable archive in a full-screen index.
-- Multiple-image carousel or gallery for every sculpture.
+- Multiple-image carousel or gallery for every current record.
 - Individual artwork detail view with placeholders for future stories and catalogue fields.
 - Factual metadata is shown only when present in the source folder name or a cited historical source.
 - Current and historical records use separate IDs; title matches do not establish object identity.
@@ -55,17 +55,17 @@ Artwork descriptions, dates, stories, availability, exhibition history, and full
 ## Evidence on Hand
 
 - Source image archive: `source-assets/Jacques/`.
-- Public source folder contains 40 sculpture folders with multiple JPEG views.
+- Public source archive contains 45 current-record folders: 44 sculptures and one Jewellery collection.
 - The complete supplied 2001 catalogue-entry sequence covers catalogue numbers 1–61 on printed pages 24–27.
 - The 2001 interview and chronology provide dated first-person and biographical evidence; they are not current statements.
 - Biography, process statements, and chronology sourced to the supplied 2001 publication.
 - Confirmed metadata currently available in folder names for selected works and in the linked historical record for `JF-030`.
-- Most current artwork dates, prices, availability, exhibition history, photographer credits, and work-specific stories remain unavailable; `JF-030` is the documented historical exception.
+- Most current artwork dates, prices, availability, exhibition history, photographer credits, and work-specific stories remain unavailable; `JF-030` is the documented historical exception and `JF-041` carries the supplied Marie Girard photo credit.
 
 ## Product Principles
 
 1. The sculpture leads; interface elements recede.
-2. Multiple views belong to one artwork record, never a disconnected image feed.
+2. Multiple views belong to one artwork record; any grouped collection must be explicitly identified rather than presented as views of one object.
 3. Missing facts use the explicit archive-state taxonomy, never plausible-looking inventions.
 4. Material, scale, process, and surface detail deserve the same attention as silhouette.
 5. The archive should grow without changing its underlying structure.
