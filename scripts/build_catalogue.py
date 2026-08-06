@@ -361,6 +361,84 @@ WORKS = [
         "prototypeText": "A standing figure extends one arm toward a smaller four-legged figure on a wheeled body, both mounted on a shared rectangular base.",
         "catalogueNote": "Title follows the supplied Drive folder name and the plaque visible in the photographs.",
     },
+    {
+        "source": "Ministry",
+        "sourceUrl": "https://drive.google.com/drive/folders/19l3H2wqphzN2mPsaR-5GAdU1ZcO6yWj-",
+        "slug": "ministry",
+        "title": "Ministry",
+        "material": None,
+        "dimensions": None,
+        "hero": "FB_IMG_1785937224230.jpg",
+        "expectedImageCount": 7,
+        "cacheVersion": "drive-import-20260804-r1",
+        "prototypeText": "A top-hatted anthropomorphic figure stands beside a smaller four-legged animal, joined by a looped metal form on a plaque-bearing wooden base.",
+        "catalogueNote": "Title follows the supplied Drive folder name and the MINISTRY plaque visible near the figure's feet.",
+    },
+    {
+        "source": "Pelican",
+        "sourceUrl": "https://drive.google.com/drive/folders/17OBfb-q1HeDPrpxu6mE-kGmCQqfQEYAn",
+        "slug": "pelican",
+        "title": "Pelican",
+        "material": None,
+        "dimensions": None,
+        "hero": "IMG_20220529_121742.jpg",
+        "expectedImageCount": 7,
+        "cacheVersion": "drive-import-20260804-r1",
+        "prototypeText": "A pelican with an open beak stands on a cylindrical plinth wrapped with an inscribed metal panel.",
+        "catalogueNote": "Title follows the supplied Drive folder name. A base plaque reads HOMAGE DE LEEUW; the inscribed panel carries a pelican verse attributed in the source photographs to Dixon Lanier Merritt, 1879.",
+    },
+    {
+        "source": "Parliamentarian",
+        "sourceUrl": "https://drive.google.com/drive/folders/1IDkcsr1Rkq9-6r7ej9R7xE3bYtEx4BOT",
+        "slug": "parliamentarian",
+        "title": "Parliamentarian",
+        "material": None,
+        "dimensions": None,
+        "hero": "FB_IMG_1785938743377.jpg",
+        "expectedImageCount": 6,
+        "cacheVersion": "drive-import-20260804-r1",
+        "prototypeText": "A top-hatted bird perches above a four-legged animal and a smaller figure on a plaque-bearing wooden base.",
+        "catalogueNote": "Title follows the supplied Drive folder name. The base plaque reproduces the phrase ALL ANIMALS ARE EQUAL, BUT SOME ANIMALS ARE MORE EQUAL THAN OTHERS.",
+    },
+    {
+        "source": "RSM",
+        "sourceUrl": "https://drive.google.com/drive/folders/189Xrsrwm0SvX80tZIbTPiukEpPQB4PoB",
+        "slug": "rsm",
+        "title": "RSM",
+        "material": None,
+        "dimensions": None,
+        "hero": "FB_IMG_1785939904844.jpg",
+        "expectedImageCount": 9,
+        "cacheVersion": "drive-import-20260804-r1",
+        "prototypeText": "A uniformed figure in a peaked cap salutes while standing on a cylindrical base.",
+        "catalogueNote": "Title follows the supplied Drive folder name; three plaques on the base read REGIMENTAL, SERGEANT and MAJOR.",
+    },
+    {
+        "source": "Tutu",
+        "sourceUrl": "https://drive.google.com/drive/folders/1wAt1oljImyoM2bjpdpaEw3aLINyFhbm4",
+        "slug": "tutu",
+        "title": "Tutu",
+        "material": None,
+        "dimensions": None,
+        "hero": "FB_IMG_1785940033821.jpg",
+        "expectedImageCount": 5,
+        "cacheVersion": "drive-import-20260804-r1",
+        "prototypeText": "A torso-like figure with outstretched hands and a circular skirt stands on a narrow column and square base.",
+        "catalogueNote": "Title follows the supplied Drive folder name and the TUTU plaque visible on the lower support.",
+    },
+    {
+        "source": "Servamus et Servimus",
+        "sourceUrl": "https://drive.google.com/drive/folders/1Svgo2G41AL4QV_Cfxn_RM16Ru8RsgaW6",
+        "slug": "servamus-et-servimus",
+        "title": "Servamus et Servimus",
+        "material": None,
+        "dimensions": None,
+        "hero": "FB_IMG_1785939760897.jpg",
+        "expectedImageCount": 4,
+        "cacheVersion": "drive-import-20260804-r1",
+        "prototypeText": "A uniformed, moustached figure gestures with raised arms while standing on a cylindrical base and holding a plaque.",
+        "catalogueNote": "Title and capitalization follow the supplied Drive folder name and the SERVAMUS ET SERVIMUS plaque visible in the photographs.",
+    },
 ]
 
 
@@ -593,6 +671,18 @@ def main() -> None:
         if not files:
             missing.append(f"No JPEG files: {folder}")
             continue
+
+        expected_image_count = work.get("expectedImageCount")
+        if expected_image_count is not None:
+            if type(expected_image_count) is not int or expected_image_count < 1:
+                raise ValueError(
+                    f"Invalid expected image count for {work['slug']}: {expected_image_count!r}"
+                )
+            if len(files) != expected_image_count:
+                missing.append(
+                    f"Expected {expected_image_count} JPEG files for {folder}, found {len(files)}"
+                )
+                continue
 
         hero_name = work.get("hero")
         if hero_name:

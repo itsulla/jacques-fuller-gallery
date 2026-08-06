@@ -233,7 +233,7 @@ components:
 
 **Mode: Experience. Creative North Star: “The Forged Archive.”**
 
-Forged Archive is a permanent-feeling but explicitly unfinished sculpture archive for Jacques Fuller, a Bloemfontein-based sculptor active since 1989. The object leads: the homepage opens as a six-image mosaic, a static four-work gateway opens a searchable full-screen index of 34 records and 232 photographs, and the separate Process route documents one sculpture step by step. A clearly dated 61-record historical layer documents the 2001 exhibition without merging historical and current objects by title. It is not a social feed, ecommerce catalogue, or generic portfolio template.
+Forged Archive is a permanent-feeling but explicitly unfinished sculpture archive for Jacques Fuller, a Bloemfontein-based sculptor active since 1989. The object leads: the homepage opens as a six-image mosaic, a static four-work gateway opens a searchable full-screen index of 40 records and 270 photographs, and the separate Process route documents one sculpture step by step. A clearly dated 61-record historical layer documents the 2001 exhibition without merging historical and current objects by title. It is not a social feed, ecommerce catalogue, or generic portfolio template.
 
 The visual world is cold smoke-grey and mineral on the light side, deep green-black oxide in archive and viewer chapters, and one restrained patina-green accent. Brass remains material evidence inside the supplied photography, never a UI color. Square geometry, hairline rules, contained sculpture images, and very little motion create a forged, structural reading experience.
 
@@ -266,7 +266,7 @@ Petrona uses negative tracking and tight leading for monograph scale. Technical 
 
 The shell is full-width. A deterministic oxide navigation bar sits above the page; on the homepage it overlays the first mosaic without inheriting image contrast. The hero is viewport-bound and uses a six-column editorial mosaic: six reversible selected works surround an intrinsic-height ivory identity cell containing Jacques Fuller and the primary archive action. Sculpture images use `object-fit: contain`; full silhouettes are never decoratively cropped.
 
-After the introduction, a static four-work gateway represents the current archive without repeating the complete catalogue. Its action opens a searchable full-screen index with 34 compact image-led rows, an honest empty state, URL/history integration, and Back-to-index behavior from work records. Archive 2001 follows as three explicit chapters—Catalogue context, Recurring forms, and Two identity cases—before About and the deliberate end-of-index action.
+After the introduction, a static four-work gateway represents the current archive without repeating the complete catalogue. Its action opens a searchable full-screen index with 40 compact image-led rows, an honest empty state, URL/history integration, and Back-to-index behavior from work records. Archive 2001 follows as three explicit chapters—Catalogue context, Recurring forms, and Two identity cases—before About and the deliberate end-of-index action.
 
 The artwork viewer opens as a fixed full-screen dialog. Its opening keeps the complete active image, previous/next controls, live count, and all supplied thumbnails in the desktop viewport. A paper record chapter follows with facts, the archive-state key, catalogue note, artist account, exhibition history, provenance, alternate views, and previous/next work navigation. Image failures keep alternate thumbnails visible and expose a Retry action.
 
@@ -298,7 +298,7 @@ The full-width oxide bar uses Fira Sans Condensed, 44px minimum targets, visible
 Six reversible selected works surround one ivory identity cell. The lead images are high-priority, contained photography; every image button opens the complete work record. Mobile preserves the 2-column visual sequence and gives the identity row intrinsic height so title and action cannot escape it.
 
 ### Current archive gateway and index
-Four recent records form a static, image-led gateway. The full catalogue lives only in the modal archive index: searchable title/archive number, 34 square-edged rows, factual thumbnails/counts, keyboard focus trap, Escape close, inert background, and history-aware work opening.
+Four recent records form a static, image-led gateway. The full catalogue lives only in the modal archive index: searchable title/archive number, 40 square-edged rows, factual thumbnails/counts, keyboard focus trap, Escape close, inert background, and history-aware work opening.
 
 ### Archive 2001
 The historical chapter is explicitly dated and source-led. A three-link chapter index separates Catalogue context, Recurring forms, and Two identity cases. The two relationship studies distinguish “same physical work” from “different work, same title”; no catalogue photography ships without rights clearance.
@@ -322,7 +322,7 @@ Use semantic headings, landmarks, labelled navigation, descriptive/factual image
 ### Do:
 - Preserve complete sculptures with `object-fit: contain`.
 - Keep the six-work selection reversible and explicitly temporary.
-- Treat the current archive as 34 catalogue records and 232 photographs, distinct from the 61 records documented in 2001.
+- Treat the current archive as 40 catalogue records and 270 photographs, distinct from the 61 records documented in 2001.
 - Date and attribute every historical quotation, collection value, biography statement, and relationship claim.
 - Use **“Not recorded”** for missing facts.
 - Label existing detail photography honestly and wait for Jacques or his family for stories, dates, provenance, availability, exhibition history, and workshop evidence.

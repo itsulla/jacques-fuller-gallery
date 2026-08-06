@@ -39,7 +39,7 @@ class CatalogueBuildSafetyTests(unittest.TestCase):
         self.original_data = b'{"catalogue":"existing"}\n'
         self.builder.DATA.write_bytes(self.original_data)
 
-    def test_latest_drive_records_are_defined_in_supplied_order(self):
+    def test_previous_drive_records_remain_in_supplied_order(self):
         expected = [
             ("Dragonet", "dragonet", "Dragonet", "FB_IMG_1785419761708.jpg"),
             ("DUNCE", "dunce", "Dunce", "FB_IMG_1785420117291.jpg"),
@@ -53,15 +53,49 @@ class CatalogueBuildSafetyTests(unittest.TestCase):
 
         actual = [
             (work["source"], work["slug"], work["title"], work["hero"])
-            for work in self.builder.WORKS[-8:]
+            for work in self.builder.WORKS[-14:-6]
         ]
 
         self.assertEqual(actual, expected)
 
-        for work in self.builder.WORKS[-4:]:
+        for work in self.builder.WORKS[-10:-6]:
             self.assertIsNone(work["material"])
             self.assertIsNone(work["dimensions"])
             self.assertNotIn("date", work)
+
+    def test_20260804_drive_records_are_defined_in_supplied_order(self):
+        expected = [
+            ("Ministry", "ministry", "Ministry", "FB_IMG_1785937224230.jpg", 7),
+            ("Pelican", "pelican", "Pelican", "IMG_20220529_121742.jpg", 7),
+            (
+                "Parliamentarian",
+                "parliamentarian",
+                "Parliamentarian",
+                "FB_IMG_1785938743377.jpg",
+                6,
+            ),
+            ("RSM", "rsm", "RSM", "FB_IMG_1785939904844.jpg", 9),
+            ("Tutu", "tutu", "Tutu", "FB_IMG_1785940033821.jpg", 5),
+            (
+                "Servamus et Servimus",
+                "servamus-et-servimus",
+                "Servamus et Servimus",
+                "FB_IMG_1785939760897.jpg",
+                4,
+            ),
+        ]
+
+        actual = [
+            (work["source"], work["slug"], work["title"], work["hero"], work["expectedImageCount"])
+            for work in self.builder.WORKS[-6:]
+        ]
+
+        self.assertEqual(actual, expected)
+        for work in self.builder.WORKS[-6:]:
+            self.assertIsNone(work["material"])
+            self.assertIsNone(work["dimensions"])
+            self.assertNotIn("date", work)
+            self.assertEqual(work["cacheVersion"], "drive-import-20260804-r1")
 
     def test_missing_source_preserves_existing_outputs(self):
         self.builder.WORKS = [
@@ -95,6 +129,27 @@ class CatalogueBuildSafetyTests(unittest.TestCase):
         ]
 
         with self.assertRaises(UnidentifiedImageError):
+            self.builder.main()
+
+        self.assertEqual(self.marker.read_bytes(), b"existing artwork")
+        self.assertEqual(self.builder.DATA.read_bytes(), self.original_data)
+
+    def test_unexpected_image_count_preserves_existing_outputs(self):
+        folder = self.builder.SOURCE / "Incomplete work"
+        folder.mkdir(parents=True)
+        Image.new("RGB", (8, 8), "white").save(folder / "only-view.jpg")
+        self.builder.WORKS = [
+            {
+                "source": "Incomplete work",
+                "slug": "incomplete-work",
+                "title": "Incomplete Work",
+                "material": None,
+                "dimensions": None,
+                "expectedImageCount": 2,
+            }
+        ]
+
+        with self.assertRaisesRegex(RuntimeError, "Expected 2 JPEG files"):
             self.builder.main()
 
         self.assertEqual(self.marker.read_bytes(), b"existing artwork")

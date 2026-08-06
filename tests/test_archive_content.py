@@ -105,6 +105,29 @@ class ArtistSourceTests(unittest.TestCase):
 
 
 class CurrentCatalogueLinkTests(unittest.TestCase):
+    def test_20260804_drive_records_are_generated_in_stable_order(self):
+        artworks = load_json(ARTWORKS_DATA)
+        expected = [
+            ("ministry", "JF-035", "Ministry", 7),
+            ("pelican", "JF-036", "Pelican", 7),
+            ("parliamentarian", "JF-037", "Parliamentarian", 6),
+            ("rsm", "JF-038", "RSM", 9),
+            ("tutu", "JF-039", "Tutu", 5),
+            ("servamus-et-servimus", "JF-040", "Servamus et Servimus", 4),
+        ]
+
+        actual = [
+            (work["id"], work["archiveNumber"], work["title"], work["imageCount"])
+            for work in artworks[-6:]
+        ]
+
+        self.assertEqual(len(artworks), 40)
+        self.assertEqual(actual, expected)
+        for work in artworks[-6:]:
+            self.assertIsNone(work["material"])
+            self.assertIsNone(work["dimensions"])
+            self.assertIsNone(work["date"])
+
     def test_current_and_generator_records_carry_the_same_confirmed_link(self):
         artworks = load_json(ARTWORKS_DATA)
         current = next(work for work in artworks if work["id"] == "hoe-ry-die-boere")

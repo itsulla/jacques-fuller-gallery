@@ -8,6 +8,8 @@ import assert from 'node:assert/strict'
 const distRoot = resolve('dist')
 const outputDir = resolve('.impeccable/qa')
 await mkdir(outputDir, { recursive: true })
+const sourceArtworks = JSON.parse(await readFile(resolve('src/data/artworks.json'), 'utf8'))
+const currentArchiveCount = sourceArtworks.length
 
 const contentTypes = new Map([
   ['.css', 'text/css; charset=utf-8'],
@@ -131,10 +133,10 @@ async function exerciseSingleSiteMosaic() {
   await assertNoOverflow(page, 'Final homepage desktop')
   await page.screenshot({ path: resolve(outputDir, 'final-home-desktop.png') })
 
-  await page.getByRole('button', { name: 'Browse all 34 works' }).click()
+  await page.getByRole('button', { name: `Browse all ${currentArchiveCount} works` }).click()
   const archiveIndex = page.locator('.archive-index[role="dialog"]')
   await archiveIndex.waitFor({ state: 'visible' })
-  assert.equal(await archiveIndex.locator('.archive-index__list > li').count(), 34, 'The archive overlay must expose all 34 works')
+  assert.equal(await archiveIndex.locator('.archive-index__list > li').count(), currentArchiveCount, 'The archive overlay must expose every current work')
   assert.equal(await page.locator('.app-surface').evaluate((surface) => surface.inert), true, 'The archive overlay must make the page inert')
   assert.equal(await page.evaluate(() => document.activeElement?.getAttribute('type')), 'search', 'Opening the archive must focus search')
   const search = archiveIndex.getByRole('searchbox', { name: 'Search current archive' })
@@ -370,10 +372,16 @@ async function exerciseNewSculptures() {
     ['Vorsprung durch Technik', 'JF-032', 4],
     ['BELLE', 'JF-033', 5],
     ['Symbiosis', 'JF-034', 4],
+    ['Ministry', 'JF-035', 7],
+    ['Pelican', 'JF-036', 7],
+    ['Parliamentarian', 'JF-037', 6],
+    ['RSM', 'JF-038', 9],
+    ['Tutu', 'JF-039', 5],
+    ['Servamus et Servimus', 'JF-040', 4],
   ]
 
   await page.goto(`${baseUrl}/?qa=new-sculptures-${Date.now()}`, { waitUntil: 'networkidle' })
-  await page.getByRole('button', { name: 'Browse all 34 works' }).click()
+  await page.getByRole('button', { name: `Browse all ${currentArchiveCount} works` }).click()
   for (const [title, archiveNumber, viewCount] of records) {
     const row = page.locator('.archive-index__list > li').filter({ hasText: title })
     assert.equal(await row.count(), 1, `${title} is missing from the complete title index`)
@@ -449,7 +457,7 @@ async function exerciseMobileSite() {
   await assertNoOverflow(page, 'Final homepage mobile')
   await page.screenshot({ path: resolve(outputDir, 'final-home-mobile.png') })
 
-  await page.getByRole('button', { name: 'Browse all 34 works' }).click()
+  await page.getByRole('button', { name: `Browse all ${currentArchiveCount} works` }).click()
   await page.locator('.archive-index[role="dialog"]').waitFor({ state: 'visible' })
   await assertNoOverflow(page, 'Current archive mobile')
   assert.equal(await page.locator('.archive-index__preview').count(), 0, 'The mobile archive should prioritize the searchable index')

@@ -2352,5 +2352,397 @@
         "alt": "Symbiosis, view 4"
       }
     ]
+  },
+  {
+    "id": "ministry",
+    "archiveNumber": "JF-035",
+    "title": "Ministry",
+    "material": null,
+    "dimensions": null,
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": "Title follows the supplied Drive folder name and the MINISTRY plaque visible near the figure's feet.",
+    "prototypeText": "A top-hatted anthropomorphic figure stands beside a smaller four-legged animal, joined by a looped metal form on a plaque-bearing wooden base.",
+    "story": null,
+    "exhibitionHistory": null,
+    "provenance": null,
+    "historicalRecord": null,
+    "relatedHistoricalRecords": null,
+    "imageCount": 7,
+    "images": [
+      {
+        "src": "/artworks/ministry/view-01.webp?v=drive-import-20260804-r1",
+        "thumb": "/artworks/ministry/thumb-01.webp?v=drive-import-20260804-r1",
+        "width": 720,
+        "height": 960,
+        "alt": "Ministry, view 1"
+      },
+      {
+        "src": "/artworks/ministry/view-02.webp?v=drive-import-20260804-r1",
+        "thumb": "/artworks/ministry/thumb-02.webp?v=drive-import-20260804-r1",
+        "width": 689,
+        "height": 960,
+        "alt": "Ministry, view 2"
+      },
+      {
+        "src": "/artworks/ministry/view-03.webp?v=drive-import-20260804-r1",
+        "thumb": "/artworks/ministry/thumb-03.webp?v=drive-import-20260804-r1",
+        "width": 720,
+        "height": 960,
+        "alt": "Ministry, view 3"
+      },
+      {
+        "src": "/artworks/ministry/view-04.webp?v=drive-import-20260804-r1",
+        "thumb": "/artworks/ministry/thumb-04.webp?v=drive-import-20260804-r1",
+        "width": 720,
+        "height": 960,
+        "alt": "Ministry, view 4"
+      },
+      {
+        "src": "/artworks/ministry/view-05.webp?v=drive-import-20260804-r1",
+        "thumb": "/artworks/ministry/thumb-05.webp?v=drive-import-20260804-r1",
+        "width": 960,
+        "height": 720,
+        "alt": "Ministry, view 5"
+      },
+      {
+        "src": "/artworks/ministry/view-06.webp?v=drive-import-20260804-r1",
+        "thumb": "/artworks/ministry/thumb-06.webp?v=drive-import-20260804-r1",
+        "width": 720,
+        "height": 960,
+        "alt": "Ministry, view 6"
+      },
+      {
+        "src": "/artworks/ministry/view-07.webp?v=drive-import-20260804-r1",
+        "thumb": "/artworks/ministry/thumb-07.webp?v=drive-import-20260804-r1",
+        "width": 960,
+        "height": 661,
+        "alt": "Ministry, view 7"
+      }
+    ]
+  },
+  {
+    "id": "pelican",
+    "archiveNumber": "JF-036",
+    "title": "Pelican",
+    "material": null,
+    "dimensions": null,
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": "Title follows the supplied Drive folder name. A base plaque reads HOMAGE DE LEEUW; the inscribed panel carries a pelican verse attributed in the source photographs to Dixon Lanier Merritt, 1879.",
+    "prototypeText": "A pelican with an open beak stands on a cylindrical plinth wrapped with an inscribed metal panel.",
+    "story": null,
+    "exhibitionHistory": null,
+    "provenance": null,
+    "historicalRecord": null,
+    "relatedHistoricalRecords": null,
+    "imageCount": 7,
+    "images": [
+      {
+        "src": "/artworks/pelican/view-01.webp?v=drive-import-20260804-r1",
+        "thumb": "/artworks/pelican/thumb-01.webp?v=drive-import-20260804-r1",
+        "width": 1297,
+        "height": 2458,
+        "alt": "Pelican, view 1"
+      },
+      {
+        "src": "/artworks/pelican/view-02.webp?v=drive-import-20260804-r1",
+        "thumb": "/artworks/pelican/thumb-02.webp?v=drive-import-20260804-r1",
+        "width": 1600,
+        "height": 2663,
+        "alt": "Pelican, view 2"
+      },
+      {
+        "src": "/artworks/pelican/view-03.webp?v=drive-import-20260804-r1",
+        "thumb": "/artworks/pelican/thumb-03.webp?v=drive-import-20260804-r1",
+        "width": 1600,
+        "height": 1344,
+        "alt": "Pelican, view 3"
+      },
+      {
+        "src": "/artworks/pelican/view-04.webp?v=drive-import-20260804-r1",
+        "thumb": "/artworks/pelican/thumb-04.webp?v=drive-import-20260804-r1",
+        "width": 1600,
+        "height": 2021,
+        "alt": "Pelican, view 4"
+      },
+      {
+        "src": "/artworks/pelican/view-05.webp?v=drive-import-20260804-r1",
+        "thumb": "/artworks/pelican/thumb-05.webp?v=drive-import-20260804-r1",
+        "width": 1600,
+        "height": 1760,
+        "alt": "Pelican, view 5"
+      },
+      {
+        "src": "/artworks/pelican/view-06.webp?v=drive-import-20260804-r1",
+        "thumb": "/artworks/pelican/thumb-06.webp?v=drive-import-20260804-r1",
+        "width": 1600,
+        "height": 1727,
+        "alt": "Pelican, view 6"
+      },
+      {
+        "src": "/artworks/pelican/view-07.webp?v=drive-import-20260804-r1",
+        "thumb": "/artworks/pelican/thumb-07.webp?v=drive-import-20260804-r1",
+        "width": 1600,
+        "height": 1139,
+        "alt": "Pelican, view 7"
+      }
+    ]
+  },
+  {
+    "id": "parliamentarian",
+    "archiveNumber": "JF-037",
+    "title": "Parliamentarian",
+    "material": null,
+    "dimensions": null,
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": "Title follows the supplied Drive folder name. The base plaque reproduces the phrase ALL ANIMALS ARE EQUAL, BUT SOME ANIMALS ARE MORE EQUAL THAN OTHERS.",
+    "prototypeText": "A top-hatted bird perches above a four-legged animal and a smaller figure on a plaque-bearing wooden base.",
+    "story": null,
+    "exhibitionHistory": null,
+    "provenance": null,
+    "historicalRecord": null,
+    "relatedHistoricalRecords": null,
+    "imageCount": 6,
+    "images": [
+      {
+        "src": "/artworks/parliamentarian/view-01.webp?v=drive-import-20260804-r1",
+        "thumb": "/artworks/parliamentarian/thumb-01.webp?v=drive-import-20260804-r1",
+        "width": 643,
+        "height": 960,
+        "alt": "Parliamentarian, view 1"
+      },
+      {
+        "src": "/artworks/parliamentarian/view-02.webp?v=drive-import-20260804-r1",
+        "thumb": "/artworks/parliamentarian/thumb-02.webp?v=drive-import-20260804-r1",
+        "width": 532,
+        "height": 960,
+        "alt": "Parliamentarian, view 2"
+      },
+      {
+        "src": "/artworks/parliamentarian/view-03.webp?v=drive-import-20260804-r1",
+        "thumb": "/artworks/parliamentarian/thumb-03.webp?v=drive-import-20260804-r1",
+        "width": 532,
+        "height": 960,
+        "alt": "Parliamentarian, view 3"
+      },
+      {
+        "src": "/artworks/parliamentarian/view-04.webp?v=drive-import-20260804-r1",
+        "thumb": "/artworks/parliamentarian/thumb-04.webp?v=drive-import-20260804-r1",
+        "width": 960,
+        "height": 720,
+        "alt": "Parliamentarian, view 4"
+      },
+      {
+        "src": "/artworks/parliamentarian/view-05.webp?v=drive-import-20260804-r1",
+        "thumb": "/artworks/parliamentarian/thumb-05.webp?v=drive-import-20260804-r1",
+        "width": 562,
+        "height": 960,
+        "alt": "Parliamentarian, view 5"
+      },
+      {
+        "src": "/artworks/parliamentarian/view-06.webp?v=drive-import-20260804-r1",
+        "thumb": "/artworks/parliamentarian/thumb-06.webp?v=drive-import-20260804-r1",
+        "width": 708,
+        "height": 960,
+        "alt": "Parliamentarian, view 6"
+      }
+    ]
+  },
+  {
+    "id": "rsm",
+    "archiveNumber": "JF-038",
+    "title": "RSM",
+    "material": null,
+    "dimensions": null,
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": "Title follows the supplied Drive folder name; three plaques on the base read REGIMENTAL, SERGEANT and MAJOR.",
+    "prototypeText": "A uniformed figure in a peaked cap salutes while standing on a cylindrical base.",
+    "story": null,
+    "exhibitionHistory": null,
+    "provenance": null,
+    "historicalRecord": null,
+    "relatedHistoricalRecords": null,
+    "imageCount": 9,
+    "images": [
+      {
+        "src": "/artworks/rsm/view-01.webp?v=drive-import-20260804-r1",
+        "thumb": "/artworks/rsm/thumb-01.webp?v=drive-import-20260804-r1",
+        "width": 461,
+        "height": 1000,
+        "alt": "RSM, view 1"
+      },
+      {
+        "src": "/artworks/rsm/view-02.webp?v=drive-import-20260804-r1",
+        "thumb": "/artworks/rsm/thumb-02.webp?v=drive-import-20260804-r1",
+        "width": 1000,
+        "height": 669,
+        "alt": "RSM, view 2"
+      },
+      {
+        "src": "/artworks/rsm/view-03.webp?v=drive-import-20260804-r1",
+        "thumb": "/artworks/rsm/thumb-03.webp?v=drive-import-20260804-r1",
+        "width": 376,
+        "height": 1000,
+        "alt": "RSM, view 3"
+      },
+      {
+        "src": "/artworks/rsm/view-04.webp?v=drive-import-20260804-r1",
+        "thumb": "/artworks/rsm/thumb-04.webp?v=drive-import-20260804-r1",
+        "width": 415,
+        "height": 1000,
+        "alt": "RSM, view 4"
+      },
+      {
+        "src": "/artworks/rsm/view-05.webp?v=drive-import-20260804-r1",
+        "thumb": "/artworks/rsm/thumb-05.webp?v=drive-import-20260804-r1",
+        "width": 1000,
+        "height": 669,
+        "alt": "RSM, view 5"
+      },
+      {
+        "src": "/artworks/rsm/view-06.webp?v=drive-import-20260804-r1",
+        "thumb": "/artworks/rsm/thumb-06.webp?v=drive-import-20260804-r1",
+        "width": 517,
+        "height": 1000,
+        "alt": "RSM, view 6"
+      },
+      {
+        "src": "/artworks/rsm/view-07.webp?v=drive-import-20260804-r1",
+        "thumb": "/artworks/rsm/thumb-07.webp?v=drive-import-20260804-r1",
+        "width": 1000,
+        "height": 893,
+        "alt": "RSM, view 7"
+      },
+      {
+        "src": "/artworks/rsm/view-08.webp?v=drive-import-20260804-r1",
+        "thumb": "/artworks/rsm/thumb-08.webp?v=drive-import-20260804-r1",
+        "width": 473,
+        "height": 1000,
+        "alt": "RSM, view 8"
+      },
+      {
+        "src": "/artworks/rsm/view-09.webp?v=drive-import-20260804-r1",
+        "thumb": "/artworks/rsm/thumb-09.webp?v=drive-import-20260804-r1",
+        "width": 669,
+        "height": 1000,
+        "alt": "RSM, view 9"
+      }
+    ]
+  },
+  {
+    "id": "tutu",
+    "archiveNumber": "JF-039",
+    "title": "Tutu",
+    "material": null,
+    "dimensions": null,
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": "Title follows the supplied Drive folder name and the TUTU plaque visible on the lower support.",
+    "prototypeText": "A torso-like figure with outstretched hands and a circular skirt stands on a narrow column and square base.",
+    "story": null,
+    "exhibitionHistory": null,
+    "provenance": null,
+    "historicalRecord": null,
+    "relatedHistoricalRecords": null,
+    "imageCount": 5,
+    "images": [
+      {
+        "src": "/artworks/tutu/view-01.webp?v=drive-import-20260804-r1",
+        "thumb": "/artworks/tutu/thumb-01.webp?v=drive-import-20260804-r1",
+        "width": 637,
+        "height": 1000,
+        "alt": "Tutu, view 1"
+      },
+      {
+        "src": "/artworks/tutu/view-02.webp?v=drive-import-20260804-r1",
+        "thumb": "/artworks/tutu/thumb-02.webp?v=drive-import-20260804-r1",
+        "width": 620,
+        "height": 1000,
+        "alt": "Tutu, view 2"
+      },
+      {
+        "src": "/artworks/tutu/view-03.webp?v=drive-import-20260804-r1",
+        "thumb": "/artworks/tutu/thumb-03.webp?v=drive-import-20260804-r1",
+        "width": 664,
+        "height": 1000,
+        "alt": "Tutu, view 3"
+      },
+      {
+        "src": "/artworks/tutu/view-04.webp?v=drive-import-20260804-r1",
+        "thumb": "/artworks/tutu/thumb-04.webp?v=drive-import-20260804-r1",
+        "width": 572,
+        "height": 1000,
+        "alt": "Tutu, view 4"
+      },
+      {
+        "src": "/artworks/tutu/view-05.webp?v=drive-import-20260804-r1",
+        "thumb": "/artworks/tutu/thumb-05.webp?v=drive-import-20260804-r1",
+        "width": 1000,
+        "height": 363,
+        "alt": "Tutu, view 5"
+      }
+    ]
+  },
+  {
+    "id": "servamus-et-servimus",
+    "archiveNumber": "JF-040",
+    "title": "Servamus et Servimus",
+    "material": null,
+    "dimensions": null,
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": "Title and capitalization follow the supplied Drive folder name and the SERVAMUS ET SERVIMUS plaque visible in the photographs.",
+    "prototypeText": "A uniformed, moustached figure gestures with raised arms while standing on a cylindrical base and holding a plaque.",
+    "story": null,
+    "exhibitionHistory": null,
+    "provenance": null,
+    "historicalRecord": null,
+    "relatedHistoricalRecords": null,
+    "imageCount": 4,
+    "images": [
+      {
+        "src": "/artworks/servamus-et-servimus/view-01.webp?v=drive-import-20260804-r1",
+        "thumb": "/artworks/servamus-et-servimus/thumb-01.webp?v=drive-import-20260804-r1",
+        "width": 633,
+        "height": 1455,
+        "alt": "Servamus et Servimus, view 1"
+      },
+      {
+        "src": "/artworks/servamus-et-servimus/view-02.webp?v=drive-import-20260804-r1",
+        "thumb": "/artworks/servamus-et-servimus/thumb-02.webp?v=drive-import-20260804-r1",
+        "width": 960,
+        "height": 770,
+        "alt": "Servamus et Servimus, view 2"
+      },
+      {
+        "src": "/artworks/servamus-et-servimus/view-03.webp?v=drive-import-20260804-r1",
+        "thumb": "/artworks/servamus-et-servimus/thumb-03.webp?v=drive-import-20260804-r1",
+        "width": 720,
+        "height": 960,
+        "alt": "Servamus et Servimus, view 3"
+      },
+      {
+        "src": "/artworks/servamus-et-servimus/view-04.webp?v=drive-import-20260804-r1",
+        "thumb": "/artworks/servamus-et-servimus/thumb-04.webp?v=drive-import-20260804-r1",
+        "width": 876,
+        "height": 960,
+        "alt": "Servamus et Servimus, view 4"
+      }
+    ]
   }
 ]
