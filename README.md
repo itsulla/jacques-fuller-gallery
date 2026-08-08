@@ -1,12 +1,12 @@
-# Jacques Fuller · Sculpture Archive
+# Jacques Fuller · Sculpture
 
-A two-page, image-led archive for South African sculptor Jacques Fuller. The site combines a 45-record current gallery with a source-attributed record of the 2001 *Jacques Fuller: Sculptor* exhibition catalogue.
+A two-page, image-led website for South African sculptor Jacques Fuller. The public experience is deliberately direct: works, process, and biography without institutional framing.
 
 ## Structure
 
-- **Index:** current work, Archive 2001, biography/timeline, and the current-work title index.
-- **Process:** the contemporary *Mermaid* photo sequence, paired with Jacques's dated 2001 account of direct metalwork.
-- **Artwork viewer:** image navigation, current metadata, and clearly separated historical relationships.
+- **Index:** selected works, the complete scrollable image gallery, and an expanded biography with a six-milestone career timeline.
+- **Process:** the *Mermaid* workshop sequence and Jacques's account of working directly in metal.
+- **Artwork viewer:** image navigation and known factual metadata only.
 
 There are no additional routes. The `page=process` query parameter switches between the Index and Process views.
 
@@ -36,8 +36,8 @@ This runs Oxlint, catalogue tests, source/content tests, a production build, and
 The primary UI files are:
 
 - `src/App.jsx` — application structure and interactions
-- `src/App.css` — the established Direction 5 gallery system
-- `src/archive.css` — Archive 2001, expanded About, and historical Process additions
+- `src/App.css` — the established gallery system, including the visual Works browser
+- `src/archive.css` — About, Process, and artwork-detail additions
 - `src/index.css` — global reset and typography
 - `DESIGN.md` — current design contract
 - `PRODUCT.md` — product and source-of-truth contract
@@ -48,9 +48,9 @@ If Stitch produces a replacement page rather than a focused component, treat it 
 
 ## Data and assets
 
-- `src/data/artworks.json` — generated current catalogue
-- `src/data/historicalCatalogue.json` — 61 dated records from the 2001 catalogue
-- `src/data/artist.json` — biography, timeline, quotations, material history, and exhibition context
+- `src/data/artworks.json` — generated current work records
+- `src/data/historicalCatalogue.json` — retained internal research data; not imported into the public interface
+- `src/data/artist.json` — biography, timeline, quotations, material history, and internal source context
 - `public/artworks/` — generated current-work WebP images and thumbnails
 - `public/process/` — Process page imagery
 - `scripts/build_catalogue.py` — durable source for current-work metadata and image generation
@@ -61,4 +61,4 @@ Original upload files live in ignored `source-assets/` and are not published to 
 npm run catalogue
 ```
 
-Historical collection fields describe the publication's 2001 record, not current ownership. Catalogue-page scans are research sources and are not included for public reproduction without rights clearance.
+Historical research files remain available for internal verification but are not presented as a public chapter, source footnote, ownership claim, or current biography statement.

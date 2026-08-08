@@ -9,13 +9,19 @@
   "biography": {
     "asRecorded": 2001,
     "paragraphs": [
-      "After leaving school in Otjiwarongo in 1979, Jacques Fuller entered the police force in Namibia and completed National Service. He worked as a game ranger in Etosha in 1981–82, then settled in Bloemfontein in 1983 to work as an ornithological assistant at the National Museum.",
-      "He registered for a BA Fine Arts degree at the University of the Free State in 1984 and completed its practical component with distinction in sculpture in 1988. The catalogue records him as a full-time sculptor from 1989, working on a smallholding at Bainsvlei outside Bloemfontein."
+      "After leaving school in Otjiwarongo in 1979, Jacques Fuller entered the police force in Namibia and completed National Service. He worked as a game ranger in Etosha in 1981-82, then settled in Bloemfontein in 1983 to work as an ornithological assistant at the National Museum.",
+      "He registered for a BA Fine Arts degree at the University of the Free State in 1984 and completed its practical component with distinction in sculpture in 1988. In 1989 he began working full-time as a sculptor from a smallholding at Bainsvlei outside Bloemfontein.",
+      "Jacques works directly in metal, using brass, steel, copper and found material. Rudimentary drawings are transferred to sheet metal as templates before each part is cut, shaped and assembled by hand. Figures, animals and mechanical forms carry humour, wordplay and social observation."
+    ],
+    "facts": [
+      { "label": "Based", "value": "Bloemfontein, South Africa" },
+      { "label": "Practice", "value": "Sculpture" },
+      { "label": "Materials", "value": "Brass, steel, copper and found material" },
+      { "label": "Full-time", "value": "Since 1989" }
     ],
     "source": {
       "publicationYear": 2001,
-      "pages": "14–22",
-      "note": "Career details are drawn from the 2001 catalogue; the present-day full-time status was supplied for this website in August 2026."
+      "pages": "14–22"
     }
   },
   "timeline": [
@@ -26,7 +32,7 @@
       "source": { "year": 2001, "page": 22 }
     },
     {
-      "date": "1981–82",
+      "date": "1981-82",
       "title": "Game ranger in Etosha",
       "detail": "Served as a game ranger after National Service.",
       "source": { "year": 2001, "page": 22 }
@@ -50,7 +56,7 @@
       "source": { "year": 2001, "page": 22 }
     },
     {
-      "date": "1989 – present",
+      "date": "1989-present",
       "title": "Full-time sculptor",
       "detail": "Working full-time as a sculptor since 1989.",
       "source": { "year": 2026, "type": "current website update" }
@@ -111,7 +117,7 @@
       "source": { "year": 2001, "page": 15 }
     },
     {
-      "period": "By 2001",
+      "period": "Established practice",
       "material": "Yellow copper / brass",
       "detail": "A material Jacques described as combining the austerity of mild steel with the flexibility of red copper.",
       "source": { "year": 2001, "page": 16 }

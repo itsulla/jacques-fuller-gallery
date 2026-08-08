@@ -89,7 +89,7 @@ class ArtistSourceTests(unittest.TestCase):
         historical_events = self.artist["timeline"][:-1]
         current_event = self.artist["timeline"][-1]
         self.assertTrue(all(event["source"]["year"] == 2001 for event in historical_events))
-        self.assertEqual(current_event["date"], "1989 – present")
+        self.assertEqual(current_event["date"], "1989-present")
         self.assertEqual(current_event["title"], "Full-time sculptor")
         self.assertEqual(current_event["source"]["year"], 2026)
         self.assertEqual(current_event["source"]["type"], "current website update")
@@ -187,13 +187,52 @@ class PresentationLanguageTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.app_source = APP_SOURCE.read_text()
+        cls.artist = load_json(ARTIST_DATA)
 
-    def test_archive_states_use_one_defined_public_taxonomy(self):
-        self.assertIn("Not recorded", self.app_source)
-        self.assertIn("Research pending.", self.app_source)
-        self.assertIn("Awaiting artist/family account.", self.app_source)
-        self.assertNotIn("Pending description.", self.app_source)
-        self.assertNotIn("Pending catalogue research.", self.app_source)
+    def test_public_interface_is_artist_led_and_uses_works_language(self):
+        for phrase in (
+            "Archive 2001",
+            "Historical exhibition catalogue",
+            "Open archive index",
+            "Explore the archive",
+            "Current archive",
+            "Archive states",
+            "Catalogue note",
+            "Historical catalogue record",
+            "Source:",
+            "2001",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertNotIn(phrase, self.app_source)
+
+        for phrase in ("Works", "View works", "View all {artworks.length} works", "archive-index__gallery"):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, self.app_source)
+
+        self.assertNotIn("historicalCatalogue", self.app_source)
+        self.assertNotIn("Search works", self.app_source)
+        self.assertNotIn('type="search"', self.app_source)
+        self.assertNotIn("archive-index__tools", self.app_source)
+        self.assertIn("archive-index__artwork", self.app_source)
+
+        self.assertNotIn("View</span>", self.app_source)
+        self.assertNotIn("{work.archiveNumber}</p>", self.app_source)
+
+    def test_biography_does_not_expose_catalogue_provenance_copy(self):
+        biography = self.artist["biography"]
+        self.assertNotIn("note", biography["source"])
+        self.assertTrue(all("catalogue" not in paragraph.lower() for paragraph in biography["paragraphs"]))
+
+    def test_public_about_uses_supported_biography_and_timeline(self):
+        biography = self.artist["biography"]
+        self.assertGreaterEqual(len(biography["paragraphs"]), 3)
+        self.assertEqual(len(self.artist["timeline"]), 6)
+        self.assertEqual([event["date"] for event in self.artist["timeline"]], ["1979", "1981-82", "1983", "1984", "1988", "1989-present"])
+        self.assertIn("works directly in metal", biography["paragraphs"][-1])
+        self.assertIn("<p>Biography</p>", self.app_source)
+        self.assertIn("About Jacques", self.app_source)
+        self.assertIn("artist.timeline.map", self.app_source)
+        self.assertNotIn("artist.biography.facts.map", self.app_source)
 
     def test_optional_photo_credit_is_rendered_as_a_record_fact(self):
         self.assertIn("Photo credit", self.app_source)

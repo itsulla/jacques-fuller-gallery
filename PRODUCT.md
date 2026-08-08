@@ -14,30 +14,30 @@ Jacques and his family are secondary users. The site must remain straightforward
 
 ## Product Purpose
 
-Create a permanent online gallery for Jacques Fuller, a Bloemfontein-based sculptor active since 1989. The current site presents 44 photographed sculptures plus one explicitly labelled Jewellery collection record in more depth than Facebook can, with related images grouped into coherent records, and a separately sourced historical layer for the 61 works catalogued in 2001.
+Create a permanent online gallery for Jacques Fuller, a Bloemfontein-based sculptor active since 1989. The site presents 44 photographed sculptures plus one explicitly labelled Jewellery collection in more depth than Facebook can, with related images grouped into coherent records.
 
-Success means the artwork is visually legible, each work can be explored without social-media clutter, and incomplete catalogue details can be added later without redesigning the site.
+Success means the artwork is visually legible, each work can be explored without social-media clutter, and incomplete artwork details can be added later without redesigning the site.
 
 ## Positioning
 
-The site is a focused, single-artist sculpture archive built around multiple views of each physical work and Jacques's material process. It is not a social feed, generic portfolio template, or conventional ecommerce catalogue.
+The site is a focused, artist-led presentation of Jacques's work and material process. It is not a social feed, institutional archive, generic portfolio template, or conventional ecommerce catalogue.
 
 ## Operating Context
 
 The initial collection was manually downloaded from Jacques's public Facebook albums and organised as one Google Drive folder per sculpture. Folder names contain confirmed titles and, for some works, materials and dimensions. Sculpture folders contain several JPEG views of the same object; the Jewellery folder is the documented exception and groups multiple distinct pieces in one collection record.
 
-Artwork descriptions, dates, stories, availability, exhibition history, and fuller catalogue records will be supplied later by Jacques or his family.
+Artwork descriptions, dates, stories, availability, exhibition history, and fuller work records will be supplied later by Jacques or his family.
 
 ## Capabilities and Constraints
 
 - Responsive web gallery with 45 current records and 311 photographs.
-- A distinct 61-record historical catalogue layer sourced to *Jacques Fuller: Sculptor* (Sanlam Art Collection, 2001).
-- A reversible six-work curatorial mosaic leads the monograph-style homepage; a four-work static gateway opens the complete searchable archive in a full-screen index.
+- A reversible six-work mosaic leads the homepage; a four-work static gateway opens the complete scrollable Works gallery.
+- The full Works gallery presents large lead images in three desktop columns, two tablet columns, and one mobile column; selecting an image opens the existing viewer and factual details.
 - Multiple-image carousel or gallery for every current record.
-- Individual artwork detail view with placeholders for future stories and catalogue fields.
-- Factual metadata is shown only when present in the source folder name or a cited historical source.
-- Current and historical records use separate IDs; title matches do not establish object identity.
-- Missing facts use **“Not recorded.”** Unfinished catalogue tasks use **“Research pending.”** Future testimony uses **“Awaiting artist/family account.”**
+- Individual artwork detail views show only known factual metadata, image count, and supplied photo credit.
+- About combines an expanded biography with a six-milestone career timeline in an editorial split layout.
+- Missing facts remain null in structured data and are omitted from the public interface.
+- Historical source and relationship data remain available internally but are not part of the public presentation.
 - Initial images are Facebook-derived JPEGs rather than guaranteed camera originals.
 - Preview and production deployments remain separate; review builds are private over Tailscale and never imply a production release.
 - Sanity Studio is the recommended post-approval editing and upload interface; it is intentionally not connected until editor accounts and a production deployment are chosen.
@@ -52,10 +52,10 @@ Artwork descriptions, dates, stories, availability, exhibition history, and full
 - Other explored materials include mild steel and red copper.
 - Voice should be factual, reflective, and respectful of interpretation. The site must not use hype, invented symbolism, fabricated provenance, or unconfirmed commercial claims.
 
-## Evidence on Hand
+## Internal Evidence on Hand
 
 - Source image archive: `source-assets/Jacques/`.
-- Public source archive contains 45 current-record folders: 44 sculptures and one Jewellery collection.
+- The source library contains 45 current-record folders: 44 sculptures and one Jewellery collection.
 - The complete supplied 2001 catalogue-entry sequence covers catalogue numbers 1–61 on printed pages 24–27.
 - The 2001 interview and chronology provide dated first-person and biographical evidence; they are not current statements.
 - Biography, process statements, and chronology sourced to the supplied 2001 publication.
@@ -66,10 +66,10 @@ Artwork descriptions, dates, stories, availability, exhibition history, and full
 
 1. The sculpture leads; interface elements recede.
 2. Multiple views belong to one artwork record; any grouped collection must be explicitly identified rather than presented as views of one object.
-3. Missing facts use the explicit archive-state taxonomy, never plausible-looking inventions.
+3. Missing facts remain absent; the interface never substitutes plausible-looking inventions.
 4. Material, scale, process, and surface detail deserve the same attention as silhouette.
-5. The archive should grow without changing its underlying structure.
-6. Historical ownership, biography, and interview material must remain visibly dated and source-attributed.
+5. The body of work should grow without changing its underlying structure.
+6. Internal research evidence must remain preserved without becoming public institutional framing.
 
 ## Accessibility & Inclusion
 

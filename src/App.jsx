@@ -1,14 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import artworks from './data/artworks.json'
 import artist from './data/artist.json'
-import historicalCatalogue from './data/historicalCatalogue.json'
 import './App.css'
 import './archive.css'
 
 const selectedWorks = artworks
   .filter((work) => work.featured)
   .sort((a, b) => a.featuredRank - b.featuredRank)
-const archiveGatewayWorks = artworks.slice(-4)
+const worksGatewayItems = artworks.slice(-4)
 
 const processWork = artworks.find((work) => work.id === 'mermaid')
 const processPhotos = [
@@ -58,25 +57,9 @@ const processStages = [
 ]
 
 const quoteById = Object.fromEntries(artist.quotes.map((quote) => [quote.id, quote]))
-const historicalByNumber = Object.fromEntries(
-  historicalCatalogue.records.map((record) => [record.catalogueNumber, record]),
-)
-const hoeRyWork = artworks.find((work) => work.id === 'hoe-ry-die-boere')
-const bwanaWork = artworks.find((work) => work.id === 'bwana')
-const archiveThemes = [
-  ['Animals and fables', 'Pangolin · Warthog · Chameleon · Grasshopper'],
-  ['Authority and absurdity', 'Public Protector · Domminee · Bwana · Chauvinist'],
-  ['Bodies and performance', 'Drag Queen · Tutu · Dress · Dyke Bike'],
-  ['Machines and public work', 'Rocking Horse · Phakisa · African Carousel'],
-]
 
 function formatNumber(value) {
   return String(value).padStart(2, '0')
-}
-
-function formatImageCount(work) {
-  const singular = work.imageLabel || 'view'
-  return `${work.images.length} ${work.images.length === 1 ? singular : `${singular}s`}`
 }
 
 function ImageWithState({ src, alt, className = '', loadingLabel = 'Image loading', recoverable = false, ...props }) {
@@ -142,13 +125,12 @@ function ArtworkButton({ work, onOpen, className = '', thumb = false, eager = fa
   )
 }
 
-function SiteNav({ className = '', current = 'work', onOpenArchive }) {
+function SiteNav({ className = '', current = 'home', onOpenArchive }) {
   return (
     <header className={`direction-nav ${className}`.trim()}>
       <a className="direction-nav__mark" href="/">Jacques Fuller</a>
       <nav aria-label="Primary navigation">
-        <button type="button" onClick={onOpenArchive} aria-current={current === 'work' ? 'page' : undefined}>Work</button>
-        <a href="/#archive">Archive</a>
+        <button type="button" onClick={onOpenArchive}>Works</button>
         <a href="/?page=process" aria-current={current === 'process' ? 'page' : undefined}>Process</a>
         <a href="/#about">About</a>
       </nav>
@@ -160,14 +142,14 @@ function AboutCopy({ className = '' }) {
   return (
     <section className={`about-copy ${className}`.trim()} id="about" aria-labelledby="about-title">
       <header>
-        <p>Biography · historical record, updated 2026</p>
+        <p>Biography</p>
         <h2 id="about-title">About Jacques</h2>
       </header>
       <div className="about-copy__body">
         <div className="about-copy__prose">
           {artist.biography.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
         </div>
-        <ol className="about-copy__timeline" aria-label="Career timeline">
+        <ol className="about-copy__timeline">
           {artist.timeline.map((event) => (
             <li key={event.date}>
               <p>{event.date}</p>
@@ -179,119 +161,19 @@ function AboutCopy({ className = '' }) {
           ))}
         </ol>
       </div>
-      <footer>
-        <p>Source: <cite>{artist.source.title}</cite>, {artist.source.publisher}, 2001.</p>
-        <p>{artist.biography.source.note}</p>
-      </footer>
     </section>
   )
 }
 
-function QuoteSource({ quote }) {
-  return <cite>Interview with {quote.source.interviewer} · {quote.source.date}</cite>
-}
-
-function Archive2001({ onOpen }) {
-  const lookTwice = quoteById['look-twice']
-  const hoeRyRecord = historicalByNumber[10]
-  const bwanaRecord = historicalByNumber[58]
-
-  return (
-    <section className="r5-archive" id="archive" aria-labelledby="archive-title">
-      <div className="r5-archive__statement" id="archive-context">
-        <header>
-          <p>Historical exhibition catalogue</p>
-          <h2 id="archive-title">Archive 2001</h2>
-          <p>
-            <strong>{historicalCatalogue.records.length} catalogue records</strong> preserve a snapshot of Jacques&apos;s
-            working world at the turn of the century. Dates, dimensions and collection locations below are
-            historical statements from that publication—not current claims.
-          </p>
-        </header>
-        <blockquote>
-          <p>{lookTwice.text}</p>
-          <footer><QuoteSource quote={lookTwice} /></footer>
-        </blockquote>
-      </div>
-
-      <nav className="r5-archive__chapters" aria-label="Archive 2001 chapters">
-        <a href="#archive-context" aria-label="Catalogue context"><span>01</span><span>Catalogue context</span></a>
-        <a href="#archive-themes" aria-label="Recurring forms"><span>02</span><span>Recurring forms</span></a>
-        <a href="#archive-identities" aria-label="Two identity cases"><span>03</span><span>Two identity cases</span></a>
-      </nav>
-
-      <div className="r5-archive__themes" id="archive-themes" aria-labelledby="archive-themes-title">
-        <header>
-          <p>Across the catalogue</p>
-          <h3 id="archive-themes-title">Recurring forms</h3>
-        </header>
-        <ul>
-          {archiveThemes.map(([theme, examples]) => (
-            <li key={theme}><span>{theme}</span><span>{examples}</span></li>
-          ))}
-        </ul>
-        <p>Editorial groupings observed in the 2001 catalogue; they are not categories assigned by Jacques.</p>
-      </div>
-
-      <div className="r5-archive__relationships" id="archive-identities" aria-labelledby="archive-identities-title">
-        <header className="r5-archive__identities-heading">
-          <p>Relationship to the current archive</p>
-          <h3 id="archive-identities-title">Two identity cases</h3>
-          <p>One object survives in both records. One title returns on a different sculpture.</p>
-        </header>
-        <article className="r5-archive__relationship r5-archive__relationship--same">
-          <ArtworkButton
-            work={hoeRyWork}
-            onOpen={onOpen}
-            label="View current Hoe Ry Die Boere"
-            caption="Current archive · JF-030"
-          />
-          <div>
-            <p>Catalogue no. 10 · same physical work</p>
-            <h3>Hoe Ry Die Boere</h3>
-            <dl>
-              <div><dt>Date</dt><dd>{hoeRyRecord.date}</dd></div>
-              <div><dt>Material</dt><dd>{hoeRyRecord.material}</dd></div>
-              <div><dt>Dimensions</dt><dd>{hoeRyRecord.dimensions}</dd></div>
-            </dl>
-            <p>The vehicle, figures, bird, base and mechanical details identify the current record as the sculpture catalogued in 2001.</p>
-            <button type="button" onClick={() => onOpen(hoeRyWork.id)}>Open current record</button>
-          </div>
-        </article>
-
-        <article className="r5-archive__relationship r5-archive__relationship--reused">
-          <ArtworkButton
-            work={bwanaWork}
-            onOpen={onOpen}
-            label="View current Bwana"
-            caption="Current archive · JF-022 · different sculpture"
-          />
-          <div>
-            <p>Catalogue no. 58 · different work, same title</p>
-            <h3>Bwana</h3>
-            <dl>
-              <div><dt>Date</dt><dd>{bwanaRecord.date}</dd></div>
-              <div><dt>Material</dt><dd>{bwanaRecord.material}</dd></div>
-              <div><dt>Dimensions</dt><dd>{bwanaRecord.dimensions}</dd></div>
-            </dl>
-            <p>The 2001 catalogue records a different sculpture. Jacques returned to the title without repeating the physical object.</p>
-            <button type="button" onClick={() => onOpen(bwanaWork.id)}>Open current record</button>
-          </div>
-        </article>
-      </div>
-
-      <footer className="r5-archive__source">
-        <p>Source: <cite>{historicalCatalogue.source.title}</cite>, {historicalCatalogue.source.publisher}, {historicalCatalogue.source.year}, catalogue pp. 24–27. Catalogue photography is not reproduced pending rights clearance.</p>
-      </footer>
-    </section>
-  )
+function QuoteSource() {
+  return <cite>Jacques Fuller</cite>
 }
 
 function ProcessVoice({ quote, variant }) {
   return (
     <blockquote className={`r5-process__voice r5-process__voice--${variant}`}>
       <p>{quote.text}</p>
-      <footer><QuoteSource quote={quote} /></footer>
+      <footer><QuoteSource /></footer>
     </blockquote>
   )
 }
@@ -300,7 +182,6 @@ function MaterialHistory() {
   return (
     <section className="r5-process__material-history" aria-labelledby="material-history-title">
       <header>
-        <p>Material history · described in 2001</p>
         <h2 id="material-history-title">A material vocabulary</h2>
         <p>Not a straight progression, but a series of technical problems, discoveries and returns.</p>
       </header>
@@ -313,19 +194,18 @@ function MaterialHistory() {
           </li>
         ))}
       </ol>
-      <footer>Source: Jacques Fuller in conversation with Sharon Crampton, August 2001.</footer>
     </section>
   )
 }
 
-function DirectionFooter({ label = 'End of index', onOpenArchive }) {
+function DirectionFooter({ label = 'Sculpture', onOpenArchive }) {
   return (
     <footer className="direction-footer">
       <div>
         <p>{label}</p>
         <p>Jacques Fuller</p>
       </div>
-      {onOpenArchive && <button type="button" onClick={onOpenArchive}>Open archive index</button>}
+      {onOpenArchive && <button type="button" onClick={onOpenArchive}>View all works</button>}
       <p>Bloemfontein, South Africa</p>
     </footer>
   )
@@ -333,22 +213,19 @@ function DirectionFooter({ label = 'End of index', onOpenArchive }) {
 
 function ArchiveGateway({ onOpen, onOpenArchive }) {
   return (
-    <section className="r5-archive-gateway" id="current-archive" aria-labelledby="current-archive-title">
+    <section className="r5-archive-gateway" id="works" aria-labelledby="works-title">
       <header>
         <div>
-          <p>Current archive · {artworks.length} works</p>
-          <h2 id="current-archive-title">The complete record</h2>
+          <h2 id="works-title">Works</h2>
         </div>
         <div>
-          <p>Search every title, inspect all available photographic views, and open a source-aware work record.</p>
-          <button type="button" onClick={onOpenArchive}>Browse all {artworks.length} works</button>
+          <button type="button" onClick={onOpenArchive}>View all {artworks.length} works</button>
         </div>
       </header>
       <div className="r5-archive-gateway__works">
-        {archiveGatewayWorks.map((work) => (
+        {worksGatewayItems.map((work) => (
           <article key={work.id}>
             <ArtworkButton work={work} onOpen={onOpen} thumb />
-            <p>{work.archiveNumber}</p>
             <h3>{work.title}</h3>
           </article>
         ))}
@@ -358,25 +235,19 @@ function ArchiveGateway({ onOpen, onOpenArchive }) {
 }
 
 function ArchiveIndex({ works, onClose, onOpen, returnFocusRef }) {
-  const [query, setQuery] = useState('')
   const dialogRef = useRef(null)
-  const searchRef = useRef(null)
-  const normalizedQuery = query.trim().toLocaleLowerCase()
-  const filteredWorks = works.filter((work) => (
-    !normalizedQuery
-    || `${work.title} ${work.archiveNumber || ''}`.toLocaleLowerCase().includes(normalizedQuery)
-  ))
+  const closeRef = useRef(null)
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow
     const previousFocus = returnFocusRef.current || document.activeElement
     document.body.style.overflow = 'hidden'
-    searchRef.current?.focus()
+    closeRef.current?.focus()
 
     const onKeyDown = (event) => {
       if (event.key === 'Escape') onClose()
       if (event.key === 'Tab') {
-        const focusable = [...(dialogRef.current?.querySelectorAll('button:not([disabled]), input:not([disabled])') || [])]
+        const focusable = [...(dialogRef.current?.querySelectorAll('button:not([disabled])') || [])]
         const first = focusable[0]
         const last = focusable[focusable.length - 1]
         if (event.shiftKey && document.activeElement === first) {
@@ -401,44 +272,30 @@ function ArchiveIndex({ works, onClose, onOpen, returnFocusRef }) {
     <div ref={dialogRef} className="archive-index" role="dialog" aria-modal="true" aria-labelledby="archive-index-title">
       <header className="archive-index__bar">
         <div>
-          <p>Current archive · {works.length} works</p>
-          <h2 id="archive-index-title">Browse the work</h2>
+          <p>{works.length} works</p>
+          <h2 id="archive-index-title">Works</h2>
         </div>
-        <button type="button" onClick={onClose}>Close archive</button>
+        <button ref={closeRef} type="button" onClick={onClose}>Close</button>
       </header>
-      <div className="archive-index__tools">
-        <label htmlFor="archive-search">Search current archive</label>
-        <input
-          ref={searchRef}
-          id="archive-search"
-          type="search"
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-          placeholder="Title or archive number"
-          autoComplete="off"
-        />
-        <p aria-live="polite">{filteredWorks.length} {filteredWorks.length === 1 ? 'work' : 'works'}</p>
-      </div>
-      {filteredWorks.length ? (
-        <ol className="archive-index__list">
-          {filteredWorks.map((work) => (
-            <li key={work.id}>
-              <button type="button" onClick={() => onOpen(work.id)}>
-                <span className="archive-index__thumb" aria-hidden="true">
-                  <img src={work.images[0].thumb} alt="" loading="lazy" />
-                </span>
-                <span>
-                  <strong>{work.title}</strong>
-                  <small>{work.archiveNumber} · {formatImageCount(work)}</small>
-                </span>
-                <span>Open record</span>
-              </button>
-            </li>
-          ))}
-        </ol>
-      ) : (
-        <p className="archive-index__empty">No works match this search.</p>
-      )}
+      <ol className="archive-index__gallery">
+        {works.map((work) => (
+          <li key={work.id}>
+            <button className="archive-index__artwork" type="button" onClick={() => onOpen(work.id)}>
+              <span className="archive-index__image" aria-hidden="true">
+                <img
+                  src={work.images[0].src}
+                  alt=""
+                  width={work.images[0].width}
+                  height={work.images[0].height}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </span>
+              <strong>{work.title}</strong>
+            </button>
+          </li>
+        ))}
+      </ol>
     </div>
   )
 }
@@ -461,7 +318,7 @@ function ImmersiveIndex({ onOpen, onOpenArchive }) {
           <div className="r5-mosaic__identity">
             <p>Sculpture · Brass, steel, copper and found material</p>
             <h1 id="r5-title">Jacques<br />Fuller</h1>
-            <button type="button" onClick={onOpenArchive}>Explore the archive</button>
+            <button type="button" onClick={onOpenArchive}>View works</button>
           </div>
         </section>
 
@@ -470,8 +327,6 @@ function ImmersiveIndex({ onOpen, onOpenArchive }) {
         </section>
 
         <ArchiveGateway onOpen={onOpen} onOpenArchive={onOpenArchive} />
-
-        <Archive2001 onOpen={onOpen} />
         <AboutCopy className="r5-about" />
       </main>
       <DirectionFooter onOpenArchive={onOpenArchive} />
@@ -492,11 +347,10 @@ function ImmersiveProcess({ onOpen, onOpenArchive }) {
         </header>
 
         <section className="r5-process__intro" aria-labelledby="r5-process-title">
-          <p>Case study 01</p>
           <h2 id="r5-process-title">Making Mermaid</h2>
           <p>
-            These contemporary workshop photographs follow one sculpture from drawing to finished work. Jacques&apos;s
-            historical account below describes the direct relationship with metal that shaped his practice in 2001.
+            These workshop photographs follow one sculpture from drawing to finished work. Jacques shapes and
+            assembles each part directly in metal.
           </p>
         </section>
 
@@ -557,7 +411,7 @@ function ImmersiveProcess({ onOpen, onOpenArchive }) {
           </footer>
         </section>
       </main>
-      <DirectionFooter label="End of process" onOpenArchive={onOpenArchive} />
+      <DirectionFooter label="Process" onOpenArchive={onOpenArchive} />
     </article>
   )
 }
@@ -568,11 +422,9 @@ function WorkViewer({ work, onClose, onMoveWork, returnFocusRef }) {
   const closeRef = useRef(null)
   const activeImage = work.images[current]
   const recordFacts = [
-    ['Archive number', work.archiveNumber || 'Not recorded'],
-    ['Date', work.date || 'Not recorded'],
-    ['Material', work.material || 'Not recorded'],
-    ['Dimensions', work.dimensions || 'Not recorded'],
-    ['Availability', work.availability || 'Not recorded'],
+    ...(work.date ? [['Date', work.date]] : []),
+    ...(work.material ? [['Material', work.material]] : []),
+    ...(work.dimensions ? [['Dimensions', work.dimensions]] : []),
     ...(work.photoCredit ? [['Photo credit', work.photoCredit]] : []),
     [work.imageLabel === 'image' ? 'Photographic images' : 'Photographic views', `${work.images.length}`],
   ]
@@ -656,16 +508,9 @@ function WorkViewer({ work, onClose, onMoveWork, returnFocusRef }) {
         )}
         <section className="viewer__record" aria-labelledby="viewer-record-title">
           <header className="viewer__record-heading">
-            <div>
-              <h2 id="viewer-record-title">{work.recordType === 'collection' ? 'Collection record' : 'Work record'}</h2>
-              <p>{work.archiveNumber}</p>
-            </div>
+            <h2 id="viewer-record-title">{work.recordType === 'collection' ? 'Collection' : 'Details'}</h2>
             <p>{work.title}</p>
           </header>
-
-          <p className="viewer__record-key">
-            Archive states: <strong>Not recorded</strong> means absent from the current source; <strong>Research pending</strong> marks catalogue work still to complete; <strong>Awaiting artist/family account</strong> marks future testimony.
-          </p>
 
           <dl className="viewer__record-facts">
             {recordFacts.map(([label, value]) => (
@@ -675,62 +520,6 @@ function WorkViewer({ work, onClose, onMoveWork, returnFocusRef }) {
               </div>
             ))}
           </dl>
-
-          <div className="viewer__record-notes">
-            <section>
-              <h3>Working description</h3>
-              <p>{work.prototypeText || 'Research pending.'}</p>
-            </section>
-            <section>
-              <h3>Catalogue note</h3>
-              <p>{work.catalogueNote || 'Research pending.'}</p>
-            </section>
-            <section>
-              <h3>Artist&apos;s account</h3>
-              <p>{work.story || 'Awaiting artist/family account.'}</p>
-            </section>
-            <section>
-              <h3>Exhibition history</h3>
-              <p>{work.exhibitionHistory || 'Not recorded'}</p>
-            </section>
-            <section>
-              <h3>Provenance</h3>
-              <p>{work.provenance || 'Not recorded'}</p>
-            </section>
-          </div>
-
-          {work.historicalRecord && (
-            <section className="viewer__historical" aria-labelledby="viewer-historical-title">
-              <header>
-                <h3 id="viewer-historical-title">Historical catalogue record</h3>
-                <p>{work.historicalRecord.id}</p>
-              </header>
-              <dl>
-                <div><dt>Relationship</dt><dd>Same physical work</dd></div>
-                <div><dt>Catalogue number</dt><dd>{work.historicalRecord.catalogueNumber}</dd></div>
-                <div><dt>Inscription</dt><dd>{work.historicalRecord.inscription}</dd></div>
-                <div><dt>Collection recorded in 2001</dt><dd>{work.historicalRecord.collectionAsOf2001}</dd></div>
-              </dl>
-              <p>Source: <cite>{historicalCatalogue.source.title}</cite>, {historicalCatalogue.source.year}, catalogue p. {work.historicalRecord.sourcePage}. Collection information is historical, not a current ownership statement.</p>
-            </section>
-          )}
-
-          {work.relatedHistoricalRecords?.map((relation) => {
-            const historicalWork = historicalByNumber[relation.catalogueNumber]
-            return (
-              <section className="viewer__historical viewer__historical--related" key={relation.id}>
-                <header>
-                  <h3>Related historical title</h3>
-                  <p>{relation.id}</p>
-                </header>
-                <p>
-                  Catalogue no. {relation.catalogueNumber}, <cite>{historicalWork.title}</cite>, is a different physical work.
-                  The shared title does not transfer its date, dimensions, material, or collection record to this sculpture.
-                </p>
-                <p>Source: <cite>{historicalCatalogue.source.title}</cite>, {historicalCatalogue.source.year}, catalogue p. {relation.sourcePage}.</p>
-              </section>
-            )
-          })}
         </section>
         <nav className="viewer__work-navigation" aria-label="Browse works">
           <button type="button" onClick={() => onMoveWork(-1)}>Previous work</button>

@@ -1,7 +1,7 @@
 ---
 version: alpha
-name: Forged Archive
-description: "A sculpture-led living archive for Jacques Fuller: cold mineral fields, deep oxide reading rooms, and one patina-green action signal."
+name: Forged Works
+description: "An artist-led presentation for Jacques Fuller: cold mineral fields, deep oxide viewing rooms, and one patina-green action signal."
 colors:
   primary: "oklch(0.39 0.075 166)"
   page: "oklch(0.9 0.008 165)"
@@ -227,15 +227,15 @@ components:
     padding: "{spacing.section}"
 ---
 
-# Design System: Forged Archive
+# Design System: Forged Works
 
 ## Overview
 
-**Mode: Experience. Creative North Star: “The Forged Archive.”**
+**Mode: Experience. Creative North Star: “Forged Works.”**
 
-Forged Archive is a permanent-feeling but explicitly unfinished sculpture archive for Jacques Fuller, a Bloemfontein-based sculptor active since 1989. The object leads: the homepage opens as a six-image mosaic, a static four-record gateway opens a searchable full-screen index of 45 records and 311 photographs, and the separate Process route documents one sculpture step by step. A clearly dated 61-record historical layer documents the 2001 exhibition without merging historical and current objects by title. It is not a social feed, ecommerce catalogue, or generic portfolio template.
+Forged Works is a permanent-feeling, artist-led presentation for Jacques Fuller, a Bloemfontein-based sculptor active since 1989. The object leads: the homepage opens as a six-image mosaic, a static four-record gateway opens a scrollable full-screen gallery of 45 works and 311 photographs, and the separate Process route documents one sculpture step by step. It is not a social feed, ecommerce catalogue, or generic portfolio template.
 
-The visual world is cold smoke-grey and mineral on the light side, deep green-black oxide in archive and viewer chapters, and one restrained patina-green accent. Brass remains material evidence inside the supplied photography, never a UI color. Square geometry, hairline rules, contained sculpture images, and very little motion create a forged, structural reading experience.
+The visual world is cold smoke-grey and mineral on the light side, deep green-black oxide in the Works gallery and viewer, and one restrained patina-green accent. Brass remains material evidence inside the supplied photography, never a UI color. Square geometry, hairline rules, contained sculpture images, and very little motion create a forged, structural viewing experience.
 
 ## Colors
 
@@ -245,14 +245,14 @@ Use the exact OKLCH tokens in the front matter. Light mode is the shipped defaul
 - **Mineral stages:** `surface` and `surface-deep` hold image wells behind Facebook-derived JPEGs without competing with the sculpture.
 - **Ink and rules:** `ink`, `ink-muted`, and `line` provide text hierarchy and hairline joins.
 - **Patina signal:** `accent` is the single action, hover, selection, and focus color; `accent-strong` is its hover state and `focus` is its light focus ring.
-- **Oxide chapter:** `oxide`, `oxide-raised`, `oxide-ink`, `oxide-muted`, and `oxide-line` form the dark living-archive and viewer environment. `focus-on-dark` keeps focus visible there.
-- **Paper:** `paper` is reserved for the viewer's narrative/catalogue record chapter.
+- **Oxide chapter:** `oxide`, `oxide-raised`, `oxide-ink`, `oxide-muted`, and `oxide-line` form the dark Works gallery and viewer environment. `focus-on-dark` keeps focus visible there.
+- **Paper:** `paper` is reserved for the viewer's minimal factual details.
 
 There is no cobalt, black-and-gold luxury treatment, gold button, or brass UI surface. Natural brass stays in the photography.
 
 ## Typography
 
-Petrona Variable is the self-hosted display face for Jacques Fuller, artwork titles, chapter statements, observations, and catalogue prose with a serif fallback stack. Fira Sans Condensed is the self-hosted technical face for navigation, archive codes, captions, metadata labels, controls, and state. Supporting body copy uses the system sans stack from `--font-body`.
+Petrona Variable is the self-hosted display face for Jacques Fuller, artwork titles, chapter statements, and observations with a serif fallback stack. Fira Sans Condensed is the self-hosted technical face for navigation, references, captions, metadata labels, and controls. Supporting body copy uses the system sans stack from `--font-body`.
 
 The shipped ramp is intentional and must not be normalized to generic defaults:
 
@@ -264,11 +264,11 @@ Petrona uses negative tracking and tight leading for monograph scale. Technical 
 
 ## Layout
 
-The shell is full-width. A deterministic oxide navigation bar sits above the page; on the homepage it overlays the first mosaic without inheriting image contrast. The hero is viewport-bound and uses a six-column editorial mosaic: six reversible selected works surround an intrinsic-height ivory identity cell containing Jacques Fuller and the primary archive action. Sculpture images use `object-fit: contain`; full silhouettes are never decoratively cropped.
+The shell is full-width. A deterministic oxide navigation bar sits above the page; on the homepage it overlays the first mosaic without inheriting image contrast. The hero is viewport-bound and uses a six-column editorial mosaic: six reversible selected works surround an intrinsic-height ivory identity cell containing Jacques Fuller and the primary Works action. Sculpture images use `object-fit: contain`; full silhouettes are never decoratively cropped.
 
-After the introduction, a static four-work gateway represents the current archive without repeating the complete catalogue. Its action opens a searchable full-screen index with 40 compact image-led rows, an honest empty state, URL/history integration, and Back-to-index behavior from work records. Archive 2001 follows as three explicit chapters—Catalogue context, Recurring forms, and Two identity cases—before About and the deliberate end-of-index action.
+After the introduction, a static four-work gateway leads into the complete selection without repeating it. Its action opens a scrollable full-screen gallery with large lead images, URL/history integration, and return-to-gallery behavior from work details. About follows directly, pairing an expanded biography with a six-milestone career timeline in a 4/8 editorial split.
 
-The artwork viewer opens as a fixed full-screen dialog. Its opening keeps the complete active image, previous/next controls, live count, and all supplied thumbnails in the desktop viewport. A paper record chapter follows with facts, the archive-state key, catalogue note, artist account, exhibition history, provenance, alternate views, and previous/next work navigation. Image failures keep alternate thumbnails visible and expose a Retry action.
+The artwork viewer opens as a fixed full-screen dialog. Its opening keeps the complete active image, previous/next controls, live count, and all supplied thumbnails in the desktop viewport. A compact paper details chapter follows with known facts only, followed by previous/next work navigation. Image failures keep alternate thumbnails visible and expose a Retry action.
 
 ### Spacing and geometry
 
@@ -276,8 +276,9 @@ Use the shared rhythm: `1px` hairline, `4px` micro gap, `8px` small unit, `16px`
 
 ### Breakpoints
 
-- **720px container:** navigation tightens while retaining a 12px operational floor; the mosaic becomes two columns with an intrinsic-height identity row; the gateway becomes a 2×2 tile grid; archive chapters, relationship studies, biography, and process stages become one-column flows.
-- **720px viewport:** the archive index becomes a single-column row list, the viewer header uses compact auto-width controls, and thumbnails remain horizontally scrollable.
+- **720px container:** navigation tightens while retaining a 12px operational floor; the mosaic becomes two columns with an intrinsic-height identity row; the gateway becomes a 2×2 tile grid; biography, career timeline, and process stages become one-column flows.
+- **1100px viewport:** the Works gallery moves from three image columns to two.
+- **720px viewport:** the Works gallery becomes one large-image column, the viewer header uses compact auto-width controls, and thumbnails remain horizontally scrollable.
 
 The base document supports a 320px minimum viewport. Mobile keeps the complete hero title/action inside its ivory cell, uses contained sculpture photography, and avoids horizontal document overflow.
 
@@ -287,27 +288,24 @@ The system is flat. Depth comes from OKLCH tonal changes, mineral image wells, t
 
 ## Shapes
 
-Every join is square: image stages, archive cards, buttons, metadata groups, thumbnail frames, viewer sections, and rules. The visual language is structural rather than soft or ornamental.
+Every join is square: image stages, work cards, buttons, metadata groups, thumbnail frames, viewer sections, and rules. The visual language is structural rather than soft or ornamental.
 
 ## Components
 
 ### Navigation
-The full-width oxide bar uses Fira Sans Condensed, 44px minimum targets, visible `aria-current` underlines, and a stable owned background over the hero. Work opens the archive index; Archive, Process, and About remain direct page targets.
+The full-width oxide bar uses Fira Sans Condensed, 44px minimum targets, visible `aria-current` underlines, and a stable owned background over the hero. The three public choices are Works, Process, and About.
 
 ### Mosaic hero
 Six reversible selected works surround one ivory identity cell. The lead images are high-priority, contained photography; every image button opens the complete work record. Mobile preserves the 2-column visual sequence and gives the identity row intrinsic height so title and action cannot escape it.
 
-### Current archive gateway and index
-Four recent records form a static, image-led gateway. The full catalogue lives only in the modal archive index: searchable title/archive number, 40 square-edged rows, factual thumbnails/counts, keyboard focus trap, Escape close, inert background, and history-aware work opening.
-
-### Archive 2001
-The historical chapter is explicitly dated and source-led. A three-link chapter index separates Catalogue context, Recurring forms, and Two identity cases. The two relationship studies distinguish “same physical work” from “different work, same title”; no catalogue photography ships without rights clearance.
+### Works gateway and gallery
+Four recent records form a static, image-led gateway. The complete selection lives only in the modal Works gallery: 45 square-edged large-image cards with visible titles, three/two/one responsive columns, lazy-loaded 1600px lead images, keyboard focus trap, Escape close, inert background, and history-aware work opening. Search and record metadata stay out of this browsing surface; selecting a work reveals its viewer and factual details.
 
 ### Artwork viewer
 The viewer is `role="dialog"`, `aria-modal="true"`, fixed, scrollable, and full-screen. It focuses the compact Close control on open, restores the previous focus on close, traps Tab focus, closes on Escape, and maps ArrowLeft/ArrowRight to photograph navigation. Previous/next buttons, labelled thumbnails, live photograph position, explicit `aria-current`, recoverable image errors, and previous/next work controls make the sequence operable without a pointer.
 
 ### Metadata record
-Facts are rendered as labelled rows. Known material, dimensions, date, and status are shown only when present in the source record. Missing factual evidence is **“Not recorded.”** Unfinished catalogue work is **“Research pending.”** Future testimony is **“Awaiting artist/family account.”**
+Facts are rendered as labelled rows. Known material, dimensions, date, image count, and photo credit are shown only when present. Missing factual evidence remains null in data and is omitted from the public interface.
 
 ## Motion
 
@@ -322,9 +320,9 @@ Use semantic headings, landmarks, labelled navigation, descriptive/factual image
 ### Do:
 - Preserve complete sculptures with `object-fit: contain`.
 - Keep the six-work selection reversible and explicitly temporary.
-- Treat the current archive as 45 catalogue records and 311 photographs, distinct from the 61 records documented in 2001.
-- Date and attribute every historical quotation, collection value, biography statement, and relationship claim.
-- Use **“Not recorded”** for missing facts.
+- Treat the public Works gallery as 45 works and 311 photographs.
+- Keep research provenance in internal data rather than presenting it as public website copy.
+- Omit missing facts rather than exposing research-state labels.
 - Label existing detail photography honestly and wait for Jacques or his family for stories, dates, provenance, availability, exhibition history, and workshop evidence.
 - Keep min 44px targets, strong focus states, modal keyboard behavior, and reduced-motion behavior.
 

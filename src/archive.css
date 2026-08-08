@@ -685,6 +685,7 @@
 
   .about-copy > header,
   .about-copy__body {
+    grid-template-columns: 1fr;
     gap: 2.5rem;
   }
 
@@ -692,7 +693,12 @@
     display: grid;
   }
 
+  .about-copy__prose {
+    grid-column: 1;
+  }
+
   .about-copy__timeline {
+    grid-column: 1;
     margin-top: 1.5rem;
   }
 

@@ -118,14 +118,16 @@ async function exerciseSingleSiteMosaic() {
   assert.equal(await page.locator('.design-lab').count(), 0, 'The retired design lab is still visible')
   assert.equal(await page.locator('.r5-mosaic').count(), 1, 'The Direction 6 mosaic was not promoted into Direction 5')
   assert.equal(await page.locator('.r5-mosaic .artwork-button').count(), 6, 'The opening mosaic must expose six selected works')
-  assert.equal(await page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('button', { name: 'Work', exact: true }).getAttribute('aria-current'), 'page', 'The homepage does not identify its active navigation item')
+  const primaryNavigation = page.getByRole('navigation', { name: 'Primary navigation' })
+  assert.deepEqual(await primaryNavigation.locator('button, a').allTextContents(), ['Works', 'Process', 'About'], 'Primary navigation must use the minimal artist-led structure')
   assert.ok(
-    Number.parseFloat(await page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('button', { name: 'Work', exact: true }).evaluate((node) => getComputedStyle(node).fontSize)) >= 12,
+    Number.parseFloat(await primaryNavigation.getByRole('button', { name: 'Works', exact: true }).evaluate((node) => getComputedStyle(node).fontSize)) >= 12,
     'Primary navigation controls must meet the 12px operational text floor',
   )
   assert.equal(await page.locator('.r5-stage').count(), 0, 'The former Direction 5 stage should be replaced by the mosaic')
   assert.equal(await page.locator('.direction h1').count(), 1, 'The final site needs exactly one H1')
   assert.equal(await page.locator('.r5-archive-gateway .artwork-button').count(), 4, 'The current-archive gateway must expose four representative works')
+  assert.equal(await page.locator('.r5-archive-gateway__works article > p').count(), 0, 'The homepage work strip must not expose reference-code captions')
   assert.equal(await page.locator('.r5-rail, .r5-browser').count(), 0, 'The homepage must not duplicate the complete catalogue')
   assert.equal(await page.getByText('Work in motion', { exact: true }).count(), 0, 'Retired motion copy returned')
   const navSurface = await page.locator('.direction-nav').evaluate((element) => getComputedStyle(element).backgroundColor)
@@ -133,27 +135,38 @@ async function exerciseSingleSiteMosaic() {
   await assertNoOverflow(page, 'Final homepage desktop')
   await page.screenshot({ path: resolve(outputDir, 'final-home-desktop.png') })
 
-  await page.getByRole('button', { name: `Browse all ${currentArchiveCount} works` }).click()
+  await page.getByRole('button', { name: `View all ${currentArchiveCount} works` }).click()
   const archiveIndex = page.locator('.archive-index[role="dialog"]')
   await archiveIndex.waitFor({ state: 'visible' })
-  assert.equal(await archiveIndex.locator('.archive-index__list > li').count(), currentArchiveCount, 'The archive overlay must expose every current work')
-  assert.equal(await page.locator('.app-surface').evaluate((surface) => surface.inert), true, 'The archive overlay must make the page inert')
-  assert.equal(await page.evaluate(() => document.activeElement?.getAttribute('type')), 'search', 'Opening the archive must focus search')
-  const search = archiveIndex.getByRole('searchbox', { name: 'Search current archive' })
-  await search.fill('BELLE')
-  assert.equal(await archiveIndex.locator('.archive-index__list > li').count(), 1, 'Archive search did not filter the complete catalogue')
-  assert.equal(await archiveIndex.getByText('BELLE', { exact: true }).count(), 1, 'Archive search returned the wrong work')
-  await search.fill('record that does not exist')
-  assert.equal(await archiveIndex.getByText('No works match this search.', { exact: true }).count(), 1, 'Archive search has no honest empty state')
-  await search.fill('')
-  await page.getByRole('button', { name: 'Close archive' }).click()
+  await archiveIndex.evaluate(async (dialog) => {
+    await Promise.allSettled(dialog.getAnimations().map((animation) => animation.finished))
+  })
+  const worksGallery = archiveIndex.locator('.archive-index__gallery')
+  assert.equal(await worksGallery.locator(':scope > li').count(), currentArchiveCount, 'The Works gallery must expose every current work')
+  assert.equal(await page.locator('.app-surface').evaluate((surface) => surface.inert), true, 'The Works gallery must make the page inert')
+  assert.equal(await page.evaluate(() => document.activeElement?.textContent), 'Close', 'Opening Works must focus Close')
+  assert.equal(await archiveIndex.getByRole('searchbox').count(), 0, 'The Works gallery must not expose search')
+  assert.equal(await worksGallery.evaluate((gallery) => getComputedStyle(gallery).gridTemplateColumns.split(' ').length), 3, 'Desktop Works must use three large-image columns')
+  const firstGalleryImage = worksGallery.locator('img').first()
+  await firstGalleryImage.waitFor({ state: 'visible' })
+  await page.waitForFunction((image) => image.complete && image.naturalWidth > 0, await firstGalleryImage.elementHandle())
+  const firstGalleryImageWidth = await firstGalleryImage.evaluate((image) => image.getBoundingClientRect().width)
+  assert.ok(firstGalleryImageWidth >= 300, `Desktop Works images are still too small (${firstGalleryImageWidth}px)`)
+  const firstGalleryImageHeight = await firstGalleryImage.evaluate((image) => image.getBoundingClientRect().height)
+  assert.ok(Math.abs(firstGalleryImageWidth - firstGalleryImageHeight) <= 1, 'Works must use square image wells so portrait sculptures remain visually large')
+  assert.ok(new URL(await firstGalleryImage.getAttribute('src'), page.url()).pathname.endsWith('/view-01.webp'), 'Works must load the full lead image rather than a thumbnail file')
+  await page.screenshot({ path: resolve(outputDir, 'works-gallery-desktop.png') })
+  const lastGalleryImage = worksGallery.locator('img').last()
+  await lastGalleryImage.scrollIntoViewIfNeeded()
+  await page.waitForFunction((image) => image.complete && image.naturalWidth > 0, await lastGalleryImage.elementHandle())
+  await archiveIndex.getByRole('button', { name: 'Close', exact: true }).click()
   await archiveIndex.waitFor({ state: 'detached' })
-  assert.equal(new URL(page.url()).hash, '', 'Closing the archive must clear its durable URL')
-  assert.equal(await page.locator('.app-surface').evaluate((surface) => surface.inert), false, 'Closing the archive must restore the page')
+  assert.equal(new URL(page.url()).hash, '', 'Closing Works must clear its durable URL')
+  assert.equal(await page.locator('.app-surface').evaluate((surface) => surface.inert), false, 'Closing Works must restore the page')
   const endState = page.locator('.direction-footer')
   await endState.scrollIntoViewIfNeeded()
-  assert.equal(await endState.getByText('End of index', { exact: true }).count(), 1, 'The homepage has no deliberate end-of-index state')
-  assert.equal(await endState.getByRole('button', { name: 'Open archive index' }).count(), 1, 'The homepage ending has no continuation action')
+  assert.equal(await endState.getByText('Sculpture', { exact: true }).count(), 1, 'The homepage has no deliberate end state')
+  assert.equal(await endState.getByRole('button', { name: 'View all works' }).count(), 1, 'The homepage ending has no continuation action')
 
   await page.goto(`${baseUrl}/?direction=6&qa=retired-${Date.now()}`, { waitUntil: 'networkidle' })
   await page.locator('.direction--immersive').waitFor({ state: 'visible' })
@@ -177,7 +190,7 @@ async function exerciseProcessRoute() {
   assert.equal(await page.locator('.r5-process__voice').count(), 2, 'Process must distinguish two passages in Jacques’s own voice')
   assert.equal(await page.locator('.r5-process__material-history').count(), 1, 'Process is missing the dated material history')
   assert.equal(await page.getByText('I prefer working directly with metal and having control of the entire process.', { exact: true }).count(), 1, 'Process lost Jacques’s direct-to-metal account')
-  assert.ok(await page.getByText('Interview with Sharon Crampton · August 2001', { exact: true }).count() >= 1, 'Process quotations are not visibly attributed')
+  assert.equal(await page.locator('.r5-process__voice cite').filter({ hasText: 'Jacques Fuller' }).count(), 2, 'Process quotations must read as Jacques’s own voice')
   const processImages = page.locator('.r5-process__stage img')
   assert.equal(await processImages.count(), 12, 'Process must show all twelve selected workshop photographs')
   assert.ok(await processImages.evaluateAll((images) => images.every((image) => new URL(image.src).pathname.startsWith('/process/mermaid/'))), 'Process is not using local workshop photographs')
@@ -198,54 +211,54 @@ async function exerciseProcessRoute() {
   await context.close()
 }
 
-async function exerciseHistoricalSpine() {
+async function exerciseFirstPartyPresentation() {
   const context = await browser.newContext({ viewport: { width: 1440, height: 900 }, colorScheme: 'dark' })
   const page = await context.newPage()
   const errors = collectErrors(page)
 
-  await page.goto(`${baseUrl}/?qa=historical-spine-${Date.now()}`, { waitUntil: 'networkidle' })
-  const archive = page.locator('#archive')
-  await archive.waitFor({ state: 'visible' })
-  assert.equal(await archive.getByRole('heading', { name: 'Archive 2001', exact: true }).count(), 1, 'The historical archive has no accessible title')
-  assert.equal(await archive.locator('.r5-archive__relationship').count(), 2, 'The archive must distinguish the confirmed object from the reused title')
-  assert.equal(await archive.getByText('61 catalogue records', { exact: true }).count(), 1, 'The complete historical record count is missing')
-  const archiveChapters = archive.getByRole('navigation', { name: 'Archive 2001 chapters' })
-  assert.equal(await archiveChapters.getByRole('link').count(), 3, 'Archive 2001 must expose three explicit subchapters')
-  for (const chapter of [
-    ['Catalogue context', '#archive-context'],
-    ['Recurring forms', '#archive-themes'],
-    ['Two identity cases', '#archive-identities'],
-  ]) {
-    assert.equal(await archiveChapters.getByRole('link', { name: chapter[0], exact: true }).getAttribute('href'), chapter[1], `Archive 2001 is missing the ${chapter[0]} chapter link`)
-    assert.equal(await archive.locator(chapter[1]).count(), 1, `Archive 2001 is missing the ${chapter[0]} chapter target`)
+  await page.goto(`${baseUrl}/?qa=first-party-${Date.now()}`, { waitUntil: 'networkidle' })
+  const bodyText = (await page.locator('body').innerText()).toLowerCase()
+  for (const phrase of ['archive', '2001', 'catalogue', 'source:']) {
+    assert.equal(bodyText.includes(phrase), false, `Public homepage still exposes third-party language: ${phrase}`)
   }
-  const archiveHeight = await archive.evaluate((element) => element.getBoundingClientRect().height)
-  assert.ok(archiveHeight < 3200, `Archive 2001 remains too long to scan as one chapter: ${archiveHeight}px`)
-  assert.equal(await archive.getByText('Catalogue no. 10 · same physical work', { exact: true }).count(), 1, 'The confirmed Hoe Ry relationship is missing')
-  assert.equal(await archive.getByText('Catalogue no. 58 · different work, same title', { exact: true }).count(), 1, 'The Bwana reused-title relationship is missing')
-  assert.equal(await archive.getByText('Current archive · JF-022 · different sculpture', { exact: true }).count(), 1, 'The current Bwana image is not distinguished from the 2001 record')
-  assert.equal(await page.getByText('I would rather have someone look at my work twice, three times than have someone merely walk past without giving it a second glance.', { exact: true }).count(), 1, 'The homepage lost Jacques’s look-twice statement')
-  assert.equal(await archive.getByText('Interview with Sharon Crampton · August 2001', { exact: true }).count(), 1, 'The homepage quotation is not visibly attributed')
+  assert.equal(await page.locator('.r5-archive').count(), 0, 'The public historical research section must be removed')
+  assert.equal(await page.getByRole('heading', { name: 'Works', exact: true }).count(), 1, 'The homepage needs one direct Works heading')
   const about = page.locator('#about')
-  assert.equal(await about.getByText('1989 – present', { exact: true }).count(), 1, 'Current full-time sculptor status is missing')
+  assert.equal(await about.getByRole('heading', { name: 'About Jacques', exact: true }).count(), 1, 'About needs the personal title from the approved reference')
+  assert.equal(await about.getByText(/In 1989 he began working full-time as a sculptor/).count(), 1, 'The direct biography is missing Jacques’s full-time practice')
+  assert.equal(await about.getByText(/Jacques works directly in metal/).count(), 1, 'About is missing the supported practice detail')
+  assert.equal(await about.locator('.about-copy__timeline > li').count(), 6, 'About must expose all six supported career milestones')
+  assert.deepEqual(await about.locator('.about-copy__timeline > li > p').allTextContents(), ['1979', '1981-82', '1983', '1984', '1988', '1989-present'], 'About timeline dates are out of order')
+  assert.equal(await about.locator('.about-copy__body').evaluate((body) => getComputedStyle(body).gridTemplateColumns.split(' ').length), 2, 'Desktop About must use the reference two-column biography and timeline layout')
+  const aboutColumns = await about.locator('.about-copy__body').evaluate((body) => {
+    const prose = body.querySelector('.about-copy__prose').getBoundingClientRect()
+    const timeline = body.querySelector('.about-copy__timeline').getBoundingClientRect()
+    return { proseLeft: prose.left, timelineLeft: timeline.left }
+  })
+  assert.ok(aboutColumns.proseLeft < aboutColumns.timelineLeft, 'Desktop biography must sit to the left of the career timeline')
+  assert.equal(await about.locator('footer').count(), 0, 'About must not expose research-source footnotes')
+  await about.screenshot({ path: resolve(outputDir, 'about-timeline-desktop.png') })
 
   const sectionOrder = await page.evaluate(() => {
-    const currentArchiveTop = document.querySelector('#current-archive').getBoundingClientRect().top + window.scrollY
-    const archiveTop = document.querySelector('#archive').getBoundingClientRect().top + window.scrollY
+    const worksTop = document.querySelector('#works').getBoundingClientRect().top + window.scrollY
     const aboutTop = document.querySelector('#about').getBoundingClientRect().top + window.scrollY
-    return { currentArchiveTop, archiveTop, aboutTop }
+    return { worksTop, aboutTop }
   })
-  assert.ok(sectionOrder.currentArchiveTop < sectionOrder.archiveTop, 'The current archive gateway must precede the historical archive')
-  assert.ok(sectionOrder.archiveTop < sectionOrder.aboutTop, 'Archive 2001 must introduce the historical spine before About')
+  assert.ok(sectionOrder.worksTop < sectionOrder.aboutTop, 'Works must lead directly into About')
 
-  await archive.getByRole('button', { name: 'View current Hoe Ry Die Boere' }).click()
+  await page.getByRole('button', { name: `View all ${currentArchiveCount} works` }).click()
+  const worksIndex = page.locator('.archive-index[role="dialog"]')
+  const targetWork = worksIndex.getByRole('button', { name: 'Hoe Ry Die Boere', exact: true })
+  await targetWork.scrollIntoViewIfNeeded()
+  await targetWork.click()
   const viewer = page.locator('.viewer[role="dialog"]')
   await viewer.waitFor({ state: 'visible' })
-  assert.equal(await viewer.getByRole('heading', { name: 'Historical catalogue record', exact: true }).count(), 1, 'The confirmed work viewer has no historical record')
-  assert.equal(await viewer.getByText('JF2001-010', { exact: true }).count(), 1, 'The current work is not linked to its historical ID')
-  assert.equal(await viewer.getByText('Collection recorded in 2001', { exact: true }).count(), 1, 'The historical collection value is not dated')
+  const viewerText = (await viewer.innerText()).toLowerCase()
+  for (const phrase of ['archive', '2001', 'catalogue', 'source:', 'not recorded', 'research pending']) {
+    assert.equal(viewerText.includes(phrase), false, `Artwork details still expose research language: ${phrase}`)
+  }
   await page.keyboard.press('Escape')
-  assert.deepEqual(errors, [], 'Historical archive emitted browser errors')
+  assert.deepEqual(errors, [], 'First-party presentation emitted browser errors')
   await context.close()
 }
 
@@ -276,15 +289,10 @@ async function exerciseArtworkRecord() {
 
   const record = viewer.locator('.viewer__record')
   assert.equal(await record.count(), 1, 'The scrollable work record is missing')
-  assert.equal(await record.getByRole('heading', { name: 'Work record' }).count(), 1, 'The record has no accessible heading')
-  assert.equal(await record.locator('dt').count(), 6, 'The record must expose six core catalogue facts')
-  for (const heading of ['Working description', 'Catalogue note', "Artist's account", 'Exhibition history', 'Provenance']) {
-    assert.equal(await record.getByRole('heading', { name: heading, exact: true }).count(), 1, `The record is missing ${heading}`)
-  }
-  assert.equal(await record.locator('.viewer__record-key').count(), 1, 'The work record does not explain its public archive states')
-  assert.ok(await record.getByText('Not recorded', { exact: true }).count() >= 3, 'Unknown facts are not identified honestly')
-  assert.equal(await record.getByText('Research pending.', { exact: true }).count(), 1, 'The catalogue-note research state is missing')
-  assert.equal(await record.getByText('Awaiting artist/family account.', { exact: true }).count(), 1, 'The future-testimony state is missing')
+  assert.equal(await record.getByRole('heading', { name: 'Details' }).count(), 1, 'The record has no minimal details heading')
+  assert.equal(await record.locator('dt').count(), 3, 'Mermaid must show only known material, dimensions, and image count')
+  assert.equal(await record.locator('.viewer__record-key, .viewer__record-notes, .viewer__historical').count(), 0, 'Research apparatus must not appear in the public viewer')
+  assert.equal(await record.getByText('Not recorded', { exact: true }).count(), 0, 'Unknown facts must be omitted rather than displayed')
   const positions = await page.evaluate(() => {
     const thumbsBox = document.querySelector('.viewer__thumbs').getBoundingClientRect()
     const recordBox = document.querySelector('.viewer__record').getBoundingClientRect()
@@ -386,11 +394,12 @@ async function exerciseNewSculptures() {
   ]
 
   await page.goto(`${baseUrl}/?qa=new-sculptures-${Date.now()}`, { waitUntil: 'networkidle' })
-  await page.getByRole('button', { name: `Browse all ${currentArchiveCount} works` }).click()
+  await page.getByRole('button', { name: `View all ${currentArchiveCount} works` }).click()
   for (const [title, archiveNumber, viewCount] of records) {
-    const row = page.locator('.archive-index__list > li').filter({ hasText: title })
-    assert.equal(await row.count(), 1, `${title} is missing from the complete title index`)
-    await row.locator('button').click()
+    const card = page.locator('.archive-index__gallery > li').filter({ hasText: title })
+    assert.equal(await card.count(), 1, `${title} is missing from the visual Works gallery`)
+    await card.scrollIntoViewIfNeeded()
+    await card.locator('button').click()
     const viewer = page.locator('.viewer[role="dialog"]')
     await viewer.waitFor({ state: 'visible' })
     assert.equal(await viewer.getByRole('heading', { name: title, exact: true }).count(), 1, `${title} opened the wrong record`)
@@ -404,35 +413,40 @@ async function exerciseNewSculptures() {
     const loadedViews = []
     for (let index = 0; index < viewCount; index += 1) {
       await thumbs.nth(index).click()
-      await page.waitForFunction(
-        (activeIndex) => {
-          const buttons = [...document.querySelectorAll('.viewer__thumbs button')]
-          const image = document.querySelector('.viewer__stage img')
-          return buttons[activeIndex]?.getAttribute('aria-current') === 'true' && image?.complete && image.naturalWidth > 0
-        },
-        index,
-      )
-      loadedViews.push(await viewer.locator('.viewer__stage img').getAttribute('src'))
+      await page.waitForFunction((activeIndex) => {
+        const buttons = [...document.querySelectorAll('.viewer__thumbs button')]
+        return buttons[activeIndex]?.getAttribute('aria-current') === 'true'
+      }, index)
+      const stageImage = viewer.locator('.viewer__stage img')
+      await stageImage.waitFor({ state: 'visible' })
+      await stageImage.evaluate(async (image) => {
+        if (!image.complete) {
+          await new Promise((resolveImage, rejectImage) => {
+            image.addEventListener('load', resolveImage, { once: true })
+            image.addEventListener('error', () => rejectImage(new Error(`Failed to load ${image.currentSrc}`)), { once: true })
+          })
+        }
+        if (!image.naturalWidth) throw new Error(`Image has no decoded pixels: ${image.currentSrc}`)
+        await image.decode()
+      })
+      loadedViews.push(await stageImage.getAttribute('src'))
     }
     assert.equal(new Set(loadedViews).size, viewCount, `${title} did not expose every distinct full image`)
-    assert.equal(await viewer.locator('.viewer__record-facts dd').getByText(archiveNumber, { exact: true }).count(), 1, `${title} has the wrong archive number`)
     const facts = await viewer.locator('.viewer__record-facts > div').evaluateAll((rows) => Object.fromEntries(rows.map((row) => [row.querySelector('dt')?.textContent, row.querySelector('dd')?.textContent])))
     const expectedFacts = archiveNumber === 'JF-030'
-      ? { Date: '2000', Material: 'Brass', Dimensions: '78 × 93 cm', Availability: 'Not recorded' }
-      : { Date: 'Not recorded', Material: 'Not recorded', Dimensions: 'Not recorded', Availability: 'Not recorded' }
+      ? { Date: '2000', Material: 'Brass', Dimensions: '78 × 93 cm', 'Photographic views': `${viewCount}` }
+      : archiveNumber === 'JF-041'
+        ? { 'Photo credit': 'Marie Girard', 'Photographic images': '21' }
+        : { 'Photographic views': `${viewCount}` }
     for (const [label, expected] of Object.entries(expectedFacts)) {
       assert.equal(facts[label], expected, `${title} has the wrong ${label.toLowerCase()} value`)
     }
     if (archiveNumber === 'JF-041') {
-      assert.equal(await viewer.getByRole('heading', { name: 'Collection record', exact: true }).count(), 1, 'Jewellery must be identified as a collection record')
-      assert.equal(facts['Photo credit'], 'Marie Girard', 'Jewellery lost the supplied Marie Girard photo credit')
-      assert.equal(facts['Photographic images'], '21', 'Jewellery must label its collection photographs as images')
+      assert.equal(await viewer.getByRole('heading', { name: 'Collection', exact: true }).count(), 1, 'Jewellery must be identified as a collection')
     } else {
-      assert.equal(await viewer.getByRole('heading', { name: 'Work record', exact: true }).count(), 1, `${title} must remain a work record`)
-      assert.equal(facts['Photographic views'], `${viewCount}`, `${title} must label its photographs as views`)
+      assert.equal(await viewer.getByRole('heading', { name: 'Details', exact: true }).count(), 1, `${title} must use the minimal details heading`)
     }
-    const notes = await viewer.locator('.viewer__record-notes > section').evaluateAll((sections) => Object.fromEntries(sections.map((section) => [section.querySelector('h3')?.textContent, section.querySelector('p')?.textContent])))
-    assert.equal(notes["Artist's account"], 'Awaiting artist/family account.', `${title} invents an artist account`)
+    assert.equal(await viewer.locator('.viewer__record-key, .viewer__record-notes, .viewer__historical').count(), 0, `${title} exposes research apparatus`)
     await page.getByRole('button', { name: 'Close', exact: true }).click()
     await viewer.waitFor({ state: 'detached' })
     await page.locator('.archive-index[role="dialog"]').waitFor({ state: 'visible' })
@@ -470,11 +484,35 @@ async function exerciseMobileSite() {
   await assertNoOverflow(page, 'Final homepage mobile')
   await page.screenshot({ path: resolve(outputDir, 'final-home-mobile.png') })
 
-  await page.getByRole('button', { name: `Browse all ${currentArchiveCount} works` }).click()
-  await page.locator('.archive-index[role="dialog"]').waitFor({ state: 'visible' })
-  await assertNoOverflow(page, 'Current archive mobile')
-  assert.equal(await page.locator('.archive-index__preview').count(), 0, 'The mobile archive should prioritize the searchable index')
-  await page.getByRole('button', { name: 'Close archive' }).click()
+  const mobileAbout = page.locator('#about')
+  await mobileAbout.scrollIntoViewIfNeeded()
+  assert.equal(await mobileAbout.locator('.about-copy__timeline > li').count(), 6, 'Mobile About lost a career milestone')
+  assert.equal(await mobileAbout.locator('.about-copy__body').evaluate((body) => getComputedStyle(body).gridTemplateColumns.split(' ').length), 1, 'Mobile About must collapse to one column')
+  await mobileAbout.screenshot({ path: resolve(outputDir, 'about-timeline-mobile.png') })
+
+  await page.getByRole('button', { name: `View all ${currentArchiveCount} works` }).click()
+  const mobileWorks = page.locator('.archive-index[role="dialog"]')
+  await mobileWorks.waitFor({ state: 'visible' })
+  await mobileWorks.evaluate(async (dialog) => {
+    await Promise.allSettled(dialog.getAnimations().map((animation) => animation.finished))
+  })
+  await assertNoOverflow(page, 'Works gallery mobile')
+  assert.equal(await mobileWorks.getByRole('searchbox').count(), 0, 'Mobile Works must not expose search')
+  const mobileGallery = mobileWorks.locator('.archive-index__gallery')
+  assert.equal(await mobileGallery.evaluate((gallery) => getComputedStyle(gallery).gridTemplateColumns.split(' ').length), 1, 'Mobile Works must use one large-image column')
+  const mobileGalleryImage = mobileGallery.locator('img').first()
+  await mobileGalleryImage.waitFor({ state: 'visible' })
+  await page.waitForFunction((image) => image.complete && image.naturalWidth > 0, await mobileGalleryImage.elementHandle())
+  assert.ok(await mobileGalleryImage.evaluate((image) => image.getBoundingClientRect().width) >= 300, 'Mobile Works images are not large enough to browse clearly')
+  const laterMobileImage = mobileGallery.locator('li').nth(8).locator('img')
+  await laterMobileImage.scrollIntoViewIfNeeded()
+  await page.waitForFunction((image) => image.complete && image.naturalWidth > 0, await laterMobileImage.elementHandle())
+  await laterMobileImage.evaluate(async (image) => {
+    await image.decode()
+    await new Promise((resolveFrame) => requestAnimationFrame(() => requestAnimationFrame(resolveFrame)))
+  })
+  await page.screenshot({ path: resolve(outputDir, 'works-gallery-mobile.png') })
+  await mobileWorks.getByRole('button', { name: 'Close', exact: true }).click()
 
   await page.goto(`${baseUrl}/?page=process&qa=mobile-process-${Date.now()}`, { waitUntil: 'networkidle' })
   await page.locator('.r5-process').waitFor({ state: 'visible' })
@@ -501,13 +539,13 @@ try {
   await exerciseServerContainment()
   await exerciseSingleSiteMosaic()
   await exerciseProcessRoute()
-  await exerciseHistoricalSpine()
+  await exerciseFirstPartyPresentation()
   await exerciseArtworkRecord()
   await exerciseViewerHistory()
   await exerciseImageRecovery()
   await exerciseNewSculptures()
   await exerciseMobileSite()
-  console.log('Final-site QA passed: Direction 5 mosaic, Archive 2001, Process, source-aware records, motion controls, and mobile.')
+  console.log('Final-site QA passed: artist-led Works presentation, Process, minimal records, motion controls, and mobile.')
 } finally {
   if (browser) await browser.close()
   if (localServer) {
