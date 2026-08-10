@@ -130,6 +130,77 @@ class CatalogueBuildSafetyTests(unittest.TestCase):
         self.assertEqual(jewellery["recordType"], "collection")
         self.assertEqual(jewellery["imageLabel"], "image")
 
+    def test_20260808_drive_records_are_defined_in_supplied_order(self):
+        expected = [
+            ("HYPOCRITE", "hypocrite", "HYPOCRITE", "FB_IMG_1786348472398.jpg", 7),
+            ("Kingfisher", "kingfisher", "Kingfisher", "FB_IMG_1786347622546.jpg", 7),
+            ("MANTIS", "mantis", "MANTIS", "FB_IMG_1786347708694.jpg", 7),
+        ]
+
+        expected_sources = {item[0] for item in expected}
+        batch = [work for work in self.builder.WORKS if work["source"] in expected_sources]
+        actual = [
+            (work["source"], work["slug"], work["title"], work["hero"], work["expectedImageCount"])
+            for work in batch
+        ]
+
+        self.assertEqual(actual, expected)
+        for work in batch:
+            self.assertIsNone(work["material"])
+            self.assertIsNone(work["dimensions"])
+            self.assertNotIn("date", work)
+            self.assertEqual(work["cacheVersion"], "drive-import-20260808-r1")
+
+        supplied_urls = [work.get("sourceUrl") for work in self.builder.WORKS if work.get("sourceUrl")]
+        self.assertEqual(len(supplied_urls), len(set(supplied_urls)))
+        self.assertEqual(
+            supplied_urls.count(
+                "https://drive.google.com/drive/folders/1dJLO9cKKp1YjDxk8GkEU-2-2y9G59Z9A"
+            ),
+            1,
+        )
+
+    def test_20260810_drive_records_are_defined_in_supplied_order(self):
+        expected = [
+            (
+                "Homo erectus",
+                "homo-erectus",
+                "Homo erectus",
+                "FB_IMG_1786352773867.jpg",
+                4,
+                "https://drive.google.com/drive/folders/1_28c0yuaW-O4hW-hMaFv0_0MVqKuWWIS",
+            ),
+            (
+                "The End of the Game",
+                "the-end-of-the-game",
+                "The End of the Game",
+                "FB_IMG_1786352213401.jpg",
+                5,
+                "https://drive.google.com/drive/folders/1_t6pvDc6f3U8bg2xf1ERVzrnL9mw2mCf",
+            ),
+        ]
+
+        expected_sources = {item[0] for item in expected}
+        batch = [work for work in self.builder.WORKS if work["source"] in expected_sources]
+        actual = [
+            (
+                work["source"],
+                work["slug"],
+                work["title"],
+                work["hero"],
+                work["expectedImageCount"],
+                work["sourceUrl"],
+            )
+            for work in batch
+        ]
+
+        self.assertEqual(actual, expected)
+        for work in batch:
+            self.assertIsNone(work["material"])
+            self.assertIsNone(work["dimensions"])
+            self.assertNotIn("date", work)
+            self.assertEqual(work["cacheVersion"], "drive-import-20260810-r1")
+
     def test_optional_record_metadata_is_emitted(self):
         folder = self.builder.SOURCE / "Collection"
         folder.mkdir(parents=True)

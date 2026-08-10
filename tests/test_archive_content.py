@@ -13,6 +13,8 @@ ARTIST_DATA = ROOT / "src" / "data" / "artist.json"
 ARTWORKS_DATA = ROOT / "src" / "data" / "artworks.json"
 APP_SOURCE = ROOT / "src" / "App.jsx"
 BUILDER = ROOT / "scripts" / "build_catalogue.py"
+DESIGN_DOC = ROOT / "DESIGN.md"
+PRODUCT_DOC = ROOT / "PRODUCT.md"
 
 
 def load_json(path: Path) -> Any:
@@ -105,6 +107,26 @@ class ArtistSourceTests(unittest.TestCase):
 
 
 class CurrentCatalogueLinkTests(unittest.TestCase):
+    def test_documentation_counts_match_the_generated_catalogue(self):
+        artworks = load_json(ARTWORKS_DATA)
+        work_count = len(artworks)
+        photograph_count = sum(work["imageCount"] for work in artworks)
+        sculpture_count = sum(work.get("recordType") != "collection" for work in artworks)
+        design = DESIGN_DOC.read_text()
+        product = PRODUCT_DOC.read_text()
+
+        self.assertIn(f"gallery of {work_count} works and {photograph_count} photographs", design)
+        self.assertIn(f"gallery: {work_count} square-edged", design)
+        self.assertIn(
+            f"presents {sculpture_count} photographed sculptures plus one explicitly labelled Jewellery collection",
+            product,
+        )
+        self.assertIn(f"gallery with {work_count} current records and {photograph_count} photographs", product)
+        self.assertIn(
+            f"contains {work_count} current-record folders: {sculpture_count} sculptures and one Jewellery collection",
+            product,
+        )
+
     def test_20260804_drive_records_are_generated_in_stable_order(self):
         artworks = load_json(ARTWORKS_DATA)
         expected = [
@@ -139,22 +161,65 @@ class CurrentCatalogueLinkTests(unittest.TestCase):
             ("uil-spieel", "JF-045", "Uil Spieël", 5),
         ]
 
+        expected_ids = {item[0] for item in expected}
+        batch = [work for work in artworks if work["id"] in expected_ids]
         actual = [
             (work["id"], work["archiveNumber"], work["title"], work["imageCount"])
-            for work in artworks[-5:]
+            for work in batch
         ]
 
-        self.assertEqual(len(artworks), 45)
-        self.assertEqual(sum(work["imageCount"] for work in artworks), 311)
         self.assertEqual(actual, expected)
-        for work in artworks[-5:]:
+        for work in batch:
             self.assertIsNone(work["material"])
             self.assertIsNone(work["dimensions"])
             self.assertIsNone(work["date"])
-        jewellery = artworks[-5]
+        jewellery = next(work for work in batch if work["id"] == "jewellery")
         self.assertEqual(jewellery["photoCredit"], "Marie Girard")
         self.assertEqual(jewellery["recordType"], "collection")
         self.assertEqual(jewellery["imageLabel"], "image")
+
+    def test_20260808_drive_records_are_generated_in_stable_order(self):
+        artworks = load_json(ARTWORKS_DATA)
+        expected = [
+            ("hypocrite", "JF-046", "HYPOCRITE", 7),
+            ("kingfisher", "JF-047", "Kingfisher", 7),
+            ("mantis", "JF-048", "MANTIS", 7),
+        ]
+
+        expected_ids = {item[0] for item in expected}
+        batch = [work for work in artworks if work["id"] in expected_ids]
+        actual = [
+            (work["id"], work["archiveNumber"], work["title"], work["imageCount"])
+            for work in batch
+        ]
+
+        self.assertEqual(actual, expected)
+        for work in batch:
+            self.assertIsNone(work["material"])
+            self.assertIsNone(work["dimensions"])
+            self.assertIsNone(work["date"])
+
+    def test_20260810_drive_records_are_generated_in_stable_order(self):
+        artworks = load_json(ARTWORKS_DATA)
+        expected = [
+            ("homo-erectus", "JF-049", "Homo erectus", 4),
+            ("the-end-of-the-game", "JF-050", "The End of the Game", 5),
+        ]
+
+        expected_ids = {item[0] for item in expected}
+        batch = [work for work in artworks if work["id"] in expected_ids]
+        actual = [
+            (work["id"], work["archiveNumber"], work["title"], work["imageCount"])
+            for work in batch
+        ]
+
+        self.assertEqual(len(artworks), 50)
+        self.assertEqual(sum(work["imageCount"] for work in artworks), 341)
+        self.assertEqual(actual, expected)
+        for work in batch:
+            self.assertIsNone(work["material"])
+            self.assertIsNone(work["dimensions"])
+            self.assertIsNone(work["date"])
 
     def test_current_and_generator_records_carry_the_same_confirmed_link(self):
         artworks = load_json(ARTWORKS_DATA)

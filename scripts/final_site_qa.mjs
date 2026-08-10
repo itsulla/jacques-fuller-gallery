@@ -391,6 +391,11 @@ async function exerciseNewSculptures() {
     ['SUMMER TIME', 'JF-043', 5],
     ['Tourist', 'JF-044', 6],
     ['Uil Spieël', 'JF-045', 5],
+    ['HYPOCRITE', 'JF-046', 7],
+    ['Kingfisher', 'JF-047', 7],
+    ['MANTIS', 'JF-048', 7],
+    ['Homo erectus', 'JF-049', 4],
+    ['The End of the Game', 'JF-050', 5],
   ]
 
   await page.goto(`${baseUrl}/?qa=new-sculptures-${Date.now()}`, { waitUntil: 'networkidle' })
