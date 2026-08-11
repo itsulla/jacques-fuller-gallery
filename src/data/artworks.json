@@ -3860,5 +3860,187 @@
         "alt": "VETERAN, view 6"
       }
     ]
+  },
+  {
+    "id": "weidmannsheil",
+    "archiveNumber": "JF-059",
+    "title": "Weidmannsheil",
+    "material": null,
+    "dimensions": null,
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": "Title follows the supplied Drive folder name and the WEIDMANNSHEIL plaque visible on the plinth.",
+    "prototypeText": "A wild boar carrying a long firearm across its back leans over a cylindrical plinth.",
+    "story": null,
+    "exhibitionHistory": null,
+    "provenance": null,
+    "historicalRecord": null,
+    "relatedHistoricalRecords": null,
+    "imageCount": 2,
+    "images": [
+      {
+        "src": "/artworks/weidmannsheil/view-01.webp?v=drive-import-20260811-r5",
+        "thumb": "/artworks/weidmannsheil/thumb-01.webp?v=drive-import-20260811-r5",
+        "width": 643,
+        "height": 960,
+        "alt": "Weidmannsheil, view 1"
+      },
+      {
+        "src": "/artworks/weidmannsheil/view-02.webp?v=drive-import-20260811-r5",
+        "thumb": "/artworks/weidmannsheil/thumb-02.webp?v=drive-import-20260811-r5",
+        "width": 596,
+        "height": 960,
+        "alt": "Weidmannsheil, view 2"
+      }
+    ]
+  },
+  {
+    "id": "hochsitze",
+    "archiveNumber": "JF-060",
+    "title": "HOCHSITZE",
+    "material": null,
+    "dimensions": null,
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": "Title and capitalization follow the supplied Drive folder name and the HOCHSITZE plaque. A second plaque reads A LUTA CONTINUA; one byte-identical supplied photograph is preserved outside the generated view set.",
+    "prototypeText": "A seated figure occupies a tall hunting stand topped by a horizontal firearm and circular emblem.",
+    "story": null,
+    "exhibitionHistory": null,
+    "provenance": null,
+    "historicalRecord": null,
+    "relatedHistoricalRecords": null,
+    "imageCount": 5,
+    "images": [
+      {
+        "src": "/artworks/hochsitze/view-01.webp?v=drive-import-20260811-r5",
+        "thumb": "/artworks/hochsitze/thumb-01.webp?v=drive-import-20260811-r5",
+        "width": 370,
+        "height": 960,
+        "alt": "HOCHSITZE, view 1"
+      },
+      {
+        "src": "/artworks/hochsitze/view-02.webp?v=drive-import-20260811-r5",
+        "thumb": "/artworks/hochsitze/thumb-02.webp?v=drive-import-20260811-r5",
+        "width": 643,
+        "height": 960,
+        "alt": "HOCHSITZE, view 2"
+      },
+      {
+        "src": "/artworks/hochsitze/view-03.webp?v=drive-import-20260811-r5",
+        "thumb": "/artworks/hochsitze/thumb-03.webp?v=drive-import-20260811-r5",
+        "width": 960,
+        "height": 643,
+        "alt": "HOCHSITZE, view 3"
+      },
+      {
+        "src": "/artworks/hochsitze/view-04.webp?v=drive-import-20260811-r5",
+        "thumb": "/artworks/hochsitze/thumb-04.webp?v=drive-import-20260811-r5",
+        "width": 624,
+        "height": 960,
+        "alt": "HOCHSITZE, view 4"
+      },
+      {
+        "src": "/artworks/hochsitze/view-05.webp?v=drive-import-20260811-r5",
+        "thumb": "/artworks/hochsitze/thumb-05.webp?v=drive-import-20260811-r5",
+        "width": 576,
+        "height": 540,
+        "alt": "HOCHSITZE, view 5"
+      }
+    ]
+  },
+  {
+    "id": "strecke",
+    "archiveNumber": "JF-061",
+    "title": "STRECKE",
+    "material": null,
+    "dimensions": null,
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": "Title and capitalization follow the supplied Drive folder name and the STRECKE plaque visible on the plinth.",
+    "prototypeText": "A wild boar carrying a horn and long firearm lies across a cylindrical plinth.",
+    "story": null,
+    "exhibitionHistory": null,
+    "provenance": null,
+    "historicalRecord": null,
+    "relatedHistoricalRecords": null,
+    "imageCount": 3,
+    "images": [
+      {
+        "src": "/artworks/strecke/view-01.webp?v=drive-import-20260811-r5",
+        "thumb": "/artworks/strecke/thumb-01.webp?v=drive-import-20260811-r5",
+        "width": 869,
+        "height": 960,
+        "alt": "STRECKE, view 1"
+      },
+      {
+        "src": "/artworks/strecke/view-02.webp?v=drive-import-20260811-r5",
+        "thumb": "/artworks/strecke/thumb-02.webp?v=drive-import-20260811-r5",
+        "width": 960,
+        "height": 643,
+        "alt": "STRECKE, view 2"
+      },
+      {
+        "src": "/artworks/strecke/view-03.webp?v=drive-import-20260811-r5",
+        "thumb": "/artworks/strecke/thumb-03.webp?v=drive-import-20260811-r5",
+        "width": 845,
+        "height": 960,
+        "alt": "STRECKE, view 3"
+      }
+    ]
+  },
+  {
+    "id": "referee",
+    "archiveNumber": "JF-062",
+    "title": "REFEREE",
+    "material": null,
+    "dimensions": null,
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": "Title and capitalization follow the supplied Drive folder name; no title plaque is legible in the supplied photographs.",
+    "prototypeText": "A standing figure in shorts raises a rectangular card while a whistle hangs near the mouth, mounted on a square plinth.",
+    "story": null,
+    "exhibitionHistory": null,
+    "provenance": null,
+    "historicalRecord": null,
+    "relatedHistoricalRecords": null,
+    "imageCount": 4,
+    "images": [
+      {
+        "src": "/artworks/referee/view-01.webp?v=drive-import-20260811-r5",
+        "thumb": "/artworks/referee/thumb-01.webp?v=drive-import-20260811-r5",
+        "width": 1296,
+        "height": 1936,
+        "alt": "REFEREE, view 1"
+      },
+      {
+        "src": "/artworks/referee/view-02.webp?v=drive-import-20260811-r5",
+        "thumb": "/artworks/referee/thumb-02.webp?v=drive-import-20260811-r5",
+        "width": 1296,
+        "height": 1936,
+        "alt": "REFEREE, view 2"
+      },
+      {
+        "src": "/artworks/referee/view-03.webp?v=drive-import-20260811-r5",
+        "thumb": "/artworks/referee/thumb-03.webp?v=drive-import-20260811-r5",
+        "width": 1600,
+        "height": 1071,
+        "alt": "REFEREE, view 3"
+      },
+      {
+        "src": "/artworks/referee/view-04.webp?v=drive-import-20260811-r5",
+        "thumb": "/artworks/referee/thumb-04.webp?v=drive-import-20260811-r5",
+        "width": 1296,
+        "height": 1936,
+        "alt": "REFEREE, view 4"
+      }
+    ]
   }
 ]
