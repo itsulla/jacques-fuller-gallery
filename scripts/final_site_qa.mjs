@@ -424,6 +424,11 @@ async function exerciseNewSculptures() {
     ['Homo erectus', 'JF-049', 4],
     ['The End of the Game', 'JF-050', 5],
     ['PANZER', 'JF-051', 4],
+    ['Juggle-HER', 'JF-052', 5],
+    ['Surf and Turf', 'JF-053', 3],
+    ['NEXT', 'JF-054', 5],
+    ['Last Judgment', 'JF-055', 5],
+    ['PREDATOR', 'JF-056', 3],
   ]
 
   await page.goto(`${baseUrl}/?qa=new-sculptures-${Date.now()}`, { waitUntil: 'networkidle' })

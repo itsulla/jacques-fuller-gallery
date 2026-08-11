@@ -233,7 +233,7 @@ components:
 
 **Mode: Experience. Creative North Star: “Forged Works.”**
 
-Forged Works is a permanent-feeling, artist-led presentation for Jacques Fuller, a Bloemfontein-based sculptor active since 1989. The object leads: the homepage opens as a six-image mosaic, a static four-record gateway opens a scrollable full-screen gallery of 51 works and 345 photographs, and the separate Process route documents one sculpture step by step. It is not a social feed, ecommerce catalogue, or generic portfolio template.
+Forged Works is a permanent-feeling, artist-led presentation for Jacques Fuller, a Bloemfontein-based sculptor active since 1989. The object leads: the homepage opens as a six-image mosaic, a static four-record gateway opens a scrollable full-screen gallery of 56 works and 366 photographs, and the separate Process route documents one sculpture step by step. It is not a social feed, ecommerce catalogue, or generic portfolio template.
 
 The visual world is cold smoke-grey and mineral on the light side, deep green-black oxide in the Works gallery and viewer, and one restrained patina-green accent. Brass remains material evidence inside the supplied photography, never a UI color. Square geometry, hairline rules, contained sculpture images, and very little motion create a forged, structural viewing experience.
 
@@ -299,7 +299,7 @@ The full-width oxide bar uses Fira Sans Condensed, 44px minimum targets, visible
 Six reversible user-selected photographs surround one ivory identity cell. Four matched archive photographs open their complete work records; two supplied standalone references open the complete Works gallery because their record identities are not documented. The lead images are high-priority, contained photography. Mobile preserves the 2-column visual sequence and gives the identity row intrinsic height so title and action cannot escape it.
 
 ### Works gateway and gallery
-Four recent records form a static, image-led gateway. The complete selection lives only in the modal Works gallery: 51 square-edged large-image cards with visible titles, three/two/one responsive columns, lazy-loaded 1600px lead images, keyboard focus trap, Escape close, inert background, and history-aware work opening. Search and record metadata stay out of this browsing surface; selecting a work reveals its viewer and factual details.
+Four recent records form a static, image-led gateway. The complete selection lives only in the modal Works gallery: 56 square-edged large-image cards with visible titles, three/two/one responsive columns, lazy-loaded 1600px lead images, keyboard focus trap, Escape close, inert background, and history-aware work opening. Search and record metadata stay out of this browsing surface; selecting a work reveals its viewer and factual details.
 
 ### Artwork viewer
 The viewer is `role="dialog"`, `aria-modal="true"`, fixed, scrollable, and full-screen. It focuses the compact Close control on open, restores the previous focus on close, traps Tab focus, closes on Escape, and maps ArrowLeft/ArrowRight to photograph navigation. Previous/next buttons, labelled thumbnails, live photograph position, explicit `aria-current`, recoverable image errors, and previous/next work controls make the sequence operable without a pointer.
@@ -320,7 +320,7 @@ Use semantic headings, landmarks, labelled navigation, descriptive/factual image
 ### Do:
 - Preserve complete sculptures with `object-fit: contain`.
 - Keep the six-photo selection reversible and explicitly temporary.
-- Treat the public Works gallery as 51 works and 345 photographs.
+- Treat the public Works gallery as 56 works and 366 photographs.
 - Keep research provenance in internal data rather than presenting it as public website copy.
 - Omit missing facts rather than exposing research-state labels.
 - Label existing detail photography honestly and wait for Jacques or his family for stories, dates, provenance, availability, exhibition history, and workshop evidence.
