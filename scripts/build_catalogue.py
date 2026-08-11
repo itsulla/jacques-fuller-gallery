@@ -572,6 +572,19 @@ WORKS = [
         "prototypeText": "A horned animal skull is mounted above a circular base on a narrow upright stem.",
         "catalogueNote": "Title follows the supplied Drive folder name and the THE END OF THE GAME plaque visible on the base.",
     },
+    {
+        "source": "PANZER",
+        "sourceUrl": "https://drive.google.com/drive/folders/1Lg1CaVnsfVLZi_0sJy9p8KIQkZalu29U",
+        "slug": "panzer",
+        "title": "PANZER",
+        "material": None,
+        "dimensions": None,
+        "hero": "FB_IMG_1786352200775.jpg",
+        "expectedImageCount": 4,
+        "cacheVersion": "drive-import-20260811-r1",
+        "prototypeText": "A seated figure drives a tracked vehicle beneath a raised flag, with a long-necked animal form at the front.",
+        "catalogueNote": "Title and capitalization follow the supplied Drive folder name and the PANZER plaque visible in the photographs.",
+    },
 ]
 
 

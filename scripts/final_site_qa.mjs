@@ -117,7 +117,25 @@ async function exerciseSingleSiteMosaic() {
   await page.locator('.direction--immersive').waitFor({ state: 'visible' })
   assert.equal(await page.locator('.design-lab').count(), 0, 'The retired design lab is still visible')
   assert.equal(await page.locator('.r5-mosaic').count(), 1, 'The Direction 6 mosaic was not promoted into Direction 5')
-  assert.equal(await page.locator('.r5-mosaic .artwork-button').count(), 6, 'The opening mosaic must expose six selected works')
+  const mosaicButtons = page.locator('.r5-mosaic .artwork-button')
+  assert.equal(await mosaicButtons.count(), 6, 'The opening mosaic must expose six selected photographs')
+  const mosaicImages = mosaicButtons.locator('img')
+  await page.waitForFunction(() => {
+    const images = [...document.querySelectorAll('.r5-mosaic .artwork-button img')]
+    return images.length === 6 && images.every((image) => image.complete && image.naturalWidth > 0)
+  })
+  assert.deepEqual(
+    await mosaicImages.evaluateAll((images) => images.map((image) => new URL(image.currentSrc).pathname)),
+    [
+      '/artworks/beaurocrat/view-07.webp',
+      '/artworks/ship-of-fools/view-01.webp',
+      '/artworks/government-of-national-unity/view-01.webp',
+      '/homepage/reference-04.webp',
+      '/artworks/kingfisher/view-01.webp',
+      '/homepage/reference-06.webp',
+    ],
+    'The homepage mosaic must preserve the six user-selected photographs in supplied order',
+  )
   const primaryNavigation = page.getByRole('navigation', { name: 'Primary navigation' })
   assert.deepEqual(await primaryNavigation.locator('button, a').allTextContents(), ['Works', 'Process', 'About'], 'Primary navigation must use the minimal artist-led structure')
   assert.ok(
@@ -134,6 +152,15 @@ async function exerciseSingleSiteMosaic() {
   assert.notEqual(navSurface, 'rgba(0, 0, 0, 0)', 'The hero navigation must own a deterministic contrast surface')
   await assertNoOverflow(page, 'Final homepage desktop')
   await page.screenshot({ path: resolve(outputDir, 'final-home-desktop.png') })
+
+  for (const index of [3, 5]) {
+    await mosaicButtons.nth(index).click()
+    const referenceGallery = page.locator('.archive-index[role="dialog"]')
+    await referenceGallery.waitFor({ state: 'visible' })
+    assert.equal(await referenceGallery.locator('.archive-index__gallery > li').count(), currentArchiveCount, 'A standalone reference tile must open the complete Works gallery')
+    await referenceGallery.getByRole('button', { name: 'Close', exact: true }).click()
+    await referenceGallery.waitFor({ state: 'detached' })
+  }
 
   await page.getByRole('button', { name: `View all ${currentArchiveCount} works` }).click()
   const archiveIndex = page.locator('.archive-index[role="dialog"]')
@@ -396,6 +423,7 @@ async function exerciseNewSculptures() {
     ['MANTIS', 'JF-048', 7],
     ['Homo erectus', 'JF-049', 4],
     ['The End of the Game', 'JF-050', 5],
+    ['PANZER', 'JF-051', 4],
   ]
 
   await page.goto(`${baseUrl}/?qa=new-sculptures-${Date.now()}`, { waitUntil: 'networkidle' })

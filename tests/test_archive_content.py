@@ -15,6 +15,7 @@ APP_SOURCE = ROOT / "src" / "App.jsx"
 BUILDER = ROOT / "scripts" / "build_catalogue.py"
 DESIGN_DOC = ROOT / "DESIGN.md"
 PRODUCT_DOC = ROOT / "PRODUCT.md"
+HOMEPAGE_MOSAIC_DATA = ROOT / "src" / "data" / "homepageMosaic.json"
 
 
 def load_json(path: Path) -> Any:
@@ -107,6 +108,30 @@ class ArtistSourceTests(unittest.TestCase):
 
 
 class CurrentCatalogueLinkTests(unittest.TestCase):
+    def test_homepage_mosaic_uses_the_six_user_selected_photos(self):
+        mosaic = load_json(HOMEPAGE_MOSAIC_DATA)
+        actual = [
+            (
+                item.get("workId"),
+                item.get("imageIndex"),
+                item.get("opensArchive", False),
+                item.get("image", {}).get("src"),
+            )
+            for item in mosaic
+        ]
+
+        self.assertEqual(
+            actual,
+            [
+                ("beaurocrat", 6, False, None),
+                ("ship-of-fools", 0, False, None),
+                ("government-of-national-unity", 0, False, None),
+                (None, None, True, "/homepage/reference-04.webp"),
+                ("kingfisher", 0, False, None),
+                (None, None, True, "/homepage/reference-06.webp"),
+            ],
+        )
+
     def test_documentation_counts_match_the_generated_catalogue(self):
         artworks = load_json(ARTWORKS_DATA)
         work_count = len(artworks)
@@ -213,13 +238,26 @@ class CurrentCatalogueLinkTests(unittest.TestCase):
             for work in batch
         ]
 
-        self.assertEqual(len(artworks), 50)
-        self.assertEqual(sum(work["imageCount"] for work in artworks), 341)
         self.assertEqual(actual, expected)
         for work in batch:
             self.assertIsNone(work["material"])
             self.assertIsNone(work["dimensions"])
             self.assertIsNone(work["date"])
+
+    def test_20260811_drive_record_is_generated(self):
+        artworks = load_json(ARTWORKS_DATA)
+        matches = [item for item in artworks if item["id"] == "panzer"]
+
+        self.assertEqual(len(artworks), 51)
+        self.assertEqual(sum(item["imageCount"] for item in artworks), 345)
+        self.assertEqual(len(matches), 1)
+        work = matches[0]
+        self.assertEqual(work["archiveNumber"], "JF-051")
+        self.assertEqual(work["title"], "PANZER")
+        self.assertEqual(work["imageCount"], 4)
+        self.assertIsNone(work["material"])
+        self.assertIsNone(work["dimensions"])
+        self.assertIsNone(work["date"])
 
     def test_current_and_generator_records_carry_the_same_confirmed_link(self):
         artworks = load_json(ARTWORKS_DATA)

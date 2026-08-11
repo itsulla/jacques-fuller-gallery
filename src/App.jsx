@@ -1,12 +1,19 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import artworks from './data/artworks.json'
 import artist from './data/artist.json'
+import homepageMosaic from './data/homepageMosaic.json'
 import './App.css'
 import './archive.css'
 
-const selectedWorks = artworks
-  .filter((work) => work.featured)
-  .sort((a, b) => a.featuredRank - b.featuredRank)
+const worksById = new Map(artworks.map((work) => [work.id, work]))
+const homepageTiles = homepageMosaic.map((item) => {
+  const work = item.workId ? worksById.get(item.workId) : null
+  return {
+    ...item,
+    work,
+    image: item.image || work?.images[item.imageIndex || 0],
+  }
+})
 const worksGatewayItems = artworks.slice(-4)
 
 const processWork = artworks.find((work) => work.id === 'mermaid')
@@ -103,13 +110,14 @@ function WorkFacts({ work, className = '' }) {
   )
 }
 
-function ArtworkButton({ work, onOpen, className = '', thumb = false, eager = false, label = null, caption = '' }) {
-  const image = work.images[0]
+function ArtworkButton({ work = null, image: suppliedImage = null, onOpen, onActivate = null, className = '', thumb = false, eager = false, label = null, caption = '' }) {
+  const image = suppliedImage || work.images[0]
+  const activate = onActivate || (() => onOpen(work.id))
   return (
     <button
       type="button"
       className={`artwork-button ${className}`.trim()}
-      onClick={() => onOpen(work.id)}
+      onClick={activate}
       aria-label={label || `View ${work.title}`}
     >
       <ImageWithState
@@ -306,11 +314,14 @@ function ImmersiveIndex({ onOpen, onOpenArchive }) {
       <SiteNav onOpenArchive={onOpenArchive} />
       <main>
         <section className="r5-mosaic" aria-labelledby="r5-title">
-          {selectedWorks.map((work, index) => (
+          {homepageTiles.map((tile, index) => (
             <ArtworkButton
-              key={work.id}
-              work={work}
+              key={tile.id}
+              work={tile.work}
+              image={tile.image}
               onOpen={onOpen}
+              onActivate={tile.opensArchive ? onOpenArchive : null}
+              label={tile.opensArchive ? 'View all works' : null}
               className={`r5-mosaic__tile r5-mosaic__tile--${index + 1}`}
               eager={index < 3}
             />

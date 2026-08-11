@@ -201,6 +201,24 @@ class CatalogueBuildSafetyTests(unittest.TestCase):
             self.assertNotIn("date", work)
             self.assertEqual(work["cacheVersion"], "drive-import-20260810-r1")
 
+    def test_20260811_drive_record_is_defined(self):
+        matches = [item for item in self.builder.WORKS if item["source"] == "PANZER"]
+
+        self.assertEqual(len(matches), 1)
+        work = matches[0]
+        self.assertEqual(work["slug"], "panzer")
+        self.assertEqual(work["title"], "PANZER")
+        self.assertEqual(work["hero"], "FB_IMG_1786352200775.jpg")
+        self.assertEqual(work["expectedImageCount"], 4)
+        self.assertEqual(
+            work["sourceUrl"],
+            "https://drive.google.com/drive/folders/1Lg1CaVnsfVLZi_0sJy9p8KIQkZalu29U",
+        )
+        self.assertIsNone(work["material"])
+        self.assertIsNone(work["dimensions"])
+        self.assertNotIn("date", work)
+        self.assertEqual(work["cacheVersion"], "drive-import-20260811-r1")
+
     def test_optional_record_metadata_is_emitted(self):
         folder = self.builder.SOURCE / "Collection"
         folder.mkdir(parents=True)

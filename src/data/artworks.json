@@ -3454,5 +3454,54 @@
         "alt": "The End of the Game, view 5"
       }
     ]
+  },
+  {
+    "id": "panzer",
+    "archiveNumber": "JF-051",
+    "title": "PANZER",
+    "material": null,
+    "dimensions": null,
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": "Title and capitalization follow the supplied Drive folder name and the PANZER plaque visible in the photographs.",
+    "prototypeText": "A seated figure drives a tracked vehicle beneath a raised flag, with a long-necked animal form at the front.",
+    "story": null,
+    "exhibitionHistory": null,
+    "provenance": null,
+    "historicalRecord": null,
+    "relatedHistoricalRecords": null,
+    "imageCount": 4,
+    "images": [
+      {
+        "src": "/artworks/panzer/view-01.webp?v=drive-import-20260811-r1",
+        "thumb": "/artworks/panzer/thumb-01.webp?v=drive-import-20260811-r1",
+        "width": 618,
+        "height": 960,
+        "alt": "PANZER, view 1"
+      },
+      {
+        "src": "/artworks/panzer/view-02.webp?v=drive-import-20260811-r1",
+        "thumb": "/artworks/panzer/thumb-02.webp?v=drive-import-20260811-r1",
+        "width": 835,
+        "height": 960,
+        "alt": "PANZER, view 2"
+      },
+      {
+        "src": "/artworks/panzer/view-03.webp?v=drive-import-20260811-r1",
+        "thumb": "/artworks/panzer/thumb-03.webp?v=drive-import-20260811-r1",
+        "width": 555,
+        "height": 960,
+        "alt": "PANZER, view 3"
+      },
+      {
+        "src": "/artworks/panzer/view-04.webp?v=drive-import-20260811-r1",
+        "thumb": "/artworks/panzer/thumb-04.webp?v=drive-import-20260811-r1",
+        "width": 639,
+        "height": 960,
+        "alt": "PANZER, view 4"
+      }
+    ]
   }
 ]
