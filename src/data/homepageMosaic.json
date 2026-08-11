@@ -1,20 +1,5 @@
 [
   {
-    "id": "beaurocrat-detail",
-    "workId": "beaurocrat",
-    "imageIndex": 6
-  },
-  {
-    "id": "ship-of-fools",
-    "workId": "ship-of-fools",
-    "imageIndex": 0
-  },
-  {
-    "id": "government-of-national-unity",
-    "workId": "government-of-national-unity",
-    "imageIndex": 0
-  },
-  {
     "id": "reference-04",
     "opensArchive": true,
     "image": {
@@ -25,8 +10,23 @@
     }
   },
   {
+    "id": "beaurocrat-detail",
+    "workId": "beaurocrat",
+    "imageIndex": 6
+  },
+  {
+    "id": "ship-of-fools",
+    "workId": "ship-of-fools",
+    "imageIndex": 6
+  },
+  {
     "id": "kingfisher",
     "workId": "kingfisher",
+    "imageIndex": 0
+  },
+  {
+    "id": "government-of-national-unity",
+    "workId": "government-of-national-unity",
     "imageIndex": 0
   },
   {

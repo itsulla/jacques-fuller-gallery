@@ -116,7 +116,7 @@ async function exerciseSingleSiteMosaic() {
   await page.goto(`${baseUrl}/?qa=single-site-${Date.now()}`, { waitUntil: 'networkidle' })
   await page.locator('.direction--immersive').waitFor({ state: 'visible' })
   assert.equal(await page.locator('.design-lab').count(), 0, 'The retired design lab is still visible')
-  assert.equal(await page.locator('.r5-mosaic').count(), 1, 'The Direction 6 mosaic was not promoted into Direction 5')
+  assert.equal(await page.locator('.r5-mosaic').count(), 1, 'The homepage opening composition is missing')
   const mosaicButtons = page.locator('.r5-mosaic .artwork-button')
   assert.equal(await mosaicButtons.count(), 6, 'The opening mosaic must expose six selected photographs')
   const mosaicImages = mosaicButtons.locator('img')
@@ -127,15 +127,34 @@ async function exerciseSingleSiteMosaic() {
   assert.deepEqual(
     await mosaicImages.evaluateAll((images) => images.map((image) => new URL(image.currentSrc).pathname)),
     [
-      '/artworks/beaurocrat/view-07.webp',
-      '/artworks/ship-of-fools/view-01.webp',
-      '/artworks/government-of-national-unity/view-01.webp',
       '/homepage/reference-04.webp',
+      '/artworks/beaurocrat/view-07.webp',
+      '/artworks/ship-of-fools/view-07.webp',
       '/artworks/kingfisher/view-01.webp',
+      '/artworks/government-of-national-unity/view-01.webp',
       '/homepage/reference-06.webp',
     ],
-    'The homepage mosaic must preserve the six user-selected photographs in supplied order',
+    'The homepage composition must preserve the approved hero and supporting-gallery order',
   )
+  const hero = page.locator('.r5-mosaic__hero')
+  const supportingGallery = page.locator('.r5-mosaic__strip')
+  assert.equal(await hero.count(), 1, 'The opening composition must have one dominant hero photograph')
+  assert.equal(await supportingGallery.locator('.artwork-button').count(), 5, 'The hero must be followed by five supporting photographs')
+  assert.equal(await supportingGallery.evaluate((gallery) => getComputedStyle(gallery).gridTemplateColumns.split(' ').length), 5, 'Desktop supporting photographs must share one five-column strip')
+  const heroComposition = await page.evaluate(() => {
+    const heroBox = document.querySelector('.r5-mosaic__hero').getBoundingClientRect()
+    const identityBox = document.querySelector('.r5-mosaic__identity').getBoundingClientRect()
+    const stripBox = document.querySelector('.r5-mosaic__strip').getBoundingClientRect()
+    return {
+      heroBox: { top: heroBox.top, right: heroBox.right, bottom: heroBox.bottom, left: heroBox.left },
+      identityBox: { top: identityBox.top, right: identityBox.right, bottom: identityBox.bottom, left: identityBox.left },
+      stripBox: { top: stripBox.top, right: stripBox.right, bottom: stripBox.bottom, left: stripBox.left },
+    }
+  })
+  assert.ok(heroComposition.identityBox.top >= heroComposition.heroBox.top, `Desktop identity plate escapes above the hero: ${JSON.stringify(heroComposition)}`)
+  assert.ok(heroComposition.identityBox.right <= heroComposition.heroBox.right, `Desktop identity plate escapes past the hero: ${JSON.stringify(heroComposition)}`)
+  assert.ok(heroComposition.identityBox.bottom <= heroComposition.heroBox.bottom, `Desktop identity plate escapes below the hero: ${JSON.stringify(heroComposition)}`)
+  assert.ok(heroComposition.stripBox.top >= heroComposition.heroBox.bottom, `Desktop supporting gallery overlaps the hero: ${JSON.stringify(heroComposition)}`)
   const primaryNavigation = page.getByRole('navigation', { name: 'Primary navigation' })
   assert.deepEqual(await primaryNavigation.locator('button, a').allTextContents(), ['Works', 'Process', 'About'], 'Primary navigation must use the minimal artist-led structure')
   assert.ok(
@@ -153,7 +172,7 @@ async function exerciseSingleSiteMosaic() {
   await assertNoOverflow(page, 'Final homepage desktop')
   await page.screenshot({ path: resolve(outputDir, 'final-home-desktop.png') })
 
-  for (const index of [3, 5]) {
+  for (const index of [0, 5]) {
     await mosaicButtons.nth(index).click()
     const referenceGallery = page.locator('.archive-index[role="dialog"]')
     await referenceGallery.waitFor({ state: 'visible' })
@@ -339,7 +358,7 @@ async function exerciseViewerHistory() {
   const errors = collectErrors(page)
 
   await page.goto(`${baseUrl}/?qa=viewer-history-${Date.now()}`, { waitUntil: 'networkidle' })
-  const trigger = page.locator('.r5-mosaic .artwork-button').first()
+  const trigger = page.locator('.r5-mosaic__strip .artwork-button').first()
   const historyLength = await page.evaluate(() => window.history.length)
   await trigger.click()
   const viewer = page.locator('.viewer[role="dialog"]')
@@ -429,6 +448,8 @@ async function exerciseNewSculptures() {
     ['NEXT', 'JF-054', 5],
     ['Last Judgment', 'JF-055', 5],
     ['PREDATOR', 'JF-056', 3],
+    ['Blues', 'JF-057', 3],
+    ['VETERAN', 'JF-058', 6],
   ]
 
   await page.goto(`${baseUrl}/?qa=new-sculptures-${Date.now()}`, { waitUntil: 'networkidle' })
@@ -506,7 +527,8 @@ async function exerciseMobileSite() {
   await page.goto(`${baseUrl}/?qa=mobile-${Date.now()}`, { waitUntil: 'networkidle' })
   await page.locator('.r5-mosaic').waitFor({ state: 'visible' })
   assert.equal(await page.locator('.r5-mosaic .artwork-button').count(), 6, 'Mobile mosaic lost a selected work')
-  assert.equal(await page.locator('.r5-mosaic').evaluate((element) => getComputedStyle(element).gridTemplateColumns.split(' ').length), 2, 'Mobile mosaic must collapse to two columns')
+  assert.equal(await page.locator('.r5-mosaic__hero').count(), 1, 'Mobile homepage lost the dominant hero photograph')
+  assert.equal(await page.locator('.r5-mosaic__strip').evaluate((element) => getComputedStyle(element).gridTemplateColumns.split(' ').length), 2, 'Mobile supporting photographs must collapse to two columns')
   const identityContainment = await page.locator('.r5-mosaic__identity').evaluate((element) => {
     const owner = element.getBoundingClientRect()
     const children = [...element.children].map((child) => child.getBoundingClientRect())

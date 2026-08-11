@@ -3755,5 +3755,110 @@
         "alt": "PREDATOR, view 3"
       }
     ]
+  },
+  {
+    "id": "blues",
+    "archiveNumber": "JF-057",
+    "title": "Blues",
+    "material": null,
+    "dimensions": null,
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": "Title follows the supplied Drive folder name; no title plaque is legible in the supplied photographs.",
+    "prototypeText": "A standing singer faces a microphone on a tall stand, with one hand resting at the hip.",
+    "story": null,
+    "exhibitionHistory": null,
+    "provenance": null,
+    "historicalRecord": null,
+    "relatedHistoricalRecords": null,
+    "imageCount": 3,
+    "images": [
+      {
+        "src": "/artworks/blues/view-01.webp?v=drive-import-20260811-r4",
+        "thumb": "/artworks/blues/thumb-01.webp?v=drive-import-20260811-r4",
+        "width": 446,
+        "height": 960,
+        "alt": "Blues, view 1"
+      },
+      {
+        "src": "/artworks/blues/view-02.webp?v=drive-import-20260811-r4",
+        "thumb": "/artworks/blues/thumb-02.webp?v=drive-import-20260811-r4",
+        "width": 643,
+        "height": 960,
+        "alt": "Blues, view 2"
+      },
+      {
+        "src": "/artworks/blues/view-03.webp?v=drive-import-20260811-r4",
+        "thumb": "/artworks/blues/thumb-03.webp?v=drive-import-20260811-r4",
+        "width": 642,
+        "height": 960,
+        "alt": "Blues, view 3"
+      }
+    ]
+  },
+  {
+    "id": "veteran",
+    "archiveNumber": "JF-058",
+    "title": "VETERAN",
+    "material": null,
+    "dimensions": null,
+    "date": null,
+    "availability": null,
+    "featured": false,
+    "featuredRank": null,
+    "catalogueNote": "Title and capitalization follow the supplied Drive folder name; no title plaque is legible in the supplied photographs.",
+    "prototypeText": "A seated figure with a long firearm occupies a compact three-wheeled machine on a rectangular plinth.",
+    "story": null,
+    "exhibitionHistory": null,
+    "provenance": null,
+    "historicalRecord": null,
+    "relatedHistoricalRecords": null,
+    "imageCount": 6,
+    "images": [
+      {
+        "src": "/artworks/veteran/view-01.webp?v=drive-import-20260811-r4",
+        "thumb": "/artworks/veteran/thumb-01.webp?v=drive-import-20260811-r4",
+        "width": 924,
+        "height": 1000,
+        "alt": "VETERAN, view 1"
+      },
+      {
+        "src": "/artworks/veteran/view-02.webp?v=drive-import-20260811-r4",
+        "thumb": "/artworks/veteran/thumb-02.webp?v=drive-import-20260811-r4",
+        "width": 1000,
+        "height": 669,
+        "alt": "VETERAN, view 2"
+      },
+      {
+        "src": "/artworks/veteran/view-03.webp?v=drive-import-20260811-r4",
+        "thumb": "/artworks/veteran/thumb-03.webp?v=drive-import-20260811-r4",
+        "width": 768,
+        "height": 1000,
+        "alt": "VETERAN, view 3"
+      },
+      {
+        "src": "/artworks/veteran/view-04.webp?v=drive-import-20260811-r4",
+        "thumb": "/artworks/veteran/thumb-04.webp?v=drive-import-20260811-r4",
+        "width": 777,
+        "height": 1000,
+        "alt": "VETERAN, view 4"
+      },
+      {
+        "src": "/artworks/veteran/view-05.webp?v=drive-import-20260811-r4",
+        "thumb": "/artworks/veteran/thumb-05.webp?v=drive-import-20260811-r4",
+        "width": 669,
+        "height": 1000,
+        "alt": "VETERAN, view 5"
+      },
+      {
+        "src": "/artworks/veteran/view-06.webp?v=drive-import-20260811-r4",
+        "thumb": "/artworks/veteran/thumb-06.webp?v=drive-import-20260811-r4",
+        "width": 669,
+        "height": 1000,
+        "alt": "VETERAN, view 6"
+      }
+    ]
   }
 ]

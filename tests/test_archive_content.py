@@ -123,11 +123,11 @@ class CurrentCatalogueLinkTests(unittest.TestCase):
         self.assertEqual(
             actual,
             [
-                ("beaurocrat", 6, False, None),
-                ("ship-of-fools", 0, False, None),
-                ("government-of-national-unity", 0, False, None),
                 (None, None, True, "/homepage/reference-04.webp"),
+                ("beaurocrat", 6, False, None),
+                ("ship-of-fools", 6, False, None),
                 ("kingfisher", 0, False, None),
+                ("government-of-national-unity", 0, False, None),
                 (None, None, True, "/homepage/reference-06.webp"),
             ],
         )
@@ -292,8 +292,28 @@ class CurrentCatalogueLinkTests(unittest.TestCase):
             for work in batch
         ]
 
-        self.assertEqual(len(artworks), 56)
-        self.assertEqual(sum(item["imageCount"] for item in artworks), 366)
+        self.assertEqual(actual, expected)
+        for work in batch:
+            self.assertIsNone(work["material"])
+            self.assertIsNone(work["dimensions"])
+            self.assertIsNone(work["date"])
+
+    def test_20260811_fourth_drive_records_are_generated_in_stable_order(self):
+        artworks = load_json(ARTWORKS_DATA)
+        expected = [
+            ("blues", "JF-057", "Blues", 3),
+            ("veteran", "JF-058", "VETERAN", 6),
+        ]
+
+        expected_ids = {item[0] for item in expected}
+        batch = [work for work in artworks if work["id"] in expected_ids]
+        actual = [
+            (work["id"], work["archiveNumber"], work["title"], work["imageCount"])
+            for work in batch
+        ]
+
+        self.assertEqual(len(artworks), 58)
+        self.assertEqual(sum(item["imageCount"] for item in artworks), 375)
         self.assertEqual(actual, expected)
         for work in batch:
             self.assertIsNone(work["material"])

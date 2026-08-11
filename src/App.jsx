@@ -14,6 +14,7 @@ const homepageTiles = homepageMosaic.map((item) => {
     image: item.image || work?.images[item.imageIndex || 0],
   }
 })
+const [homepageHero, ...homepageStripTiles] = homepageTiles
 const worksGatewayItems = artworks.slice(-4)
 
 const processWork = artworks.find((work) => work.id === 'mermaid')
@@ -314,7 +315,22 @@ function ImmersiveIndex({ onOpen, onOpenArchive }) {
       <SiteNav onOpenArchive={onOpenArchive} />
       <main>
         <section className="r5-mosaic" aria-labelledby="r5-title">
-          {homepageTiles.map((tile, index) => (
+          <ArtworkButton
+            work={homepageHero.work}
+            image={homepageHero.image}
+            onOpen={onOpen}
+            onActivate={homepageHero.opensArchive ? onOpenArchive : null}
+            label={homepageHero.opensArchive ? 'View all works' : null}
+            className="r5-mosaic__hero"
+            eager
+          />
+          <div className="r5-mosaic__identity">
+            <p>Sculpture · Brass, steel, copper and found material</p>
+            <h1 id="r5-title">Jacques<br />Fuller</h1>
+            <button type="button" onClick={onOpenArchive}>View works</button>
+          </div>
+          <div className="r5-mosaic__strip" aria-label="Featured works">
+            {homepageStripTiles.map((tile, index) => (
             <ArtworkButton
               key={tile.id}
               work={tile.work}
@@ -323,13 +339,9 @@ function ImmersiveIndex({ onOpen, onOpenArchive }) {
               onActivate={tile.opensArchive ? onOpenArchive : null}
               label={tile.opensArchive ? 'View all works' : null}
               className={`r5-mosaic__tile r5-mosaic__tile--${index + 1}`}
-              eager={index < 3}
+              eager={index < 2}
             />
-          ))}
-          <div className="r5-mosaic__identity">
-            <p>Sculpture · Brass, steel, copper and found material</p>
-            <h1 id="r5-title">Jacques<br />Fuller</h1>
-            <button type="button" onClick={onOpenArchive}>View works</button>
+            ))}
           </div>
         </section>
 

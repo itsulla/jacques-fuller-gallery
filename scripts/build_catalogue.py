@@ -650,6 +650,32 @@ WORKS = [
         "prototypeText": "An animal skull with long canine teeth is mounted above a stepped rectangular plinth.",
         "catalogueNote": "Title and capitalization follow the supplied Drive folder name and the PREDATOR plaque visible in the photographs.",
     },
+    {
+        "source": "Blues",
+        "sourceUrl": "https://drive.google.com/drive/folders/18MEkN-00cReQgxnwGSovb-klS60yErhf",
+        "slug": "blues",
+        "title": "Blues",
+        "material": None,
+        "dimensions": None,
+        "hero": "FB_IMG_1786380098722.jpg",
+        "expectedImageCount": 3,
+        "cacheVersion": "drive-import-20260811-r4",
+        "prototypeText": "A standing singer faces a microphone on a tall stand, with one hand resting at the hip.",
+        "catalogueNote": "Title follows the supplied Drive folder name; no title plaque is legible in the supplied photographs.",
+    },
+    {
+        "source": "VETERAN",
+        "sourceUrl": "https://drive.google.com/drive/folders/1L7FvqPd-H_hgPtFRv0tYYOF9-byVwx87",
+        "slug": "veteran",
+        "title": "VETERAN",
+        "material": None,
+        "dimensions": None,
+        "hero": "FB_IMG_1786379196790.jpg",
+        "expectedImageCount": 6,
+        "cacheVersion": "drive-import-20260811-r4",
+        "prototypeText": "A seated figure with a long firearm occupies a compact three-wheeled machine on a rectangular plinth.",
+        "catalogueNote": "Title and capitalization follow the supplied Drive folder name; no title plaque is legible in the supplied photographs.",
+    },
 ]
 
 

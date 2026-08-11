@@ -315,6 +315,50 @@ class CatalogueBuildSafetyTests(unittest.TestCase):
         supplied_urls = [work.get("sourceUrl") for work in self.builder.WORKS if work.get("sourceUrl")]
         self.assertEqual(len(supplied_urls), len(set(supplied_urls)))
 
+    def test_20260811_fourth_drive_records_are_defined_in_supplied_order(self):
+        expected = [
+            (
+                "Blues",
+                "blues",
+                "Blues",
+                "FB_IMG_1786380098722.jpg",
+                3,
+                "https://drive.google.com/drive/folders/18MEkN-00cReQgxnwGSovb-klS60yErhf",
+            ),
+            (
+                "VETERAN",
+                "veteran",
+                "VETERAN",
+                "FB_IMG_1786379196790.jpg",
+                6,
+                "https://drive.google.com/drive/folders/1L7FvqPd-H_hgPtFRv0tYYOF9-byVwx87",
+            ),
+        ]
+
+        expected_sources = {item[0] for item in expected}
+        batch = [work for work in self.builder.WORKS if work["source"] in expected_sources]
+        actual = [
+            (
+                work["source"],
+                work["slug"],
+                work["title"],
+                work["hero"],
+                work["expectedImageCount"],
+                work["sourceUrl"],
+            )
+            for work in batch
+        ]
+
+        self.assertEqual(actual, expected)
+        for work in batch:
+            self.assertIsNone(work["material"])
+            self.assertIsNone(work["dimensions"])
+            self.assertNotIn("date", work)
+            self.assertEqual(work["cacheVersion"], "drive-import-20260811-r4")
+
+        supplied_urls = [work.get("sourceUrl") for work in self.builder.WORKS if work.get("sourceUrl")]
+        self.assertEqual(len(supplied_urls), len(set(supplied_urls)))
+
     def test_optional_record_metadata_is_emitted(self):
         folder = self.builder.SOURCE / "Collection"
         folder.mkdir(parents=True)

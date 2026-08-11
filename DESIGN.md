@@ -233,7 +233,7 @@ components:
 
 **Mode: Experience. Creative North Star: “Forged Works.”**
 
-Forged Works is a permanent-feeling, artist-led presentation for Jacques Fuller, a Bloemfontein-based sculptor active since 1989. The object leads: the homepage opens as a six-image mosaic, a static four-record gateway opens a scrollable full-screen gallery of 56 works and 366 photographs, and the separate Process route documents one sculpture step by step. It is not a social feed, ecommerce catalogue, or generic portfolio template.
+Forged Works is a permanent-feeling, artist-led presentation for Jacques Fuller, a Bloemfontein-based sculptor active since 1989. The object leads: the homepage opens with one cinematic sculpture photograph and a five-image supporting strip, a static four-record gateway opens a scrollable full-screen gallery of 58 works and 375 photographs, and the separate Process route documents one sculpture step by step. It is not a social feed, ecommerce catalogue, or generic portfolio template.
 
 The visual world is cold smoke-grey and mineral on the light side, deep green-black oxide in the Works gallery and viewer, and one restrained patina-green accent. Brass remains material evidence inside the supplied photography, never a UI color. Square geometry, hairline rules, contained sculpture images, and very little motion create a forged, structural viewing experience.
 
@@ -264,7 +264,7 @@ Petrona uses negative tracking and tight leading for monograph scale. Technical 
 
 ## Layout
 
-The shell is full-width. A deterministic oxide navigation bar sits above the page; on the homepage it overlays the first mosaic without inheriting image contrast. The hero is viewport-bound and uses a six-column editorial mosaic: six reversible selected works surround an intrinsic-height ivory identity cell containing Jacques Fuller and the primary Works action. Sculpture images use `object-fit: contain`; full silhouettes are never decoratively cropped.
+The shell is full-width. A deterministic oxide navigation bar sits above the page; on the homepage it overlays the opening composition without inheriting image contrast. The viewport-bound opening uses a landscape hero with a lower-left ivory identity plate containing Jacques Fuller and the primary Works action. Five additional selected works share an aligned, variable-width gallery strip beneath it. Complete-object documentation uses `object-fit: contain`; only the atmospheric hero and supplied detail photographs use intentional crops.
 
 After the introduction, a static four-work gateway leads into the complete selection without repeating it. Its action opens a scrollable full-screen gallery with large lead images, URL/history integration, and return-to-gallery behavior from work details. About follows directly, pairing an expanded biography with a six-milestone career timeline in a 4/8 editorial split.
 
@@ -276,7 +276,7 @@ Use the shared rhythm: `1px` hairline, `4px` micro gap, `8px` small unit, `16px`
 
 ### Breakpoints
 
-- **720px container:** navigation tightens while retaining a 12px operational floor; the mosaic becomes two columns with an intrinsic-height identity row; the gateway becomes a 2×2 tile grid; biography, career timeline, and process stages become one-column flows.
+- **720px container:** navigation tightens while retaining a 12px operational floor; the hero, identity plate, and supporting gallery become three stacked rows, with the five supporting photographs arranged in two columns and the narrow full-object image spanning two rows; the gateway becomes a 2×2 tile grid; biography, career timeline, and process stages become one-column flows.
 - **1100px viewport:** the Works gallery moves from three image columns to two.
 - **720px viewport:** the Works gallery becomes one large-image column, the viewer header uses compact auto-width controls, and thumbnails remain horizontally scrollable.
 
@@ -295,11 +295,11 @@ Every join is square: image stages, work cards, buttons, metadata groups, thumbn
 ### Navigation
 The full-width oxide bar uses Fira Sans Condensed, 44px minimum targets, visible `aria-current` underlines, and a stable owned background over the hero. The three public choices are Works, Process, and About.
 
-### Mosaic hero
-Six reversible user-selected photographs surround one ivory identity cell. Four matched archive photographs open their complete work records; two supplied standalone references open the complete Works gallery because their record identities are not documented. The lead images are high-priority, contained photography. Mobile preserves the 2-column visual sequence and gives the identity row intrinsic height so title and action cannot escape it.
+### Cinematic homepage composition
+One reversible user-selected outdoor photograph forms the hero behind an ivory identity plate. Five further selected photographs sit in one disciplined strip: two supplied detail views crop deliberately, while complete sculptures remain contained. Four matched archive photographs open their complete work records; two supplied standalone references open the complete Works gallery because their record identities are not documented. Mobile separates the identity plate from the hero, keeps its height intrinsic, and reflows the supporting strip into two columns.
 
 ### Works gateway and gallery
-Four recent records form a static, image-led gateway. The complete selection lives only in the modal Works gallery: 56 square-edged large-image cards with visible titles, three/two/one responsive columns, lazy-loaded 1600px lead images, keyboard focus trap, Escape close, inert background, and history-aware work opening. Search and record metadata stay out of this browsing surface; selecting a work reveals its viewer and factual details.
+Four recent records form a static, image-led gateway. The complete selection lives only in the modal Works gallery: 58 square-edged large-image cards with visible titles, three/two/one responsive columns, lazy-loaded 1600px lead images, keyboard focus trap, Escape close, inert background, and history-aware work opening. Search and record metadata stay out of this browsing surface; selecting a work reveals its viewer and factual details.
 
 ### Artwork viewer
 The viewer is `role="dialog"`, `aria-modal="true"`, fixed, scrollable, and full-screen. It focuses the compact Close control on open, restores the previous focus on close, traps Tab focus, closes on Escape, and maps ArrowLeft/ArrowRight to photograph navigation. Previous/next buttons, labelled thumbnails, live photograph position, explicit `aria-current`, recoverable image errors, and previous/next work controls make the sequence operable without a pointer.
@@ -320,7 +320,7 @@ Use semantic headings, landmarks, labelled navigation, descriptive/factual image
 ### Do:
 - Preserve complete sculptures with `object-fit: contain`.
 - Keep the six-photo selection reversible and explicitly temporary.
-- Treat the public Works gallery as 56 works and 366 photographs.
+- Treat the public Works gallery as 58 works and 375 photographs.
 - Keep research provenance in internal data rather than presenting it as public website copy.
 - Omit missing facts rather than exposing research-state labels.
 - Label existing detail photography honestly and wait for Jacques or his family for stories, dates, provenance, availability, exhibition history, and workshop evidence.
