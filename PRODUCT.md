@@ -14,7 +14,7 @@ Jacques and his family are secondary users. The site must remain straightforward
 
 ## Product Purpose
 
-Create a permanent online gallery for Jacques Fuller, a Bloemfontein-based sculptor active since 1989. The site presents 61 photographed sculptures plus one explicitly labelled Jewellery collection in more depth than Facebook can, with related images grouped into coherent records.
+Create a permanent online gallery for Jacques Fuller, a Bloemfontein-based sculptor active since 1989. The site presents 65 photographed sculptures plus one explicitly labelled Jewellery collection in more depth than Facebook can, with related images grouped into coherent records.
 
 Success means the artwork is visually legible, each work can be explored without social-media clutter, and incomplete artwork details can be added later without redesigning the site.
 
@@ -30,7 +30,7 @@ Artwork descriptions, dates, stories, availability, exhibition history, and full
 
 ## Capabilities and Constraints
 
-- Responsive web gallery with 62 current records and 389 photographs.
+- Responsive web gallery with 66 current records and 404 photographs.
 - A reversible six-photo composition leads the homepage: one outdoor reference photograph anchors the cinematic hero, while five selected works form a supporting strip; four matched archive photographs open their records, while two supplied standalone references open the complete Works gallery.
 - The full Works gallery presents large lead images in three desktop columns, two tablet columns, and one mobile column; selecting an image opens the existing viewer and factual details.
 - Multiple-image carousel or gallery for every current record.
@@ -55,7 +55,7 @@ Artwork descriptions, dates, stories, availability, exhibition history, and full
 ## Internal Evidence on Hand
 
 - Source image archive: `source-assets/Jacques/`.
-- The source library contains 62 current-record folders: 61 sculptures and one Jewellery collection.
+- The source library contains 66 current-record folders: 65 sculptures and one Jewellery collection.
 - The complete supplied 2001 catalogue-entry sequence covers catalogue numbers 1–61 on printed pages 24–27.
 - The 2001 interview and chronology provide dated first-person and biographical evidence; they are not current statements.
 - Biography, process statements, and chronology sourced to the supplied 2001 publication.

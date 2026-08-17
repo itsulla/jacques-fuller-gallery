@@ -334,8 +334,30 @@ class CurrentCatalogueLinkTests(unittest.TestCase):
             for work in batch
         ]
 
-        self.assertEqual(len(artworks), 62)
-        self.assertEqual(sum(item["imageCount"] for item in artworks), 389)
+        self.assertEqual(actual, expected)
+        for work in batch:
+            self.assertIsNone(work["material"])
+            self.assertIsNone(work["dimensions"])
+            self.assertIsNone(work["date"])
+
+    def test_20260811_sixth_drive_records_are_generated_in_stable_order(self):
+        artworks = load_json(ARTWORKS_DATA)
+        expected = [
+            ("homage-to-m-c-escher", "JF-063", "Homage to M C Escher", 3),
+            ("sunshine", "JF-064", "Sunshine", 6),
+            ("scale-libra", "JF-065", "Scale Libra", 3),
+            ("falco-peregrinus", "JF-066", "Falco peregrinus", 3),
+        ]
+
+        expected_ids = {item[0] for item in expected}
+        batch = [work for work in artworks if work["id"] in expected_ids]
+        actual = [
+            (work["id"], work["archiveNumber"], work["title"], work["imageCount"])
+            for work in batch
+        ]
+
+        self.assertEqual(len(artworks), 66)
+        self.assertEqual(sum(item["imageCount"] for item in artworks), 404)
         self.assertEqual(actual, expected)
         for work in batch:
             self.assertIsNone(work["material"])

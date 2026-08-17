@@ -419,6 +419,66 @@ class CatalogueBuildSafetyTests(unittest.TestCase):
         supplied_urls = [work.get("sourceUrl") for work in self.builder.WORKS if work.get("sourceUrl")]
         self.assertEqual(len(supplied_urls), len(set(supplied_urls)))
 
+    def test_20260811_sixth_drive_records_are_defined_in_supplied_order(self):
+        expected = [
+            (
+                "Homage to M C Escher",
+                "homage-to-m-c-escher",
+                "Homage to M C Escher",
+                "FB_IMG_1786379295166.jpg",
+                3,
+                "https://drive.google.com/drive/folders/1a0ZQsgdggnAr8olsf9CoHSl1Ka-waTKR",
+            ),
+            (
+                "Sunshine",
+                "sunshine",
+                "Sunshine",
+                "FB_IMG_1786352789785.jpg",
+                6,
+                "https://drive.google.com/drive/folders/1xKNJ7PDdb6v-pGZKZVYwYD6RnIHzuNzS",
+            ),
+            (
+                "Scale Libra",
+                "scale-libra",
+                "Scale Libra",
+                "FB_IMG_1786352917056.jpg",
+                3,
+                "https://drive.google.com/drive/folders/1-DsUJeiffyABR3TkB536SeGA1hL96Rn2",
+            ),
+            (
+                "Falco peregrinus",
+                "falco-peregrinus",
+                "Falco peregrinus",
+                "FB_IMG_1786348417219.jpg",
+                3,
+                "https://drive.google.com/drive/folders/1pGI1-B1Eal_5vE7kPGUHuI9hM_-vMWRj",
+            ),
+        ]
+
+        expected_sources = {item[0] for item in expected}
+        batch = [work for work in self.builder.WORKS if work["source"] in expected_sources]
+        actual = [
+            (
+                work["source"],
+                work["slug"],
+                work["title"],
+                work["hero"],
+                work["expectedImageCount"],
+                work["sourceUrl"],
+            )
+            for work in batch
+        ]
+
+        self.assertEqual(actual, expected)
+        for work in batch:
+            self.assertIsNone(work["material"])
+            self.assertIsNone(work["dimensions"])
+            self.assertNotIn("date", work)
+            self.assertEqual(work["cacheVersion"], "drive-import-20260811-r6")
+
+        supplied_urls = [work.get("sourceUrl") for work in self.builder.WORKS if work.get("sourceUrl")]
+        self.assertEqual(len(supplied_urls), len(set(supplied_urls)))
+
     def test_optional_record_metadata_is_emitted(self):
         folder = self.builder.SOURCE / "Collection"
         folder.mkdir(parents=True)

@@ -454,6 +454,10 @@ async function exerciseNewSculptures() {
     ['HOCHSITZE', 'JF-060', 5],
     ['STRECKE', 'JF-061', 3],
     ['REFEREE', 'JF-062', 4],
+    ['Homage to M C Escher', 'JF-063', 3],
+    ['Sunshine', 'JF-064', 6],
+    ['Scale Libra', 'JF-065', 3],
+    ['Falco peregrinus', 'JF-066', 3],
   ]
 
   await page.goto(`${baseUrl}/?qa=new-sculptures-${Date.now()}`, { waitUntil: 'networkidle' })
